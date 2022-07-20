@@ -1,0 +1,7 @@
+*.ilg
+*.nls
+*.nlo
+*.pdf
+.Rprofile
+.envs
+.venv

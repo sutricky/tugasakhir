@@ -1,0 +1,138 @@
+\documentclass[12pt, oneside, a4paper]{report}
+
+%page format
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage[left=4cm, right=3cm, top=3cm, bottom=3cm]{geometry} %set margin
+\linespread{1.3} %1.5 line spacing
+
+\titleformat{\chapter}[hang]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{0.5em}{}
+
+%additional package
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{appendix}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{esvect}
+\usepackage{array}
+\usepackage{siunitx}
+\usepackage{acro}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage{nomencl}
+\makenomenclature
+
+\usepackage[square]{natbib}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+
+        \textbf{\Large Pemodelan Termal Semi-empiris Satelit LAPAN-A3 Menggunakan Metode Machine Learning}\\
+        \vspace{7em}
+        \textbf{\large TUGAS SARJANA}\\
+        \text{Karya ilmiah sebagai salah satu syarat} \\
+        \text{untuk memperoleh gelar Sarjana Teknik dari} \\
+        \text{Institut Teknologi Bandung} \\
+        
+        \vspace{5em}
+        Oleh\\
+        Ricky Sutardi\\
+        NIM : 13617051\\
+        (Program Studi Sarjana Teknik Dirgantara)\\
+        
+       
+       \vfill
+       \includegraphics[width=0.25\textwidth]{fig/logo_itb.png}
+    
+       \vfill
+        
+       \large
+       \textbf{INSTITUT TEKNOLOGI BANDUNG}\\
+       \textbf{2022}\\
+       
+   \end{center}
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\pagenumbering{roman}
+
+\input{sah.tex}
+\addcontentsline{toc}{chapter}{Lembar Pengesahan}
+
+\input{abstract.tex}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\input{abstrak.tex}
+\addcontentsline{toc}{chapter}{Abstrak}
+
+\chapter*{Prakata}
+\addcontentsline{toc}{chapter}{Prakata}
+\input{prakata.tex}
+
+\newpage
+\addcontentsline{toc}{chapter}{Daftar Isi}
+\tableofcontents
+
+\newpage
+\addcontentsline{toc}{chapter}{Daftar Gambar}
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\figurename~\oldnumberline}%
+%\addtolength{\cftfignumwidth}{15pt}
+\listoffigures%
+}
+%\listoffigures
+
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\tablename~\oldnumberline}%
+\listoftables%
+}
+%\listoftables
+\addcontentsline{toc}{chapter}{Daftar Tabel}
+
+%list of abbreviations and symbols
+%\chapter{Nomenclature}
+\addcontentsline{toc}{chapter}{Nomenklatur}
+\input{nomenclature.tex}
+%\chapter*{Abbreviations and Symbols}
+%\addcontentsline{toc}{chapter}{Abbreviations and Symbols}
+%\input{Abbreviations.tex}
+
+%Pendahuluan
+\input{chapter/c1.tex}
+
+%Dasar Teori
+\input{chapter/c2.tex}
+
+%Pemodelan Termal
+\input{chapter/c3.tex}
+
+%Hasil dan Analisis
+\input{chapter/c4.tex}
+
+%Saran dan Kesimpulan
+\input{chapter/c5.tex}
+
+\newpage
+\addcontentsline{toc}{chapter}{Daftar Pustaka}
+
+\bibliographystyle{apalike}
+\bibliography{ref} 
+%\printbibliography 
+%\nocite{Birdsall,Bird,MPS_book,Chen,NASA,Szabo,Khayms,Szabo_paper,Gallimore,LSMPS,Fife,Goebel,Boyd_list,Boyd_paper,Parallel computing,Irishkov,Bijiao,anisotropic,Hirakawa,Lentz,Boyd_newest}
+\end{document}

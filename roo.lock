@@ -1,0 +1,51 @@
+[[source]]
+name = "CRAN"
+url = "https://cloud.r-project.org/"
+
+[[entry]]
+categories = []
+dependencies = [ "tinytex",]
+type = "root"
+
+[[entry]]
+categories = [ "main",]
+dependencies = []
+name = "stats"
+type = "core"
+
+[[entry]]
+categories = [ "main",]
+dependencies = [ "xfun",]
+name = "tinytex"
+version = "0.40"
+source = "CRAN"
+r_constraint = "*"
+type = "source"
+[[entry.files]]
+name = "tinytex_0.40.tar.gz"
+hash = "sha256:3f5e7adb2c047a8181a39fe5fee1f709039e6e94245f98c64282fdecc183d88d"
+
+
+[[entry]]
+categories = [ "main",]
+dependencies = []
+name = "tools"
+type = "core"
+
+[[entry]]
+categories = [ "main",]
+dependencies = [ "stats", "tools",]
+name = "xfun"
+version = "0.31"
+source = "CRAN"
+r_constraint = "*"
+type = "source"
+[[entry.files]]
+name = "xfun_0.31.tar.gz"
+hash = "sha256:d169f3e682dab0c3f2ca381f2dba9b7014a5e2ca3d6863dbae3d1bca699ef235"
+
+
+[metadata]
+version = 2
+content_hash = "b5f2cc2b18832505b3285f7cff004b5c957c8e3a74da1e060499b26fe7d11145"
+conservative = false

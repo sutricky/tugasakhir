@@ -1,0 +1,8 @@
+[tool.roo]
+name = "tugasakhir"
+version = "0.1.0"
+[[tool.roo.source]]
+name = "CRAN"
+url = "https://cloud.r-project.org/"
+[tool.roo.dependencies]
+tinytex = "*"
