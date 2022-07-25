@@ -2,5 +2,29 @@
 
 \section{Kesimpulan}
 
+Dari penelitian yang dilakukan pada karya tulis ini, didapatkan langkah-langkah
+pemodelan termal semi-empiris satelit menggunakan metode Machine Learning.
+Algoritma pemodelan termal tersebut diimplementasikan pada model satelit 7 node
+LAPAN-A3 melalui bahasa pemrograman Python serta dilatih dengan data telemetri
+operasi LAPAN-A3 aktual dari 19 sampai dengan 20 Mei 2018. Hasilnya adalah model
+termal yang dapat memprediksi suhu node-node satelit LAPAN-A3 selama periode
+observasi.
+
+Secara umum, model termal yang dihasilkan dapat memprediksi tren perubahan suhu
+node-node satelit LAPAN-A3 dengan akurasi yang cukup baik. Hal ini dapat
+dilihat dari nilai koefisien determinasi model termal yang lebih besar dari 0.9
+untuk 6 dari 7 node pada periode observasi 19 Mei 2018 dan 5 dari 7 node untuk
+20 Mei 2018. Selain itu, 6 dari 7 node model termal menghasilkan skor
+\textit{root mean square error} kurang dari 1 \degree C untuk kedua periode observasi.
+
 \section{Saran}
 
+Berikut adalah beberapa saran untuk melanjutkan penelitian karya tulis ini :
+
+\begin{enumerate}
+\item Menambah jumlah node yang dimodelkan sehingga karakteristik termal satelit dapat termodelkan lebih menyeluruh
+\item Mengubah asumsi yang digunakan pada node satelit untuk memodelkan perilaku node satelit lebih akurat
+\item Melakukan analisis lebih lanjut untuk menghitung kontribusi tiap faktor termal satelit
+\item Memperpanjang durasi periode observasi sehingga masukan data yang dapat digunakan juga bertambah
+\item Menggunakan data dari periode observasi saat satelit melakukan maneuver agar model termal dapat mengakomodasi efek perubahan sikap satelit lebih baik
+\end{enumerate}
