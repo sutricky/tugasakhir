@@ -2,6 +2,9 @@
 *.nls
 *.nlo
 *.pdf
+*.bbl
+*.blg
+*.log
 .Rprofile
 .envs
 .venv
