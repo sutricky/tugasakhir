@@ -33,7 +33,9 @@
 \usepackage{nomencl}
 \makenomenclature
 \makeindex
-\usepackage[square]{natbib}
+
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{IEEEtranN}
 
 \begin{document}
 
@@ -131,8 +133,5 @@
 \newpage
 \addcontentsline{toc}{chapter}{Daftar Pustaka}
 
-\bibliographystyle{apalike}
-\bibliography{ref} 
-%\printbibliography 
-%\nocite{Birdsall,Bird,MPS_book,Chen,NASA,Szabo,Khayms,Szabo_paper,Gallimore,LSMPS,Fife,Goebel,Boyd_list,Boyd_paper,Parallel computing,Irishkov,Bijiao,anisotropic,Hirakawa,Lentz,Boyd_newest}
+\bibliography{IEEEabrv,ref}
 \end{document}
