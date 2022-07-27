@@ -6,7 +6,7 @@ FIGS := fig/*
 all: clean book
 
 clean:
-	rm -f *.pdf *.ilg *.nlo *.nls *.log 
+	rm -f *.pdf *.ilg *.nlo *.nls *.log *.bbl *.blg
 
 book: $(TEXS) $(FIGS)
 	Rscript -e "tinytex::pdflatex('main.tex')"
