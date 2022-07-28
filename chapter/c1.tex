@@ -106,22 +106,22 @@ LAPAN-A4 atau \textit{payload} yang mengeluarkan panas seperti
 \textit{Synthetic Apperture Radar} (SAR) pada LAPAN-A5/Chibasat.
 
 
-Pada karya tulis ini, metode Machine Learning akan digunakan untuk membuat
-model termal semi-empiris berbasis data telemetri satelit aktual serta
-perhitungan faktor lingkungan serta orbit satelit. Penggunaan metode Machine
-Learning bukanlah fenomena baru dalam analisis termal satelit. Sebagai contoh,
-metode Machine Learning telah digunakan untuk membuat simulasi termal satelit
-\textit{real-time} \cite{junior2017}, mempermudah iterasi dalam proses desain
-sistem kendali termal satelit \cite{escobar2016}, serta mengoptimasi desain termal satelit
-\cite{xiong2020}.
+Pada karya tulis ini, metode regresi linear berbasis Machine Learning akan
+digunakan untuk membuat model termal semi-empiris berbasis data telemetri
+satelit aktual serta perhitungan faktor lingkungan serta orbit satelit.
+Penggunaan metode Machine Learning bukanlah fenomena baru dalam analisis termal
+satelit. Sebagai contoh, metode Machine Learning telah digunakan untuk membuat
+simulasi termal satelit \textit{real-time} \cite{junior2017}, mempermudah
+iterasi dalam proses desain sistem kendali termal satelit \cite{escobar2016},
+serta mengoptimasi desain termal satelit \cite{xiong2020}.
 
 Dengan demikian, diharapkan hasil akhir dari karya tulis ini adalah prosedur
-pemodelan termal semi-empiris satelit LAPAN-A3 menggunakan metode Machine
-Learning yang dapat memprediksi suhu ke-7 node satelit (6 node untuk setiap
-sisi satelit dan 1 node untuk plat tengah satelit) selama periode observasi 19
-sampai dengan 20 Mei 2018. Penggunakan metode Machine Learning dilakukan untuk
-mengurangi jumlah variabel yang harus dihitung untuk memodelkan karakteristik
-termal satelit secara akurat. Hasil prediksi suhu dari model termal satelit
+pemodelan termal semi-empiris satelit LAPAN-A3 menggunakan model regresi linear
+Machine Learning yang dapat memprediksi suhu ke-7 node satelit (6 node untuk
+setiap sisi satelit dan 1 node untuk plat tengah satelit) selama periode
+observasi 19 sampai dengan 20 Mei 2018. Penggunakan metode Machine Learning
+dilakukan untuk mengurangi jumlah variabel yang harus dihitung untuk memodelkan
+karakteristik termal satelit. Hasil prediksi suhu dari model termal satelit
 juga akan dievaluasi untuk memvalidasi keakuratan model termal serta mengukur
 potensi model di masa depan.
 
