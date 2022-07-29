@@ -1,1 +1,182 @@
-\chapter{Pemodelan Termal Satelit LAPAN-A3}
+\chapter{Pembuatan Model Termal Satelit LAPAN-A3}
+
+Bab ini akan membahas langkah-langkah untuk membuat model termal semi-empiris
+satelit LAPAN-A3 menggunakan metode \textit{machine learning}. Diagram alir
+proses pembuatan model termal ini dapat dilihat kembali pada Gambar
+\ref{eq:metodologi} yang memuat metodologi penelitan pada karya tulis ini
+secara umum. Kemudian, karena persamaan-persamaan terkait perhitungan variabel
+model termal sudah dibahas secara menyeluruh pada bab Tinjauan Pustaka, bab ini
+hanya akan membahas bagaimana variabel pada persamaan-persamaan tersebut dapat
+dihitung dari data yang sudah dikumpulkan. Penjelasan lebih mendalam juga dapat
+ditemukan lewat kode sumber pemrograman yang digunakan pada karya tulis ini.
+
+\section{Pengumpulan Data}
+
+Data untuk penelitian di karya tulis ini dapat dibagi menjadi 2 jenis : data
+telemetri satelit LAPAN-A3 serta data \textit{two-line elements} (TLE). Data
+telemetri satelit LAPAN-A3 diperoleh dari data operasional internal LAPAN,
+sedangkan data TLE LAPAN-A3 diambil dari situs Celestrak \cite{kelso}. Kedua
+jenis data dikumpulkan untuk periode observasi 19 sampai dengan 20 Mei 2018.
+
+Data telemetri satelit LAPAN-A3 yang dibutuhkan mencakup pembacaan sensor suhu
+dan sinar Matahari \textit{node-node} satelit serta sikap satelit selama
+periode observasi. Sesuai dengan model satelit LAPAN-A3 yang digunakan, data
+yang disediakan oleh LAPAN juga sudah berupa bacaan sensor dari 6 sisi satelit
+dan plat tengah satelit.
+
+Selanjutnya, nilai TLE satelit diasumsikan tidak berubah selama 1 periode
+observasi. Karena itu, \textit{epoch} atau waktu acuan yang digunakan untuk
+perhitungan orbit satelit selama 1 hari pada bagian berikutnya adalah data TLE
+pertama yang tersedia pada tanggal tersebut sesuai zona waktu UTC. Asumsi ini
+didasari oleh algoritma SGP-4 yang digunakan untuk mempropagasi orbit satelit
+LAPAN-A3 memiliki akurasi yang cukup untuk memprediksi orbit satelit dalam
+rentang waktu 15 hari dari waktu acuan \cite{kelsoa}.
+
+\section{Pembuatan Dataset}
+
+Sebagai gambaran umum, diagram alir yang ditunjukkan Gambar \ref{fig:pipeline}
+pada bagian Metodologi memperlihatkan \textit{pipeline} data dalam pembuatan
+dataset untuk model \textit{machine Learning}. Pembuatan dataset dilakukan
+dengan mempersiapkan dataset dasar, menghitung faktor termal satelit, dan
+menyaring dataset.
+
+\subsection{Persiapan Dataset Dasar}
+
+Data mentah yang sudah dikumpulkan di tahap sebelumnya diproses terlebih dahulu
+sehingga memiliki bentuk dan satuan yang sesuai untuk diproses lebih lanjut di
+tahap berikutnya. Proses ini dilakukan untuk data mentah telemetri satelit
+LAPAN-A3 karena data TLE sudah dalam format yang dapat digunakan oleh modul
+Skyfield. Secara spesifik, data bacaan sensor suhu \textit{node} satelit diubah
+menjadi satuan K, bacaan arus pada sensor Matahari menjadi satuan A, dan sikap
+satelit menjadi bentuk matriks sudut Euler dengan urutan putaran Z-Y-X. Selain
+itu, data perubahan suhu \textit{node} satelit antar selang waktu observasi
+juga turut dihitung. Kemudian, data waktu pembacaan sensor-sensor satelit
+dipisah menjadi format tahun, bulan, tanggal, jam, menit, dan detik untuk
+memudahkan propagasi orbit dengan modul Skyfield juga.
+
+\subsection{Perhitungan Faktor Termal Satelit}
+
+Sesuai diagram alir \textit{pipeline} yang ditunjukkan Gambar \ref{eq:pipeline}
+dan tabel variabel yang masih belum diketahui pada Tabel \ref{table:unknown},
+perhitungan faktor termal satelit terbagi mencakup 3 variabel utama : faktor
+panas akibat Matahari, Bumi, dan albedo.
+
+Pertama, faktor panas akibat Matahari merupakan hasil perkalian bacaan arus
+sensor Matahari \textit{node} dan faktor gerhana \textit{node} satelit. Sejalan
+dengan definisi faktor gerhana node yang dijelaskan pada bab Tinjauan Pustakan,
+nilai variabel tersebut dapat ditentukan dari pembacaan arus sensor sinar
+Matahari \textit{node} terkait; bacaan arus lebih besar dari 0 A berarti
+\textit{node} menerima sinar Matahari sehingga memiliki nilai faktor gerhana
+sebesar 1. Sebaliknya, jika bacaan arus sensor \textit{node} bernilai 0,
+\textit{node} tidak menerima sinar Matahari sehingga memiliki nilai faktor
+gerhana 0.
+
+Perhitungan faktor gerhana \textit{node} dari data arus sensor Matahari
+\textit{node} harus memperhatikan toleransi kesalahan bacaan sensor yang
+mungkin terjadi. Sebagai contoh, sensor Matahari pada satelit LAPAN-A3 yang
+digunakan dalam karya tulis ini menunjukkan pembacaan lebih besar dari 0 A pada
+beberapa selang waktu pengamatan meskipun seharusnya satelit berada pada fase
+gerhana merujuk pada nilai bacaan arus sensor \textit{node} sebelum dan
+sesudahnya. Bacaan arus sensor Matahari \textit{node} tersebut dapat dianggap
+kesalahan pengukuran karena terjadi konsisten pada setiap sensor dengan besar
+yang sama dan hanya terjadi pada beberapa selang waktu tertentu saat satelit
+jelas berada fase gerhana. 
+
+Selanjutnya, faktor panas akibat Bumi dan albedo sama-sama bergantung pada
+perhitungan \textit{view factor} \textit{node} satelit ke Bumi. Sesuai dengan
+Persamaan \ref{eq:vf}, \textit{view factor} dari \textit{node} satelit ke Bumi
+didekati dengan \textit{view factor} dari plat persegi panjang ke bola. Persamaan \ref{eq:vf} membutuhkan jari-jari bola $r$, jarak antara plat dengan bola $R$, dan usudut antara garis normal permukaan plat dengan garis jarak antara plat dan bola $\gamma$. 
+
+Jari-jari bola $r$ dapat didekati dengan nilai rata-rata jari-jari Bumi sebesar
+6371 km \cite{moritz}. Lalu, karena ukuran satelit jauh lebih kecil dari Bumi,
+jarak plat ke bola $H$ dapat didekati dengan jarak antara satelit dan Bumi yang
+dapat dihitung dengan mempropagasi orbit satelit berdasarkan data TLE
+menggunakan modul Skyfield. Propagasi orbit lewat modul Skyfield juga
+memungkinkan perhitungan vektor posisi satelit seiring perubahan waktu. Dengan
+demikian, sudut antara garis normal permukaan plat dengan bola $\gamma$ dapat
+didekati dengan sudut antara vektor normal permukaan \textit{node} dengan
+vektor posisi satelit terhadap Bumi. 
+
+Perhitungan sudut $\gamma$ perlu memperhatikan tata acuan koordinat yang
+digunakan pada kedua vektor. Pada perhitungan \textit{view factor node} di
+karya tulis ini, sistem koordinat yang digunakan adalah sistem koordinat bawaan
+modul Skyfield yaitu \textit{Geocentric Celestial Reference System} (GCRS).
+Karena itu, vektor normal permukaan \textit{node} harus dikonversi terlebih
+dahulu dengan bantuan matriks rotasi sudut Euler dengan urutan Z-Y-X.
+
+Terakhir, perhitungan faktor panas akibat albedo juga membutuhkan faktor albedo
+satelit. Sesuai dengan Persamaan \ref{eq:albedofactor}, nilai faktor albedo
+satelit bergantung pada faktor gerhana satelit serta posisi sudut satelit dan
+mulainya fase gerhana terhadap titik \textit{sub-solar}. Sama dengan perhitungan faktor gerhana \textit{node},
+faktor gerhana satelit akan bernilai 1 saat satelit menerima sinar Matahari dan
+bernilai 0 saat satelit berada pada fase gerhana. Dengan demikian, faktor
+gerhana satelit bernilai 0 saat semua \textit{node} satelit memiliki faktor
+gerhana 0 dan bernilai 1 jika ada 1 atau lebih \textit{node} yang memiliki faktor gerhana 1.
+
+Untuk mencari posisi sudut satelit dan mulainya fase gerhana terhadap titik \textit{sub-solar}, perlu dihitung terlebih dahulu nilai anomali benar satelit fase gerhana mulai dan berakhir. Nilai anomali benar satelit dapat dicari lewat propagasi orbit menggunakan modul Skyfield berdasarkan data TLE sesuai data waktu satelit dari data telemetri satelit. Dengan mengasumsikan simetri orbit satelit, anomali benar titik \textit{sub-solar} dapat dihitung. Selanjutnya, posisi sudut satelit terhadap titik \textit{sub-solar} untuk waktu tertentu dapat dicari dengan mengurangi anomali benar satelit dengan anomali benar titik \textit{sub-solar}.
+
+Karena \textit{node} 7 pada model satelit LAPAN-A3 digunakan mewakili plat
+tengah satelit yang diasumsikan terisolasi dari lingkungan luar satelit. Dengan
+demikian, laju perubahan suhu \textit{node} 7 dianggap tidak dipengaruhi faktor
+panas akibat Matahari, albedo, maupun Bumi. Node ini juga diasumsikan tidak
+mengalami disipasi panas ke lingkungan ruang angkasa sehingga perubahan suhu
+pada \textit{node} 7 murni terjadi akibat perpindahan panas lewat konduksi dan
+radiasi dengan ke-enam \textit{node} lainnya.
+
+\subsection{Penyaringan dataset}
+
+Data gabungan dataset dasar dan hasil perhitungan koefisien faktor termal
+satelit kemudian disaring untuk meminimalkan kesalahan dan menghilangkan
+\textit{outlier} pembacaan sensor satelit. Kriteria yang digunakan untuk
+menyaring dataset adalah sebagai berikut :
+
+\begin{enumerate}
+\item Selang waktu antar pengamatan maksimal 120 s 
+\item Skor standar suhu \textit{node} satelit memiliki rentang -3 sampai dengan 3
+\item Skor standar laju perubahan suhu \textit{node} satelit berkisar dari -3 sampai dengan 3 
+\end{enumerate}
+
+Kriteria pertama dipilih berdasarkan persebaran selang waktu pengamatan untuk
+data dari kedua periode observasi. Selang waktu pengamatan untuk kedua periode
+observasi tidak konstan dan berkisar mulai dari 80 sekon sampai dengan ribuan
+sekon. Pada kedua periode observasi, pembacaan sensor kebanyakan memiliki
+selang waktu 120 s. Selang waktu yang terlalu besar akibat jeda waktu
+pengamatan satelit tidak digunakan karena dapat mengurangi akurasi prediksi
+model regresi linear yang akan digunakan. Karena itu, data yang diambil
+memiliki selang waktu antar pengamatan maksimal 120 s.
+
+Kriteria kedua dan ketiga dipilih untuk menghilangkan \textit{outlier}
+pembacaan sensor satelit. Secara statistik, salah satu cara untuk mengukur
+apakah sebuah poin data termasuk dalam kategori \textit{outlier} adalah dengan
+menghitung skor standar poin data tersebut. Skor standar yang terlalu rendah
+(lebih kecil dari -3) atau tinggi (lebih besar dari 3) mengindikasikan poin
+data tersebut dapat dikategorikan \textit{outlier} \cite{boschetti2015}. Kedua
+kriteria skor standar absolut mengasumsikan suhu dan laju perubahan suhu
+\textit{node-node} satelit terdistribusi secara normal sesuai dengan asumsi
+dasar dalam pemodelan regresi linear dalam Machine Learning. Nilai
+\textit{outlier} yang ekstrem juga dapat berpengaruh buruk kepada akurasi
+prediksi model sehingga harus dihilangkan dari dataset akhir.
+
+\section{Pelatihan dan Pengujian Model}
+
+Dataset yang sudah disaring kemudian dibagi menjadi set latihan
+(\textit{training}) dan ujian (\textit{test}) dengan menggunakan modul
+Scikit-learn. Pemodelan pada karya tulis ini menggunakan rasio jumlah data
+pelatihan dibanding pengujian sebesar 0.7:0.3 serta pengaturan \textit{seed
+number} 0. Tabel \ref{table:dataset} memuat detail jumlah dataset yang digunakan dalam pemodelan
+untuk kedua periode observasi.
+
+\begin{table}[!ht]
+\begin{center}
+\caption{Detail jumlah dataset model \textit{Machine Learning}}
+\label{table:dataset}
+\begin{tabular}{|c|cc|}
+\hline
+\multirow{2}{*}{Tanggal} & \multicolumn{2}{c|}{Dataset}                 \\ \cline{2-3} 
+                         & \multicolumn{1}{c|}{Set latihan} & Set ujian \\ \hline
+19 Mei 2018              & \multicolumn{1}{c|}{201}         & 87        \\ \hline
+20 Mei 2018              & \multicolumn{1}{c|}{180}         & 78        \\ \hline
+\end{tabular}
+\end{center}
+\vspace{-5mm}
+\end{table}
