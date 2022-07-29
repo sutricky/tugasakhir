@@ -3,7 +3,7 @@
 Bab ini akan membahas langkah-langkah untuk membuat model termal semi-empiris
 satelit LAPAN-A3 menggunakan metode \textit{machine learning}. Diagram alir
 proses pembuatan model termal ini dapat dilihat kembali pada Gambar
-\ref{eq:metodologi} yang memuat metodologi penelitan pada karya tulis ini
+\ref{fig:metodologi} yang memuat metodologi penelitan pada karya tulis ini
 secara umum. Kemudian, karena persamaan-persamaan terkait perhitungan variabel
 model termal sudah dibahas secara menyeluruh pada bab Tinjauan Pustaka, bab ini
 hanya akan membahas bagaimana variabel pada persamaan-persamaan tersebut dapat
@@ -34,7 +34,7 @@ rentang waktu 15 hari dari waktu acuan \cite{kelsoa}.
 
 \section{Pembuatan Dataset}
 
-Sebagai gambaran umum, diagram alir yang ditunjukkan Gambar \ref{fig:pipeline}
+Sebagai gambaran umum, diagram alir yang ditunjukkan Gambar \ref{fig:algoritma}
 pada bagian Metodologi memperlihatkan \textit{pipeline} data dalam pembuatan
 dataset untuk model \textit{machine Learning}. Pembuatan dataset dilakukan
 dengan mempersiapkan dataset dasar, menghitung faktor termal satelit, dan
@@ -56,7 +56,7 @@ memudahkan propagasi orbit dengan modul Skyfield juga.
 
 \subsection{Perhitungan Faktor Termal Satelit}
 
-Sesuai diagram alir \textit{pipeline} yang ditunjukkan Gambar \ref{eq:pipeline}
+Sesuai diagram alir \textit{pipeline} yang ditunjukkan Gambar \ref{fig:algoritma}
 dan tabel variabel yang masih belum diketahui pada Tabel \ref{table:unknown},
 perhitungan faktor termal satelit terbagi mencakup 3 variabel utama : faktor
 panas akibat Matahari, Bumi, dan albedo.
