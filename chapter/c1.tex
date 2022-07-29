@@ -69,7 +69,7 @@ sebagai referensi dalam pengembangan satelit-satelit LAPAN selanjutnya agar
 permasalahan yang ada saat ini tidak terjadi lagi.
 
 Analisis termal satelit konvensional dilakukan dengan menyelesaikan persamaan
-termal satelit yang sudah dimodelkan menjadi beberapa titik analisis atau node
+termal satelit yang sudah dimodelkan menjadi beberapa titik analisis atau \textit{node}
 lewat perhitungan numerik atau simulasi perangkat lunak komersial. Untuk
 satelit dalam kelas mikro, Das et al. \cite{das} telah mengembangkan prosedur
 desain termal satelit sederhana menggunakan pendekatan pertama lewat
@@ -81,13 +81,13 @@ baterai satelit.
 Karena LAPAN belum memiliki perangkat lunak yang dibutuhkan
 \cite{budiantoro2019}, metode yang mungkin dipakai hanya metode perhitungan
 numerik. Pendekatan ini membutuhkan perhitungan banyak parameter satelit secara
-akurat bahkan untuk model satelit 1 node sekalipun. Akibatnya, penggunaan
+akurat bahkan untuk model satelit 1 \textit{node} sekalipun. Akibatnya, penggunaan
 metode perhitungan numerik biasanya terbatas untuk model satelit 1, 2, atau 3
-node saja. Untuk model multi-nodal, pendekatan yang umum digunakan adalah
+\textit{node} saja. Untuk model multi-nodal, pendekatan yang umum digunakan adalah
 metode kedua berupa simulasi lewat perangkat lunak komersial. Sebagai contoh,
 Totani et al. \cite{totani2014} menjelaskan prosedur desain termal satelit
 kelas mikro dan nano menggunakan metode perhitungan numerik untuk pendekatan
-satelit 1 dan 2 node saja. Pada karya tulis yang sama, prosedur desain termal
+satelit 1 dan 2 \textit{node} saja. Pada karya tulis yang sama, prosedur desain termal
 satelit dengan pendekatan multi-nodal dilakukan dengan bantuan perangkat lunak
 SINDA/FLUINT. Selain itu, sampai karya tulis ini dibuat, ketiga karya tulis
 yang telah disebutkan belum memberikan validasi metode yang diajukan dengan
@@ -117,8 +117,8 @@ serta mengoptimasi desain termal satelit \cite{xiong2020}.
 
 Dengan demikian, diharapkan hasil akhir dari karya tulis ini adalah prosedur
 pemodelan termal semi-empiris satelit LAPAN-A3 menggunakan model regresi linear
-Machine Learning yang dapat memprediksi suhu ke-7 node satelit (6 node untuk
-setiap sisi satelit dan 1 node untuk plat tengah satelit) selama periode
+Machine Learning yang dapat memprediksi suhu ke-7 \textit{node} satelit (6 \textit{node} untuk
+setiap sisi satelit dan 1 \textit{node} untuk plat tengah satelit) selama periode
 observasi 19 sampai dengan 20 Mei 2018. Penggunakan metode Machine Learning
 dilakukan untuk mengurangi jumlah variabel yang harus dihitung untuk memodelkan
 karakteristik termal satelit. Hasil prediksi suhu dari model termal satelit
@@ -142,7 +142,7 @@ Berlandaskan rumusan masalah, penelitian pada karya tulis ini bertujuan untuk :
 \begin{enumerate}
 \item Melakukan penjabaran langkah-langkah untuk membuat model termal satelit multi-nodal secara semi-empiris menggunakan metode Machine Learning
 \item Membuat model termal satelit yang dapat memprediksi perubahan suhu sisi-sisi satelit LAPAN A3
-\item Membandingkan perubahan suhu node satelit hasil prediksi model termal dengan data telemetri satelit
+\item Membandingkan perubahan suhu \textit{node} satelit hasil prediksi model termal dengan data telemetri satelit
 \item Menganalisis performa hasil prediksi dari model termal satelit yang telah dibuat
 \end{enumerate}
 
@@ -154,8 +154,8 @@ Penelitian dalam karya tulis ini dibatasi sebagai berikut :
 \item Pemodelan termal satelit LAPAN A3 dilakukan untuk periode observasi 19-20 Mei 2018
 \item Selama periode observasi, satelit dianggap tidak mengalami perubahan massa dan karakteristik termal
 \item Satelit LAPAN A3 dianggap berbentuk balok dan dibagi menjadi 7 titik
-	analisis atau node mewakili 6 sisi satelit dan plat tengah satelit dengan
-		aturan konversi sumbu menjadi nomor node sebagai berikut : X+ = 1, X- = 2,
+	analisis atau \textit{node} mewakili 6 sisi satelit dan plat tengah satelit dengan
+		aturan konversi sumbu menjadi nomor \textit{node} sebagai berikut : X+ = 1, X- = 2,
 		Y+ = 3, Y- = 4, Z+ = 5, Z- = 6, serta plat tengah = 7
 \end{enumerate}
 
