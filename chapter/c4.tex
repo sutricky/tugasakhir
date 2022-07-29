@@ -1,6 +1,6 @@
 \chapter{Hasil dan Analisis}
 
-\section{Hasil}
+\section{Hasil Pemodelan Termal LAPAN-A3}
 
 Gambar \ref{fig:node119} sampai dengan \ref{fig:node720} menunjukkan perbandingan suhu \textit{node-node} satelit
 hasil prediksi model termal dengan data telemetri aktual LAPAN-A3 untuk periode observasi 19 sampai dengan 20 Mei 2018.
@@ -227,13 +227,18 @@ dan 7 konsisten memiliki skor R2 lebih rendah dibandingkan \textit{node}-\textit
 sedangkan \textit{node} 4 memiliki nilai RMSE paling besar untuk kedua periode
 observasi.
 
-Dalam menganalisis hasil pemodelan termal, perlu diingat bahwa metrik
-performa model yang dihitung hanya berlaku untuk iterasi model saat ini. Secara
-spesifik, parameter RMSE bergantung pada skala pemodelan dan dataset yang
+Dalam menganalisis hasil pemodelan termal, perlu diingat bahwa metrik performa
+model yang dihitung hanya berlaku untuk iterasi dan konfigurasi parameter model
+\textit{machine learning} saat ini. Sebagai contoh, perubahan parameter
+\textit{seed number} yang digunakan akan mengubah dataset latihan dan ujian
+model. Hal ini akan mengubah hasil prediksi model dan tentunya juga akan mengubah
+akurasi prediksi model termal. 
+
+Selanjutnya, parameter RMSE bergantung pada skala pemodelan dan dataset yang
 digunakan. Karena itu, perbedaan nilai maksimum dan minimum RMSE baru dapat
 disimpulkan setelah ada perbandingan dengan model termal di masa depan. Dengan
-kata lain, belum dapat disimpulkan apakah nilai RMSE \textit{node}-\textit{node} model termal
-saat ini adalah dapat dikategorikan rendah atau tinggi.
+kata lain, belum dapat disimpulkan apakah nilai RMSE model termal saat ini
+dapat dikategorikan rendah atau tinggi.
 
 Terlepas dari ketidakpastian dan ketidakakuratan bawaan dari metode numerik dan Machine
 Learning yang digunakan pada karya tulis ini, dapat diduga bahwa model satelit LAPAN-A3 yang
