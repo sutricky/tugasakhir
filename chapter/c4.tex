@@ -148,21 +148,20 @@ konstan seperti yang terjadi pada rentang waktu 10000 sampai dengan 20000
 sekon.
 
 Agar dapat dinilai secara kuantitatif, performa model termal dalam memprediksi
-tren perubahan suhu \textit{node-node} satelit dapat dilihat dari hasil perhitungan skor
-R2 prediksi suhu \textit{node-node} satelit pada Gambar \ref{fig:r219} dan
+tren perubahan suhu \textit{node-node} satelit dapat dilihat dari hasil perhitungan skor koefisien determinasi $R^2$ prediksi suhu \textit{node-node} satelit pada Gambar \ref{fig:r219} dan
 \ref{fig:r220}. Model termal LAPAN-A3 dapat menjelaskan mayoritas varians suhu
-\textit{node} sehingga menghasilkan skor R2 lebih dari 0.5 untuk semua \textit{node}. Lebih
+\textit{node} sehingga menghasilkan skor $R^2$ lebih dari 0.5 untuk semua \textit{node}. Lebih
 lanjut, 6 dari 7 \textit{node} untuk periode 19 Mei 2018 dan 5 dari 7 \textit{node} untuk periode
-20 Mei 2018 memiliki skor R2 lebih besar dari 0.9. Ini berarti lebih dari 90\%
+20 Mei 2018 memiliki skor $R^2$ lebih besar dari 0.9. Ini berarti lebih dari 90\%
 varians dalam data suhu observasi dapat dijelaskan oleh prediksi model. Dapat
-dilihat juga bahwa \textit{node} 3 memiliki skor R2 paling rendah dari ketujuh \textit{node} pada
+dilihat juga bahwa \textit{node} 3 memiliki skor $R^2$ paling rendah dari ketujuh \textit{node} pada
 kedua periode observasi dan disusul oleh \textit{node} 7.
 
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
 \includegraphics[width=0.6\textwidth]{fig/r2_2018-05-19.png}
-\caption{Plot Skor R2 Model 19 Mei 2018}
+\caption{Plot Skor $R^2$ Model 19 Mei 2018}
 \label{fig:r219}
 \end{center}
 \end{figure}
@@ -171,7 +170,7 @@ kedua periode observasi dan disusul oleh \textit{node} 7.
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
 \includegraphics[width=0.6\textwidth]{fig/r2_2018-05-20.png}
-\caption{Plot Skor R2 Model 20 Mei 2018}
+\caption{Plot Skor $R^2$ Model 20 Mei 2018}
 \label{fig:r220}
 \end{center}
 \end{figure}
@@ -201,20 +200,13 @@ suhu hasil observasi data telemetri. Gambar \ref{fig:rmse19} dan
 \end{figure}
 
 Dapat dilihat bahwa plot RMSE model termal menunjukkan hasil yang agak berbeda
-dari plot skor R2 model termal pada Gambar \ref{fig:r219} dan \ref{fig:r220}
+dari plot skor $R^2$ model termal pada Gambar \ref{fig:r219} dan \ref{fig:r220}
 sebelumnya. Nilai RMSE paling besar untuk kedua periode observasi sama-sama
 diperoleh dari \textit{node} 4 disusul oleh \textit{node} 3 dan kemudian \textit{node} 7. \textit{Node} 4 konsisten
 memiliki nilai RMSE lebih besar sedikit dari 1 \degree C untuk kedua periode
 observasi. \textit{Node} 3 juga konsisten memiliki nilai RMSE lebih besar dari 0.6
 \degree C untuk kedua periode observasi sedangkan \textit{node} 7 sempat menyentuh nilai
 di bawah 0.5 \degree C pada periode observasi 20 Mei 2018.
-
-Perlu diperhatikan bahwa nilai RMSE bergantung pada skala dan dataset yang
-digunakan serta baru dihitung untuk iterasi pertama model termal. Karena itu,
-perbedaan nilai maksimum dan minimum RMSE baru dapat disimpulkan setelah ada
-perbandingan dengan model termal di masa depan. Dengan kata lain, belum dapat
-disimpulkan apakah nilai error prediksi \textit{node} 4 model termal saat
-ini adalah dapat dikategorikan rendah atau tinggi.
 
 \section{Analisis}
 
@@ -223,7 +215,7 @@ bahwa model termal yang dikembangkan sudah dapat memodelkan karakteristik
 termal satelit LAPAN-A3 secara umum. Akan tetapi, akurasi model termal satelit
 dalam memodelkan karakteristik termal \textit{node} 3, 4, dan 7 dapat dikatakan lebih
 rendah dibandingkan dengan 4 \textit{node} lainnya dan masih perlu ditingkatkan. Node 3
-dan 7 konsisten memiliki skor R2 lebih rendah dibandingkan \textit{node}-\textit{node} lainnya
+dan 7 konsisten memiliki skor $R^2$ lebih rendah dibandingkan \textit{node}-\textit{node} lainnya
 sedangkan \textit{node} 4 memiliki nilai RMSE paling besar untuk kedua periode
 observasi.
 
@@ -234,11 +226,12 @@ model yang dihitung hanya berlaku untuk iterasi dan konfigurasi parameter model
 model. Hal ini akan mengubah hasil prediksi model dan tentunya juga akan mengubah
 akurasi prediksi model termal. 
 
-Selanjutnya, parameter RMSE bergantung pada skala pemodelan dan dataset yang
-digunakan. Karena itu, perbedaan nilai maksimum dan minimum RMSE baru dapat
-disimpulkan setelah ada perbandingan dengan model termal di masa depan. Dengan
-kata lain, belum dapat disimpulkan apakah nilai RMSE model termal saat ini
-dapat dikategorikan rendah atau tinggi.
+Selanjutnya, seperti yang disebutkan pada bab Tinjauan Pustaka, parameter RMSE
+bergantung pada skala pemodelan dan dataset yang digunakan. Karena itu,
+perbedaan nilai maksimum dan minimum RMSE baru dapat disimpulkan setelah ada
+perbandingan dengan model termal di masa depan. Dengan kata lain, belum dapat
+disimpulkan apakah nilai RMSE model termal saat ini dapat dikategorikan rendah
+atau tinggi.
 
 Terlepas dari ketidakpastian dan ketidakakuratan bawaan dari metode numerik dan
 \textit{machine learning} yang digunakan pada karya tulis ini, dapat diduga
@@ -270,36 +263,47 @@ termal dapat dimodelkan lebih akurat, jumlah \textit{node} yang digunakan dalam
 pemodelan dapat ditambah.
 
 Kemudian, satelit LAPAN-A3 juga diasumsikan berbentuk balok sehingga
-perhitungan \textit{view factor} dari \textit{node} ke Bumi disederhanakan menjadi plat
-persegi panjang ke Bumi. Pada kenyataannya, satelit memiliki komponen yang
-tidak berbentuk persegi panjang seperti antena dan kamera. Penambahan jumlah
-\textit{node} untuk memastikan komponen-komponen tersebut terwakili tentunya juga akan
-menambah akurasi dari model termal satelit. Selain itu, tidak tertutup juga
-penggunaan metode elemen hingga untuk menghitung nilai \textit{view factor}
-secara terpisah.
+perhitungan \textit{view factor} dari \textit{node} ke Bumi disederhanakan
+menjadi plat persegi panjang ke Bumi. Pada kenyataannya, satelit memiliki
+komponen yang tidak berbentuk persegi panjang seperti antena dan kamera.
+Penambahan jumlah \textit{node} untuk memastikan komponen-komponen tersebut
+terwakili tentunya juga akan menambah akurasi dari model termal satelit. Selain
+itu, tidak tertutup juga penggunaan metode numerik lain seperti metode elemen
+hingga untuk menghitung nilai \textit{view factor} secara terpisah agar data
+\textit{view factor} yang digunakan untuk melatih model dapat lebih mendekati
+nilai \textit{view factor node} satelit yang sebenarnya.
 
 Lalu, dari Persamaan \ref{eq:lineq} dapat dilihat juga bahwa perubahan suhu
-suatu \textit{node} dipengaruhi perubahan suhu \textit{node}-\textit{node} lainnya akibat adanya
-perpindahan panas lewat konduksi dan radiasi antar \textit{node}. Karena itu, perlu
-dilakukan analisis inferensi lebih lanjut untuk menentukan suku-suku dominan
-dalam Persamaan \ref{eq:lineq} yang mungkin menyumbang error paling besar. Jika
-hasil analisis lebih lanjut menunjukkan bahwa perubahan suhu \textit{node} 4 didominasi
-oleh pengaruh perubahan suhu \textit{node} 3 dan 7, penjelasan sebelumnya dapat menjawab
-hasil nilai RMSE \textit{node} 4. Sebaliknya, hasil analisis tersebut dapat digunakan
-untuk melihat akurasi suku termal mana yang perlu ditingkatkan.
+suatu \textit{node} dipengaruhi perubahan suhu \textit{node} lain akibat adanya
+perpindahan panas lewat konduksi dan radiasi antar \textit{node}. Merujuk
+aplikasi lain dari \textit{machine learning} pada pemodelan termal satelit,
+analisis inferensi dapat dilakukan untuk menentukan suku-suku dominan dalam
+Persamaan \ref{eq:lineq} yang mungkin menyumbang error paling besar. Jika hasil
+inferensi menunjukkan bahwa perubahan suhu \textit{node} 4 didominasi oleh
+pengaruh perubahan suhu \textit{node} 3 dan 7, penjelasan sebelumnya dapat
+turut menjawab hasil nilai RMSE \textit{node} 4. Sebaliknya, hasil analisis
+tersebut dapat digunakan untuk melihat akurasi suku termal mana yang perlu
+ditingkatkan agar perbedaan antara nilai hasil prediksi model dengan data
+observasi dapat dikurangi.
 
-Analisis untuk melihat dampak tiap suku dalam Persamaan \ref{eq:lineq} tidak
-dilakukan dalam karya tulis ini karena membutuhkan modifikasi persamaan termal
-untuk turut memperhitungkan hubungan antar variabel independen. Dapat dilihat
-dari persamaan tersebut bahwa variabel suhu \textit{node} berkorelasi erat dengan
-variabel suhu \textit{node} pangkat 4. Jika salah satu variabel diketahui, variabel
-lainnya dapat dihitung juga. 
-
+Analisis inferensi untuk melihat dampak tiap suku dalam Persamaan
+\ref{eq:lineq} membutuhkan modifikasi metode \textit{machine learning} yang
+digunakan. Dapat dilihat dari persamaan tersebut bahwa variabel suhu
+\textit{node} berkorelasi erat dengan variabel suhu \textit{node} pangkat 4.
+Jika salah satu variabel diketahui, variabel lainnya dapat dihitung juga.
 Fenomena adanya korelasi tinggi antar variabel independen di atas dinamakan
-kolinearitas. Meski tidak berdampak banyak pada akurasi prediksi model,
-harus diperhitungkan dalam analisis untuk menghitung dampak suku termal pada
-persamaan termal secara individual \cite{lieberman2014}\cite{mundfrom2018}.
-Kolinearitas dapat diatasi dengan menyeleksi variabel independen sehingga tidak
-ada kolinearitas pada variabel yang tersisa atau menggunakan metode pemodelan
-regresi linear lain yang tidak terpengaruh kolinearitas.
+kolinearitas. 
 
+Meski kolinearitas tidak berdampak banyak pada akurasi prediksi model regresi
+linear, hal ini harus diperhitungkan dalam analisis inferensi
+\cite{lieberman2014}\cite{mundfrom2018}. Kolinearitas sendiri dapat diatasi
+dengan menyeleksi variabel independen sehingga tidak ada kolinearitas pada
+variabel yang tersisa atau menggunakan metode \textit{machine learning} lain
+yang tidak terpengaruh kolinearitas.
+
+Analisis inferensi persamaan termal tidak dilakukan pada karya tulis ini karena
+model termal yang dikembangkan pada karya tulis ini memiliki tujuan utama
+berupa prediksi suhu satelit. Meski demikian, topik tersebut dapat menjadi
+bahan pengembangan model termal selanjutnya atau topik penelitian lebih lanjut
+di masa depan. Dengan begitu, model termal satelit LAPAN-A3 dapat dikembangkan
+lebih baik lagi.
