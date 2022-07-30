@@ -39,6 +39,13 @@
 \usepackage[square,numbers]{natbib}
 \bibliographystyle{IEEEtranN}
 
+\renewcommand{\contentsname}{Daftar Isi}
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+\renewcommand*\listfigurename{Daftar Gambar}
+\renewcommand*\listtablename{Daftar Tabel}
+\renewcommand{\nomname}{Nomenklatur}
+
 \begin{document}
 
 \begin{titlepage}
@@ -101,21 +108,20 @@
 }
 %\listoffigures
 
+\newpage
+\addcontentsline{toc}{chapter}{Daftar Tabel}
 {%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{\tablename~\oldnumberline}%
 \listoftables%
 }
-%\listoftables
-\addcontentsline{toc}{chapter}{Daftar Tabel}
 
 %list of abbreviations and symbols
-%\chapter{Nomenclature}
+%\chapter{Nomenklatur}
+\newpage
 \addcontentsline{toc}{chapter}{Nomenklatur}
 \input{nomenclature.tex}
-%\chapter*{Abbreviations and Symbols}
-%\addcontentsline{toc}{chapter}{Abbreviations and Symbols}
-%\input{Abbreviations.tex}
+\printnomenclature
 
 %Pendahuluan
 \input{chapter/c1.tex}
