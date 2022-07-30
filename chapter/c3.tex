@@ -140,7 +140,7 @@ Kriteria pertama dipilih berdasarkan persebaran selang waktu pengamatan untuk
 data dari kedua periode observasi. Selang waktu pengamatan untuk kedua periode
 observasi tidak konstan dan berkisar mulai dari 80 sekon sampai dengan ribuan
 sekon. Pada kedua periode observasi, pembacaan sensor kebanyakan memiliki
-selang waktu 120 s. Selang waktu yang terlalu besar akibat jeda waktu
+selang waktu 120 s. Selang waktu lebih besar dari 120 s akibat jeda waktu
 pengamatan satelit tidak digunakan karena dapat mengurangi akurasi prediksi
 model regresi linear yang akan digunakan. Karena itu, data yang diambil
 memiliki selang waktu antar pengamatan maksimal 120 s.
@@ -148,14 +148,17 @@ memiliki selang waktu antar pengamatan maksimal 120 s.
 Kriteria kedua dan ketiga dipilih untuk menghilangkan \textit{outlier}
 pembacaan sensor satelit. Secara statistik, salah satu cara untuk mengukur
 apakah sebuah poin data termasuk dalam kategori \textit{outlier} adalah dengan
-menghitung skor standar poin data tersebut. Skor standar yang terlalu rendah
-(lebih kecil dari -3) atau tinggi (lebih besar dari 3) mengindikasikan poin
-data tersebut dapat dikategorikan \textit{outlier} \cite{boschetti2015}. Kedua
-kriteria skor standar absolut mengasumsikan suhu dan laju perubahan suhu
-\textit{node-node} satelit terdistribusi secara normal sesuai dengan asumsi
-dasar dalam pemodelan regresi linear dalam \textit{machine learning}. Nilai
-\textit{outlier} yang ekstrem juga dapat berpengaruh buruk kepada akurasi
-prediksi model sehingga harus dihilangkan dari dataset akhir.
+menghitung skor standar poin data tersebut. Skor standar dihitung dengan
+membagi selisih antara nilai data dan rata-rata data dengan standar deviasi
+data. Perhitungan skor standar data satelit dilakukan menggunakan modul Scipy.
+
+Skor standar yang terlalu rendah (lebih kecil dari -3) atau tinggi (lebih besar
+dari 3) mengindikasikan poin data tersebut dapat dikategorikan \textit{outlier}
+\cite{boschetti2015}. Kedua kriteria skor standar mengasumsikan suhu dan laju
+perubahan suhu \textit{node-node} satelit terdistribusi secara normal sesuai
+dengan asumsi dasar dalam pemodelan regresi linear dalam \textit{machine
+learning}. Nilai \textit{outlier} yang ekstrem juga dapat berpengaruh buruk
+kepada akurasi prediksi model sehingga harus dihilangkan dari dataset akhir.
 
 \section{Pelatihan dan Pengujian Model}
 
