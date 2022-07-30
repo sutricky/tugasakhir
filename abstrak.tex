@@ -16,8 +16,34 @@
         \vspace{1.5cm}
 \end{center}
 
-Abstrak bahasa indonesia dituliskan di sini.
+Dari pembacaan sensor suhu satelit, ditemukan bahwa LAPAN-A3, sebuah
+mikrosatelit dari Indonesia, membutuhkan maneuver khusus untuk menjaga suhu
+\textit{payload} utamnya, sebuah pencitra multispektral, tetap di atas 0
+\degree C. Dapat disimpulkan bahwa sistem kendali termal pasif satelit tersebut
+tidak cukup untuk memenuhi kebutuhan misinya. Agar permasalahan ini tidak
+terjadi kembali di desain termal satelit masa depan, dibutuhkan sebuah model
+termal sederhana baru yang dapat memodelkan karakteristik termal satelit
+LAPAN-A3 dengan akurat.
+
+Analisis termal satelit konvensional membutuhkan perhitungan banyak variabel
+secara akurat sehingga memiliki kompleksitas yang tinggi pula. Sementara itu,
+pendekatan berbasis data dalam menyelesaikan permasalahan-permasalahan termal
+satelit semakin umum digunakan untuk mengurangi kompleksitas pemodelan termal
+satelit. Karena itu, model termal sederhana yang dapat menghitung
+parameter-parameter termal satelit yang dibutuhkan untuk memprediksi suhu
+satelit dari data operasional satelit diharapkan dapat menghasilkan proses
+pemodelan termal yang lebih cepat dan mudah.
+
+Dalam karya tulis ini, model termal semi-empiris LAPAN-A3 dengan 7
+\textit{node} dikembangkan dengan metode \textit{machine learning}. Model
+tersebut dilatih dengan data satelit dari periode observasi 19 dan 20 Mei 2018.
+Metode regresi linear menggunakan \textit{machine learning} dipilih untuk
+mengurangi jumlah variabel yang harus dihitung untuk memodelkan satelit.
+Evaluasi awal menunjukkan model termal secara umum dapat memprediksi perubahan
+suhu \textit{node} satelit serta memiliki potensi kegunaan nyata dalam
+pengembangan satelit. Meski masih dapat dikembangkan lebih lanjut, model
+tersebut dapat digunakan sebagai dasar model termal satelit masa depan. 
 
 \vspace{1.0cm}
 \noindent 
-Kata kunci : CFD, \LaTeX.
+Kata kunci : model termal, satelit, machine learning, regresi linear, LAPAN-A3
