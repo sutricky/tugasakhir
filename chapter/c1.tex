@@ -84,25 +84,27 @@ dilakukan dengan menyelesaikan persamaan termal satelit yang sudah dimodelkan
 menjadi beberapa titik analisis atau \textit{node} lewat perhitungan numerik
 atau simulasi perangkat lunak komersial. Untuk satelit dalam kelas mikro, Das
 et al. telah mengembangkan prosedur desain termal satelit sederhana menggunakan
-pendekatan pertama lewat penyelesain persamaan termal satelit multi-nodal yang
-disederhanakan \cite{das}. Kemudian, pendekatan kedua sudah dilakukan oleh
-Boudjemai et al. yang menggunakan metode elemen hingga untuk menganalisis
-karakteristik termal baterai satelit \cite{boudjemai2015}.
+pendekatan pertama lewat penyelesaian persamaan termal satelit \textit{node}
+banyak yang disederhanakan \cite{das}. Kemudian, pendekatan kedua sudah
+dilakukan oleh Boudjemai et al. yang menggunakan metode elemen hingga untuk
+menganalisis karakteristik termal baterai satelit \cite{boudjemai2015}.
 
 Karena LAPAN belum memiliki perangkat lunak yang dibutuhkan
 \cite{budiantoro2019}, metode yang mungkin dipakai hanya metode perhitungan
 numerik. Pendekatan ini membutuhkan perhitungan banyak parameter satelit secara
 akurat bahkan untuk model satelit 1 \textit{node} sekalipun. Akibatnya, penggunaan
 metode perhitungan numerik biasanya terbatas untuk model satelit 1, 2, atau 3
-\textit{node} saja. Untuk model multi-nodal, pendekatan yang umum digunakan adalah
+\textit{node} saja. 
+
+Untuk model satelit \textit{node} banyak, pendekatan yang umum digunakan adalah
 metode kedua berupa simulasi lewat perangkat lunak komersial. Sebagai contoh,
-Totani et al. \cite{totani2014} menjelaskan prosedur desain termal satelit
-kelas mikro dan nano menggunakan metode perhitungan numerik untuk pendekatan
-satelit 1 dan 2 \textit{node} saja. Pada karya tulis yang sama, prosedur desain termal
-satelit dengan pendekatan multi-nodal dilakukan dengan bantuan perangkat lunak
-SINDA/FLUINT. Selain itu, sampai karya tulis ini dibuat, ketiga karya tulis
-yang telah disebutkan belum memberikan validasi metode yang diajukan dengan
-data operasi aktual satelit.
+Totani et al. menjelaskan prosedur desain termal satelit kelas mikro dan nano
+menggunakan metode perhitungan numerik untuk pendekatan satelit 1 dan 2
+\textit{node} saja \cite{totani2014}. Pada karya tulis yang sama, prosedur
+desain termal satelit dengan pendekatan model \textit{node} banyak dilakukan
+dengan bantuan perangkat lunak SINDA/FLUINT. Selain itu, sampai karya tulis ini
+dibuat, ketiga karya tulis yang telah disebutkan belum memberikan validasi
+metode yang diajukan dengan data operasi aktual satelit.
 
 Berdasarkan alasan yang telah dijelaskan di atas, penelitian pada karya tulis
 ini bertujuan untuk menjabarkan langkah-langkah pembuatan model termal satelit
@@ -151,7 +153,7 @@ Dari latar belakang yang telah dijelaskan sebelumnya, dapat dibuat rumusan masal
 Berlandaskan rumusan masalah, penelitian pada karya tulis ini bertujuan untuk :
 
 \begin{enumerate}
-\item Melakukan penjabaran langkah-langkah untuk membuat model termal satelit multi-nodal secara semi-empiris menggunakan metode \textit{machine learning}
+\item Melakukan penjabaran langkah-langkah untuk membuat model termal satelit \textit{node} banyak secara semi-empiris menggunakan metode \textit{machine learning}
 \item Membuat model termal satelit yang dapat memprediksi perubahan suhu sisi-sisi satelit LAPAN-A3
 \item Membandingkan perubahan suhu \textit{node} satelit hasil prediksi model termal dengan data telemetri satelit
 \item Menganalisis performa hasil prediksi dari model termal satelit yang telah dibuat
@@ -164,10 +166,10 @@ Penelitian dalam karya tulis ini dibatasi sebagai berikut :
 \begin{enumerate}
 \item Pemodelan termal satelit LAPAN-A3 dilakukan untuk periode observasi 19-20 Mei 2018
 \item Selama periode observasi, satelit dianggap tidak mengalami perubahan massa dan karakteristik termal
-\item Satelit LAPAN-A3 dianggap berbentuk balok dan dibagi menjadi 7 titik
-	analisis atau \textit{node} mewakili 6 sisi satelit dan plat tengah satelit dengan
-		aturan konversi sumbu menjadi nomor \textit{node} sebagai berikut : X+ = 1, X- = 2,
-		Y+ = 3, Y- = 4, Z+ = 5, Z- = 6, serta plat tengah = 7
+\item Satelit LAPAN-A3 dianggap berbentuk balok dan dibagi menjadi 7
+	\textit{node} mewakili 6 sisi satelit dan plat tengah satelit dengan aturan
+		konversi sumbu menjadi nomor \textit{node} sebagai berikut : X+ = 1, X- =
+		2, Y+ = 3, Y- = 4, Z+ = 5, Z- = 6, serta plat tengah = 7
 \end{enumerate}
 
 \section{Metodologi}
