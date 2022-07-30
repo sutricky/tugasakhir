@@ -40,11 +40,13 @@
 \bibliographystyle{IEEEtranN}
 
 \renewcommand{\contentsname}{Daftar Isi}
+\renewcommand{\chaptertitlename}{Bab}
 \renewcommand{\figurename}{Gambar}
 \renewcommand{\tablename}{Tabel}
 \renewcommand*\listfigurename{Daftar Gambar}
 \renewcommand*\listtablename{Daftar Tabel}
 \renewcommand{\nomname}{Nomenklatur}
+\renewcommand{\bibname}{Daftar Pustaka}
 
 \begin{document}
 
@@ -81,14 +83,17 @@
 
 \pagenumbering{roman}
 
-\input{sah.tex}
+\newpage
 \addcontentsline{toc}{chapter}{Lembar Pengesahan}
+\input{sah.tex}
 
-\input{abstract.tex}
+\newpage
 \addcontentsline{toc}{chapter}{Abstract}
+\input{abstract.tex}
 
-\input{abstrak.tex}
+\newpage
 \addcontentsline{toc}{chapter}{Abstrak}
+\input{abstrak.tex}
 
 \chapter*{Prakata}
 \addcontentsline{toc}{chapter}{Prakata}
