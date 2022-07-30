@@ -44,15 +44,15 @@ menyaring dataset.
 
 Data mentah yang sudah dikumpulkan di tahap sebelumnya diproses terlebih dahulu
 sehingga memiliki bentuk dan satuan yang sesuai untuk diproses lebih lanjut di
-tahap berikutnya. Proses ini dilakukan untuk data mentah telemetri satelit
+tahap berikutnya. Proses ini dilakukan hanya pada data mentah telemetri satelit
 LAPAN-A3 karena data TLE sudah dalam format yang dapat digunakan oleh modul
 Skyfield. Secara spesifik, data bacaan sensor suhu \textit{node} satelit diubah
 menjadi satuan K, bacaan arus pada sensor Matahari menjadi satuan A, dan sikap
-satelit menjadi bentuk matriks sudut Euler dengan urutan putaran Z-Y-X. Selain
-itu, data perubahan suhu \textit{node} satelit antar selang waktu observasi
-juga turut dihitung. Kemudian, data waktu pembacaan sensor-sensor satelit
-dipisah menjadi format tahun, bulan, tanggal, jam, menit, dan detik untuk
-memudahkan propagasi orbit dengan modul Skyfield juga.
+satelit menjadi satuan rad. Selain itu, data perubahan suhu \textit{node}
+satelit antar selang waktu observasi juga turut dihitung. Kemudian, data waktu
+pembacaan sensor-sensor satelit dipisah menjadi format tahun, bulan, tanggal,
+jam, menit, dan detik untuk memudahkan propagasi orbit dengan modul Skyfield
+juga.
 
 \subsection{Perhitungan Faktor Termal Satelit}
 
@@ -156,9 +156,9 @@ Skor standar yang terlalu rendah (lebih kecil dari -3) atau tinggi (lebih besar
 dari 3) mengindikasikan poin data tersebut dapat dikategorikan \textit{outlier}
 \cite{boschetti2015}. Kedua kriteria skor standar mengasumsikan suhu dan laju
 perubahan suhu \textit{node-node} satelit terdistribusi secara normal sesuai
-dengan asumsi dasar dalam pemodelan regresi linear dalam \textit{machine
-learning}. Nilai \textit{outlier} yang ekstrem juga dapat berpengaruh buruk
-kepada akurasi prediksi model sehingga harus dihilangkan dari dataset akhir.
+dengan asumsi dasar pemodelan regresi linear dalam \textit{machine learning}.
+Nilai \textit{outlier} yang ekstrem dapat berpengaruh buruk kepada akurasi
+prediksi model sehingga harus dihilangkan dari dataset akhir.
 
 \section{Pelatihan dan Pengujian Model}
 
