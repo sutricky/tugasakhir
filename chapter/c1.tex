@@ -36,47 +36,58 @@ kerja sama dengan Institut Pertanian Bogor (IPB) setelah sebelumnya LAPAN telah
 berhasil meluncurkan satelit LAPAN-A1 dan LAPAN-A2. Ketiga satelit tesebut
 termasuk dalam kategori mikrosatelit serta menggunakan sistem kendali termal
 pasif dengan cara distribusi panas lewat struktur dan penggunaan cat khusus
-untuk memantulkan radiasi. Akan tetapi, berbeda dengan LAPAN-A1 dan LAPAN-A2,
+untuk memantulkan radiasi. Berbeda dengan LAPAN-A1 dan LAPAN-A2,
 LAPAN-A3 membutuhkan maneuver khusus untuk menjaga suhu \textit{payload}
 utamanya tetap pada rentang suhu operasional.
 
 LAPAN-A3 memiliki \textit{payload} utama berupa pencitra multispektral yang
-harus dijaga pada rentang suhu operasional 0 sampai dengan 70 \degree C. Dari
-hasil observasi data telemetri, ditemukan bahwa suhu pencitra turun hingga
-mencapai nilai negatif pada periode bulan Mei sampai dengan Juni
-\cite{ribah2019}. Kondisi ini berakibat buruk pada operasi satelit LAPAN-A3
-karena pencitra tidak dapat dioperasikan pada suhu di bawah 0 \degree C
-sehingga frekuensi misi pengambilan citra berkurang. Observasi lebih lanjut
-menemukan hubungan fenomena penurunan suhu pencitra dengan variasi sudut
-\textit{beta} orbit satelit akibat perubahan musim. Untuk menaikkan suhu
-pencitra dan melawan penurunan sudut \textit{beta} orbit, operator LAPAN-A3
-harus memberikan perintah maneuver \textit{stop and release} serta \textit{stop
-and release with roll} sehingga sisi satelit yang memuat pencitra menerima
-paparan sinar Matahari lebih banyak.
+harus dijaga pada rentang suhu operasional 0 \degree C sampai dengan 70 \degree
+C. Dari hasil observasi data telemetri, ditemukan bahwa suhu pencitra dapat
+turun hingga nilai negatif dan berada pada rentang -2 \degree C dan -3 \degree
+C pada periode bulan Mei sampai dengan Juni \cite{ribah2019}. Kondisi ini
+berdampak buruk pada misi satelit LAPAN-A3 karena pencitra tidak dapat
+dioperasikan pada suhu di bawah 0 \degree C. Akibatnya, frekuensi misi
+pengambilan citra Bumi berkurang sedangkan hal tersebut merupakan misi utama
+dari satelit LAPAN-A3.
 
-Dapat dilihat bahwa perlindungan termal pasif pada struktur LAPAN-A3 berupa
-alumunium yang telah diberi anode hitam sendiri saja tidak dapat memenuhi
-persyaratan termal LAPAN-A3. Selain itu, penggunaan maneuver khusus tetap
-memiliki konsekuensi negatif terhadap operasi harian LAPAN-A3. Pertama,
-pencitra harus dimatikan selama durasi maneuver. Hal ini tetap berakibat pada
-berkurangnya frekuensi misi pengambilan citra. Kemudian, maneuver khusus
-membuat satelit terkunci dalam sikap \textit{off-nadir pointing} selama durasi
-maneuver. Akibatnya, misi yang membutuhkan sikap \textit{nadir pointing} tidak
-bisa dilakukan dan harus dikompensasi dengan misi lain yang tidak membutuhkan
-\textit{nadir pointing} seperti pengukuran medan magnet Bumi. Karena itu, jelas
-dibutuhkan sebuat model termal satelit sederhana baru yang dapat digunakan
-sebagai referensi dalam pengembangan satelit-satelit LAPAN selanjutnya agar
-permasalahan yang ada saat ini tidak terjadi lagi.
+Analisis lebih lanjut dari simulasi orbit satelit menemukan hubungan fenomena
+penurunan suhu pencitra dengan variasi sudut \textit{beta} orbit satelit akibat
+perubahan musim. Untuk menaikkan suhu pencitra dan melawan penurunan sudut
+\textit{beta} orbit, operator LAPAN-A3 memberikan perintah maneuver
+\textit{stop and release} serta \textit{stop and release with roll} sehingga
+sisi satelit yang memuat pencitra menerima paparan sinar Matahari lebih banyak.
+Periode pemberian perintah maneuver tidak dilakukan secara acak, tapi diatur
+sedemikian rupa agar satelit dapat kembali pada sikap \textit{nadir pointing}
+di akhir maneuver.
 
-Analisis termal satelit konvensional dilakukan dengan menyelesaikan persamaan
-termal satelit yang sudah dimodelkan menjadi beberapa titik analisis atau \textit{node}
-lewat perhitungan numerik atau simulasi perangkat lunak komersial. Untuk
-satelit dalam kelas mikro, Das et al. \cite{das} telah mengembangkan prosedur
-desain termal satelit sederhana menggunakan pendekatan pertama lewat
-penyelesain persamaan termal satelit multi-nodal yang disederhanakan. Kemudian,
-pendekatan kedua sudah dilakukan oleh Boudjemai et al. \cite{boudjemai2015}
-yang menggunakan metode elemen hingga untuk menganalisis karakteristik termal
-baterai satelit.
+Jelas dapat dilihat bahwa perlindungan termal pasif pada struktur LAPAN-A3
+berupa alumunium yang telah diberi anode hitam sendiri saja tidak dapat
+memenuhi persyaratan termal misi LAPAN-A3. Tanpa maneuver spesial, praktis
+satelit tidak dapat menjalankan misi utamanya dengan optimal selama bulan Mei
+sampai dengan Juni. Selain itu, penggunaan maneuver khusus sebagai solusi tetap
+memiliki konsekuensi negatif terhadap operasi harian LAPAN-A3. 
+
+Pertama, pencitra harus dimatikan selama durasi maneuver. Hal ini tetap
+berakibat pada berkurangnya frekuensi misi pengambilan citra meski tidak
+sebanyak pengurangan yang terjadi jika pencitra harus dimatikan selama bulan
+Mei sampai dengan Juni. Kemudian, maneuver khusus membuat satelit terkunci
+dalam sikap \textit{off-nadir pointing} selama durasi maneuver. Akibatnya, misi
+yang membutuhkan sikap \textit{nadir pointing} tidak bisa dilakukan sampai
+maneuver berakhir dan harus dikompensasi dengan misi lain yang tidak
+membutuhkan \textit{nadir pointing} seperti pengukuran medan magnet Bumi.
+
+Agar permasalahan yang terjadi pada satelit LAPAN-A3 saat ini tidak terulangi
+pada desain satelit-satelit LAPAN di masa depan, dibutuhkan sebuah model termal
+satelit yang dapat digunakan sebagai referensi dalam pengembangan
+satelit-satelit LAPAN selanjutnya. Pemodelan termal satelit konvensional
+dilakukan dengan menyelesaikan persamaan termal satelit yang sudah dimodelkan
+menjadi beberapa titik analisis atau \textit{node} lewat perhitungan numerik
+atau simulasi perangkat lunak komersial. Untuk satelit dalam kelas mikro, Das
+et al. \cite{das} telah mengembangkan prosedur desain termal satelit sederhana
+menggunakan pendekatan pertama lewat penyelesain persamaan termal satelit
+multi-nodal yang disederhanakan. Kemudian, pendekatan kedua sudah dilakukan
+oleh Boudjemai et al. \cite{boudjemai2015} yang menggunakan metode elemen
+hingga untuk menganalisis karakteristik termal baterai satelit.
 
 Karena LAPAN belum memiliki perangkat lunak yang dibutuhkan
 \cite{budiantoro2019}, metode yang mungkin dipakai hanya metode perhitungan
