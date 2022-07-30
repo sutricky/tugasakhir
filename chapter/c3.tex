@@ -36,7 +36,7 @@ rentang waktu 15 hari dari waktu acuan \cite{kelsoa}.
 
 Sebagai gambaran umum, diagram alir yang ditunjukkan Gambar \ref{fig:algoritma}
 pada bagian Metodologi memperlihatkan \textit{pipeline} data dalam pembuatan
-dataset untuk model \textit{machine Learning}. Pembuatan dataset dilakukan
+dataset untuk model \textit{machine learning}. Pembuatan dataset dilakukan
 dengan mempersiapkan dataset dasar, menghitung faktor termal satelit, dan
 menyaring dataset.
 
@@ -153,7 +153,7 @@ menghitung skor standar poin data tersebut. Skor standar yang terlalu rendah
 data tersebut dapat dikategorikan \textit{outlier} \cite{boschetti2015}. Kedua
 kriteria skor standar absolut mengasumsikan suhu dan laju perubahan suhu
 \textit{node-node} satelit terdistribusi secara normal sesuai dengan asumsi
-dasar dalam pemodelan regresi linear dalam Machine Learning. Nilai
+dasar dalam pemodelan regresi linear dalam \textit{machine learning}. Nilai
 \textit{outlier} yang ekstrem juga dapat berpengaruh buruk kepada akurasi
 prediksi model sehingga harus dihilangkan dari dataset akhir.
 
@@ -163,12 +163,12 @@ Dataset yang sudah disaring kemudian dibagi menjadi set latihan
 (\textit{training}) dan ujian (\textit{test}) dengan menggunakan modul
 Scikit-learn. Pemodelan pada karya tulis ini menggunakan rasio jumlah data
 pelatihan dibanding pengujian sebesar 0.7:0.3 serta pengaturan \textit{seed
-number} 0. Tabel \ref{table:dataset} memuat detail jumlah dataset yang digunakan dalam pemodelan
-untuk kedua periode observasi.
+number} 0. Tabel \ref{table:dataset} memuat detail jumlah dataset yang
+digunakan dalam pemodelan untuk kedua periode observasi.
 
 \begin{table}[!ht]
 \begin{center}
-\caption{Detail jumlah dataset model \textit{Machine Learning}}
+\caption{Detail jumlah dataset model \textit{machine learning}}
 \label{table:dataset}
 \begin{tabular}{|c|cc|}
 \hline
