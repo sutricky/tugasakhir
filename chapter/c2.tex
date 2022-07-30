@@ -63,17 +63,19 @@ satelit yang mengorbit Bumi dengan menggunakan algoritma bernama SGP4 yang
 telah ditentukan pada kode sumber TLE \cite{vallado2008}.
 
 Algoritma SGP4 ditulis dalam bahasa pemrograman Fortran \cite{vallado2006},
-tapi saat ini sudah diimplementasikan dalam banyak bahasa pemrograman lain.
-Pada karya tulis ini, TLE satelit LAPAN A3 selama periode observasi diambil
-dari situs Celestrak \cite{kelso}. TLE yang dikumpulkan kemudian
-dijadikan acuan untuk propagasi orbit satelit LAPAN A3 menggunakan perangkat
-lunak Python lewat modul Skyfield.
+tapi saat ini sudah diimplementasikan dalam banyak bahasa pemrograman lain
+seperti Python. Pada karya tulis ini, TLE satelit LAPAN A3 selama periode
+observasi diambil dari situs Celestrak \cite{kelso}. TLE yang dikumpulkan
+kemudian dijadikan acuan untuk propagasi orbit satelit LAPAN A3 menggunakan
+bahasa pemrograman Python lewat modul Skyfield.
 
 \section{Persamaan Termal Satelit LAPAN-A3}
 
-Untuk sebuah model diskrit satelit umum N \textit{node} yang mengorbit Bumi,
-persamaan keseimbangan termal \textit{node} $i$ yang turut memperhitungkan interaksi
-dengan \textit{node-node} lain $j$ dapat dituliskan sebagai berikut \cite{martinez2022}:
+Untuk sebuah model diskrit umum satelit dengan N \textit{node} yang mengorbit
+Bumi, persamaan keseimbangan termal \textit{node} $i$ yang sudah
+memperhitungkan sumber masukan serta keluaran panas dan interaksi dengan
+\textit{node-node} lain $j$ dapat dituliskan sebagai berikut
+\cite{martinez2022}:
 
 \begin{equation}
 \label{eq:raweq}
@@ -156,7 +158,7 @@ dengan ketentuan sebagai berikut :
 	\item Laju perubahan suhu \textit{node} $\frac{\Delta T_i}{\Delta t}$ sebagai variabel dependen
 	\item Variabel yang berubah terhadap waktu (ditandai dengan $(t)$ pada Persamaan \ref{eq:raweq}) sebagai variabel independen
 	\item Variabel yang tetap terhadap waktu sebagai gradien
-	\item Konstanta suku disipasi energi $\frac{\dot{Q}_{dis,i}}{C_i}$ sebagai titik potong
+	\item Konstanta suku disipasi energi $\frac{\dot{Q}_{dis,i}}{C_i}$ sebagai titik potong (\textit{intercept})
 \end{itemize}
 
 Dengan demikian, didapatkan persamaan laju perubahan suhu \textit{node} LAPAN-A3 sebagai berikut :
@@ -321,17 +323,15 @@ satelit tidak dalam fase gerhana.
 
 \section{Machine Learning}
 
-Bidang \textit{machine learning} secara umum mempelajari metode dan
-algoritma komputer yang dapat menggunakan data untuk meningkatkan
-performa dalam mengerjakan serangkaian tugas secara otomatis
-\cite{mitchell1997}. Sebuah model \textit{machine learning} mampu
-mempelajari sendiri karakteristik permasalahan yang perlu diselesaikan
-dari kumpulan data yang diberikan tanpa intervensi operator manusia.
-Karena itu, metode \textit{machine learning} sudah umum digunakan
-dalam penyelesaian berbagai permasalahan dalam bidang-bidang lain.
-Contohnya, pengkategorian wajah manusia, pembuatan rekomendasi produk,
-dan analisis finansial modern lazim menggunakan metode \textit{machine
-learning}
+Bidang \textit{machine learning} secara umum mempelajari metode dan algoritma
+komputer yang dapat menggunakan data untuk meningkatkan performa dalam
+mengerjakan serangkaian tugas secara otomatis \cite{mitchell1997}. Sebuah model
+\textit{machine learning} mampu mempelajari sendiri karakteristik permasalahan
+yang perlu diselesaikan dari kumpulan data yang diberikan tanpa intervensi
+operator manusia. Karena itu, metode \textit{machine learning} sudah umum
+digunakan dalam penyelesaian berbagai permasalahan dalam bidang-bidang lain.
+Sebagai contoh, pengelompokan wajah manusia, pembuatan rekomendasi produk, dan
+analisis finansial modern lazim menggunakan metode \textit{machine learning}
 
 \subsection{Aplikasi Machine Learning Dalam Pemodelan Termal Satelit}
 
@@ -339,13 +339,12 @@ Aplikasi metode \textit{machine learning} dalam analisis termal secara umum
 dapat dibagi menjadi 2 : inferensi dan prediksi. Inferensi merupakan proses
 pembuatan model matematis yang menggambarkan hubungan variabel-variabel dalam
 cara kerja suatu sistem sedangkan prediksi adalah proses pembuatan prakiraan
-hasil masa depan atau yang belum diobservasi berdasarkan data observasi yang
-sudah ada. Dalam konteks pemodelan termal satelit, inferensi dapat digunakan
-untuk menghitung kontribusi tiap suku dalam persamaan termal satelit sehingga
-dampak masing-masing suku secara individual dapat diketahui. Prediksi sendiri
-dapat digunakan untuk menentukan besaran parameter termal yang
-sebelumnya tidak diketahui berdasarkan parameter yang sudah
-diketahui.
+hasil masa depan atau variabel yang belum diobservasi berdasarkan data
+observasi yang sudah ada. Dalam konteks pemodelan termal satelit, inferensi
+dapat digunakan untuk menghitung kontribusi tiap suku dalam persamaan termal
+satelit sehingga dampak masing-masing suku secara individual dapat diketahui.
+Prediksi sendiri dapat digunakan untuk menentukan besaran parameter termal yang
+sebelumnya tidak diketahui berdasarkan parameter yang sudah diketahui.
 
 Dalam karya tulis ini, prediksi menggunakan metode \textit{machine learning}
 akan digunakan untuk menyelesaikan persamaan laju perubahan suhu \textit{node}
@@ -357,22 +356,22 @@ Mirip dengan regresi linear dalam statistik, model regresi linear
 \textit{machine learning} akan menghitung koefisien suku-suku pada Persamaan
 \ref{eq:lineq} yang belum diketahui berdasarkan data masukan model
 \textit{machine learning}. Hasil perhitungan koefisien suku-suku termal
-tersebut kemudian akan digunakan untuk memprediksi laju perubahan suhu \textit{node}
-dataset ujian model. Dengan mengalikan laju perubahan suhu \textit{node} dengan
-selang waktu observasi, perubahan suhu \textit{node} dapat dihitung. Prediksi
-suhu \textit{node} pun dapat dicari dengan mudah.
+tersebut kemudian akan digunakan untuk memprediksi laju perubahan suhu
+\textit{node} dataset ujian model. Lewat prediksi laju perubahan suhu
+\textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada selang
+waktu pengamatan berikutnya dapat diprediksi juga.
 
-\subsection{Parameter Performa Model Machine Learning}
+\subsection{Evaluasi Performa Model Machine Learning}
 
-Performa model termal satelit dapat dilihat dari kemampuan model untuk
+Performa model termal satelit dapat diukur dari kemampuan model untuk
 memprediksi tren perubahan suhu satelit serta keakuratan model dalam
-memprediksi nilai perubahan suhu satelit. Untuk mengukur performa prediksi
+memprediksi nilai perubahan suhu satelit. Untuk mengevaluasi performa prediksi
 model regresi linear, dapat digunakan skor koefisien determinasi ($R^2$)
 \cite{gupta2021} dan nilai \textit{root mean squared error} (RMSE)
-\cite{zheng}. Perhitungan skor $R^2$ dan nilai RMSE sudah tersedia dalam modul
-\textit{machine learning} dalam bahasa pemrograman Python yang dipakai dalam
-karya tulis ini sehingga sub-bagian ini hanya akan mendeskripsikan kedua
-parameter tersebut.
+\cite{zheng}. Perhitungan skor $R^2$ dan nilai RMSE sesuai konteks model
+\textit{machine learning} sudah tersedia pada modul \textit{machine learning}
+dalam bahasa pemrograman Python yang dipakai dalam karya tulis ini sehingga
+sub-bagian ini hanya akan mendeskripsikan kedua parameter tersebut.
 
 Skor koefisien determinasi atau $R^2$ mengukur seberapa baik model regresi
 memprediksi tren data observasi. Parameter ini bernilai maksimum 1 dan semakin
