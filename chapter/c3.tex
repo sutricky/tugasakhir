@@ -67,23 +67,34 @@ menyaring dataset.
 \subsection{Persiapan Dataset Dasar}
 
 Data mentah yang sudah dikumpulkan di tahap sebelumnya diproses terlebih dahulu
-sehingga memiliki bentuk dan satuan yang sesuai untuk diproses lebih lanjut di
-tahap berikutnya. Proses ini dilakukan hanya pada data mentah telemetri satelit
-LAPAN-A3 karena data TLE sudah dalam format yang dapat digunakan oleh modul
-Skyfield. Secara spesifik, data bacaan sensor suhu \textit{node} satelit diubah
-menjadi satuan K, bacaan arus pada sensor Matahari menjadi satuan A, dan sikap
-satelit menjadi satuan rad. Selain itu, data perubahan suhu \textit{node}
-satelit antar selang waktu observasi juga turut dihitung. Kemudian, data waktu
-pembacaan sensor-sensor satelit dipisah menjadi format tahun, bulan, tanggal,
-jam, menit, dan detik untuk memudahkan propagasi orbit dengan modul Skyfield
-juga.
+lewat kode Python sehingga memiliki bentuk dan satuan yang sesuai untuk
+diproses lebih lanjut di tahap berikutnya. Proses ini dilakukan hanya pada data
+mentah telemetri satelit LAPAN-A3 karena data TLE sudah dalam format yang dapat
+digunakan oleh modul Skyfield. Secara singkat, data bacaan sensor suhu
+\textit{node} satelit diubah menjadi satuan K, bacaan arus pada sensor Matahari
+menjadi satuan A, dan sikap satelit menjadi satuan rad. Selain itu, data
+perubahan suhu \textit{node} satelit antar selang waktu observasi juga turut
+dihitung. Kemudian, data waktu pembacaan sensor-sensor satelit dipisah menjadi
+format tahun, bulan, tanggal, jam, menit, dan detik untuk memudahkan propagasi
+orbit di bagian berikutnya. Gambar \ref{fig:basedataset} menunjukkan
+sampel dataset dasar yang dihasilkan dari kode Python.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/basedataset.png}
+\caption{Sampel dataset dasar keluaran kode Python}
+\label{fig:basedataset}
+\end{center}
+\end{figure}
 
 \subsection{Perhitungan Faktor Termal Satelit}
 
-Sesuai diagram alir \textit{pipeline} yang ditunjukkan Gambar \ref{fig:algoritma}
-dan tabel variabel yang masih belum diketahui pada Tabel \ref{table:unknown},
-perhitungan faktor termal satelit terbagi mencakup 3 variabel utama : faktor
-panas akibat Matahari, Bumi, dan albedo.
+Sesuai diagram alir \textit{pipeline} yang ditunjukkan Gambar
+\ref{fig:algoritma} dan tabel variabel yang masih belum diketahui pada Tabel
+\ref{table:unknown}, perhitungan faktor termal satelit terbagi mencakup 3 jenis
+variabel : faktor panas akibat Matahari, Bumi, dan albedo. Ketiga jenis
+variabel tersebut dihitung juga menggunakan kode Python. 
 
 Pertama, faktor panas akibat Matahari merupakan hasil perkalian bacaan arus
 sensor Matahari \textit{node} dan faktor gerhana \textit{node} satelit. Sejalan
@@ -104,7 +115,16 @@ gerhana merujuk pada nilai bacaan arus sensor \textit{node} sebelum dan
 sesudahnya. Bacaan arus sensor Matahari \textit{node} tersebut dapat dianggap
 kesalahan pengukuran karena terjadi konsisten pada setiap sensor dengan besar
 yang sama dan hanya terjadi pada beberapa selang waktu tertentu saat satelit
-jelas berada fase gerhana. 
+jelas berada fase gerhana. Gambar \ref{fig:solarfactor} menunjukkan contoh hasil perhitungan faktor panas akibat Matahari. 
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/solarfactor.png}
+\caption{Contoh hasil perhitungan faktor panas akibat Matahari}
+\label{fig:solarfactor}
+\end{center}
+\end{figure}
 
 Selanjutnya, faktor panas akibat Bumi dan albedo sama-sama bergantung pada
 perhitungan \textit{view factor} \textit{node} satelit ke Bumi. Sesuai dengan
@@ -126,26 +146,65 @@ digunakan pada kedua vektor. Pada perhitungan \textit{view factor node} di
 karya tulis ini, sistem koordinat yang digunakan adalah sistem koordinat bawaan
 modul Skyfield yaitu \textit{Geocentric Celestial Reference System} (GCRS).
 Karena itu, vektor normal permukaan \textit{node} harus dikonversi terlebih
-dahulu dengan bantuan matriks rotasi sudut Euler dengan urutan Z-Y-X.
+dahulu dengan bantuan matriks rotasi sudut Euler dengan urutan Z-Y-X. Gambar
+\ref{fig:vffig} menunjukkan contoh hasil perhitungan \textit{view factor node}
+satelit ke Bumi dan Gambar \ref{fig:earthfactor} menunjukkan contoh hasil perhitungan faktor panas akibat Bumi.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/vffig.png}
+\caption{Contoh hasil perhitungan \textit{view factor node} satelit ke Bumi}
+\label{fig:vffig}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/earthfactor.png}
+\caption{Contoh hasil perhitungan faktor panas akibat Bumi}
+\label{fig:earthfactor}
+\end{center}
+\end{figure}
 
 Terakhir, perhitungan faktor panas akibat albedo juga membutuhkan faktor albedo
 satelit. Sesuai dengan Persamaan \ref{eq:albedofactor}, nilai faktor albedo
 satelit bergantung pada faktor gerhana satelit serta posisi sudut satelit dan
-mulainya fase gerhana terhadap titik \textit{sub-solar}. Sama dengan perhitungan faktor gerhana \textit{node},
-faktor gerhana satelit akan bernilai 1 saat satelit menerima sinar Matahari dan
-bernilai 0 saat satelit berada pada fase gerhana. Dengan demikian, faktor
-gerhana satelit bernilai 0 saat semua \textit{node} satelit memiliki faktor
-gerhana 0 dan bernilai 1 jika ada 1 atau lebih \textit{node} yang memiliki faktor gerhana 1.
+mulainya fase gerhana terhadap titik \textit{sub-solar}. Sama dengan
+perhitungan faktor gerhana \textit{node}, faktor gerhana satelit akan bernilai
+1 saat satelit menerima sinar Matahari dan bernilai 0 saat satelit berada pada
+fase gerhana. Dengan demikian, faktor gerhana satelit bernilai 0 saat semua
+\textit{node} satelit memiliki faktor gerhana 0 dan bernilai 1 jika ada 1 atau
+lebih \textit{node} yang memiliki faktor gerhana 1.
 
-Untuk mencari posisi sudut satelit dan mulainya fase gerhana terhadap titik \textit{sub-solar}, perlu dihitung terlebih dahulu nilai anomali benar satelit fase gerhana mulai dan berakhir. Nilai anomali benar satelit dapat dicari lewat propagasi orbit menggunakan modul Skyfield berdasarkan data TLE sesuai data waktu satelit dari data telemetri satelit. Dengan mengasumsikan simetri orbit satelit, anomali benar titik \textit{sub-solar} dapat dihitung. Selanjutnya, posisi sudut satelit terhadap titik \textit{sub-solar} untuk waktu tertentu dapat dicari dengan mengurangi anomali benar satelit dengan anomali benar titik \textit{sub-solar}.
+Untuk mencari posisi sudut satelit dan mulainya fase gerhana terhadap titik
+\textit{sub-solar}, perlu dihitung terlebih dahulu nilai anomali benar satelit
+fase gerhana mulai dan berakhir. Nilai anomali benar satelit dapat dicari lewat
+propagasi orbit menggunakan modul Skyfield berdasarkan data TLE sesuai data
+waktu satelit dari data telemetri satelit. Dengan mengasumsikan simetri orbit
+satelit, anomali benar titik \textit{sub-solar} dapat dihitung. Selanjutnya,
+posisi sudut satelit terhadap titik \textit{sub-solar} untuk waktu tertentu
+dapat dicari dengan mengurangi anomali benar satelit dengan anomali benar titik
+\textit{sub-solar}. Gambar \ref{fig:albedofactor} menunjukkan contoh hasil
+perhitungan faktor panas akibat albedo.
 
-Karena \textit{node} 7 pada model satelit LAPAN-A3 digunakan mewakili plat
-tengah satelit yang diasumsikan terisolasi dari lingkungan luar satelit. Dengan
-demikian, laju perubahan suhu \textit{node} 7 dianggap tidak dipengaruhi faktor
-panas akibat Matahari, albedo, maupun Bumi. Node ini juga diasumsikan tidak
-mengalami disipasi panas ke lingkungan ruang angkasa sehingga perubahan suhu
-pada \textit{node} 7 murni terjadi akibat perpindahan panas lewat konduksi dan
-radiasi dengan ke-enam \textit{node} lainnya.
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/albedofactor.png}
+\caption{Contoh hasil perhitungan faktor panas akibat albedo}
+\label{fig:albedofactor}
+\end{center}
+\end{figure}
+
+Karena \textit{node} 7 pada model satelit LAPAN-A3 mewakili plat tengah satelit
+yang diasumsikan terisolasi dari lingkungan luar satelit, laju perubahan suhu
+\textit{node} 7 dianggap tidak dipengaruhi faktor panas akibat Matahari,
+albedo, maupun Bumi. Diasumsikan juga \textit{node} 7 tidak mengalami disipasi
+panas ke lingkungan ruang angkasa sehingga perubahan suhu pada \textit{node} 7
+murni terjadi akibat perpindahan panas lewat konduksi dan radiasi dengan
+ke-enam \textit{node} lainnya.
 
 \subsection{Penyaringan dataset}
 
@@ -172,9 +231,14 @@ memiliki selang waktu antar pengamatan maksimal 120 s.
 Kriteria kedua dan ketiga dipilih untuk menghilangkan \textit{outlier}
 pembacaan sensor satelit. Secara statistik, salah satu cara untuk mengukur
 apakah sebuah poin data termasuk dalam kategori \textit{outlier} adalah dengan
-menghitung skor standar poin data tersebut. Skor standar dihitung dengan
-membagi selisih antara nilai data dan rata-rata data dengan standar deviasi
-data. Perhitungan skor standar data satelit dilakukan menggunakan modul Scipy.
+menghitung skor standar poin data tersebut. Skor standar $z$ dihitung dengan
+membagi selisih antara nilai data $x$ dan rata-rata data $\mu$ dengan standar deviasi
+data $\sigma$ seperti pada persamaan berikut \cite{massaron}:
+
+\begin{equation}
+\label{eq:zscore}
+	z = \frac{x - \mu}{\sigma}
+\end{equation}
 
 Skor standar yang terlalu rendah (lebih kecil dari -3) atau tinggi (lebih besar
 dari 3) mengindikasikan poin data tersebut dapat dikategorikan \textit{outlier}
@@ -182,7 +246,18 @@ dari 3) mengindikasikan poin data tersebut dapat dikategorikan \textit{outlier}
 perubahan suhu \textit{node-node} satelit terdistribusi secara normal sesuai
 dengan asumsi dasar pemodelan regresi linear dalam \textit{machine learning}.
 Nilai \textit{outlier} yang ekstrem dapat berpengaruh buruk kepada akurasi
-prediksi model sehingga harus dihilangkan dari dataset akhir.
+prediksi model sehingga harus dihilangkan dari dataset akhir. Gambar
+\ref{fig:cleandataset} menunjukkan contoh dataset yang sudah disaring.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/cleandataset.png}
+\caption{Contoh dataset yang sudah disaring}
+\label{fig:cleandataset}
+\end{center}
+\end{figure}
+
 
 \section{Pelatihan dan Pengujian Model}
 
