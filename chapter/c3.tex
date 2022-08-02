@@ -17,6 +17,27 @@ telemetri satelit LAPAN-A3 serta data \textit{two-line elements} (TLE). Data
 telemetri satelit LAPAN-A3 diperoleh dari data operasional internal LAPAN,
 sedangkan data TLE LAPAN-A3 diambil dari situs Celestrak \cite{kelso}. Kedua
 jenis data dikumpulkan untuk periode observasi 19 sampai dengan 20 Mei 2018.
+Contoh data telemetri satelit LAPAN-A3 dapat dilihat pada Gambar
+\ref{fig:telea3} dan contoh data TLE LAPAN-A3 dapat dilihat pada Gambar
+\ref{fig:tlea3}.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/telea3.png}
+\caption{Contoh data telemetri LAPAN-A3}
+\label{fig:telea3}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{fig/tlea3.png}
+\caption{Contoh data TLE LAPAN-A3}
+\label{fig:tlea3}
+\end{center}
+\end{figure}
 
 Data telemetri satelit LAPAN-A3 yang dibutuhkan mencakup pembacaan sensor suhu
 dan sinar Matahari \textit{node-node} satelit serta sikap satelit selama
@@ -27,10 +48,13 @@ dan plat tengah satelit.
 Selanjutnya, nilai TLE satelit diasumsikan tidak berubah selama 1 periode
 observasi. Karena itu, \textit{epoch} atau waktu acuan yang digunakan untuk
 perhitungan orbit satelit selama 1 hari pada bagian berikutnya adalah data TLE
-pertama yang tersedia pada tanggal tersebut sesuai zona waktu UTC. Asumsi ini
+pertama yang tersedia pada periode observasi sesuai zona waktu UTC. Asumsi ini
 didasari oleh algoritma SGP-4 yang digunakan untuk mempropagasi orbit satelit
 LAPAN-A3 memiliki akurasi yang cukup untuk memprediksi orbit satelit dalam
-rentang waktu 15 hari dari waktu acuan \cite{kelsoa}.
+rentang waktu 15 hari dari waktu acuan \cite{kelsoa}. Secara spesifik untuk
+LAPAN-A3, selisih kesalahan rata-rata perhitungan posisi LAPAN-A3 yang
+menggunakan data TLE terbaru dan data TLE 1 hari sebelumnya bernilai 0.364 km
+\cite{nugroho2018}. 
 
 \section{Pembuatan Dataset}
 
