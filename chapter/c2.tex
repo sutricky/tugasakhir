@@ -338,7 +338,7 @@ normal masing-masing elemen diferensial permukaan dengan garis $R$.
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{fig/viewfactor.jpg}
-	\caption{Ilustrasi geometri perhitungan \textit{view factor}}
+	\caption{Ilustrasi geometri perhitungan \textit{view factor} \cite{muneer2020}}
 \label{fig:viewfactor}
 \end{center}
 \end{figure}
@@ -435,7 +435,7 @@ sebagai bagian dari kecerdasan buatan.
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
-\includegraphics[width=0.7\textwidth]{fig/aiml.jpg}
+\includegraphics[width=0.3\textwidth]{fig/aiml.jpg}
 	\caption{Bidang \textit{machine learning} sebagai bagian dari kecerdasan buatan \cite{2020}}
 \label{fig:aiml}
 \end{center}
@@ -463,7 +463,7 @@ performa iterasi model selanjutnya.
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
-\includegraphics[width=0.7\textwidth]{fig/mldiagram.jpg}
+\includegraphics[width=055\textwidth]{fig/mldiagram.jpg}
 	\caption{Cara kerja metode \textit{machine learning} secara umum \cite{2012}}
 \label{fig:mldiagram}
 \end{center}
@@ -508,13 +508,31 @@ metode \textit{machine learning} yang digunakan adalah pemodelan regresi linear
 menggunakan bahasa pemrograman Python yang dilatih menggunakan data TLE beserta
 data telemetri satelit LAPAN-A3 untuk periode observasi 19 dan 20 Mei 2018.
 
+Regresi linear merupakan pendekatan untuk memodelkan hubungan antara variabel
+dependen dengan variabel independen secara linear. Lewat regresi linear,
+hubungan antar variabel dependen dan variabel independen didekati lewat
+persamaan linear umum sebagai berikut \cite{freedman2009}:
+
+\begin{equation}
+\label{eq:reglinear}
+Y = Xw + \varepsilon
+\end{equation}
+
+dengan $Y$ adalah matriks variabel dependen, $X$ matriks variabel independen,
+$w$ matriks koefisien yang tidak diketahui dan akan dihitung, serta
+$\varepsilon$ matriks kesalahan atau gangguan. Pada model termal satelit
+LAPAN-A3 yang ditampilkan pada Persamaan \ref{eq:lineq}, $Y$ mewakili laju
+perubahan suhu \textit{node-node} satelit, $X$ parameter dan hasil perkalian parameter satelit yang
+berubah terhadap waktu, $w$ koefisien suku-suku pada persamaan termal, dan
+$\varepsilon$ kesalahan pada hasil pengukuran parameter.  
+
 Model regresi linear \textit{machine learning} akan menghitung koefisien
 suku-suku pada Persamaan \ref{eq:lineq} yang belum diketahui berdasarkan data
 masukan model \textit{machine learning}. Hasil perhitungan koefisien suku-suku
-termal tersebut kemudian akan digunakan untuk memprediksi laju perubahan suhu
-\textit{node} dataset ujian model. Lewat prediksi laju perubahan suhu
-\textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada selang
-waktu pengamatan berikutnya dapat diprediksi juga.
+pada persamaan termal tersebut kemudian akan digunakan untuk memprediksi laju
+perubahan suhu \textit{node} dataset ujian model. Lewat prediksi laju perubahan
+suhu \textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada
+selang waktu pengamatan berikutnya dapat diprediksi juga.
 
 \subsection{Evaluasi Performa Model Machine Learning}
 
