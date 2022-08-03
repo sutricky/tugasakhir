@@ -179,10 +179,24 @@ sebagai berikut \cite{martinez2022}:
 \end{split}
 \end{equation}
 
-dengan $C_i$ kapasitas termal rata-rata \textit{node}, $\Delta T_i$ perubahan suhu \textit{node},
-$\Delta t$ selang waktu, $T_i$ suhu \textit{node}, $T_j$ suhu \textit{node-node} lain, $\dot{Q}_{S,i}$ laju masukan panas akibat radiasi Matahari, $\dot{Q}_{a,i}$ laju masukan panas akibat albedo Bumi, $\dot{Q}_{E,i}$ laju masukan panas akibat radiasi Bumi, $\dot{Q}_{\infty,i}$ laju keluaran panas akibat disipasi ke lingkungan ruang angkasa, $\dot{Q}_{cond,ij}$ laju masukan panas ke \textit{node i} akibat konduksi, $\dot{Q}_{rad,ij}$ laju masukan panas ke \textit{node i} akibat radiasi dari \textit{node j}, dan  $\dot{Q}_{dis,i}$ laju masukan panas akibat disipasi elektrik \textit{node}.
+dengan $C_i$ kapasitas termal rata-rata \textit{node}, $\Delta T_i$ perubahan
+suhu \textit{node}, $\Delta t$ selang waktu, $T_i$ suhu \textit{node}, $T_j$
+suhu \textit{node-node} lain, $\dot{Q}_{S,i}$ laju masukan panas akibat radiasi dari
+Matahari, $\dot{Q}_{a,i}$ laju masukan panas akibat albedo Bumi,
+$\dot{Q}_{E,i}$ laju masukan panas akibat radiasi dari Bumi, $\dot{Q}_{\infty,i}$
+laju keluaran panas akibat disipasi ke lingkungan ruang angkasa,
+$\dot{Q}_{cond,ij}$ laju masukan panas ke \textit{node i} akibat konduksi dari \textit{node j},
+$\dot{Q}_{rad,ij}$ laju masukan panas ke \textit{node i} akibat radiasi dari
+\textit{node j}, dan  $\dot{Q}_{dis,i}$ laju masukan panas akibat disipasi
+elektrik \textit{node}.
 
-Persamaan \ref{eq:qeq} mengasumsikan satelit memiliki sistem kendali termal pasif sehingga memiliki nilai $\dot{Q}_{dis,i}$ konstan terhadap waktu serta perpindahan panas antar \textit{node} satelit terjadi akibat konduksi dan radiasi saja. Selain itu, suhu lingkungan ruang angkasa (2.7 K) dianggap jauh lebih kecil daripada rentang suhu yang mungkin dicapai satelit. Penjabaran suku-suku termal pada Persamaan \ref{eq:qeq} menghasilkan Persamaan \ref{eq:raweq}:
+Persamaan \ref{eq:qeq} mengasumsikan satelit memiliki sistem kendali termal
+pasif sehingga memiliki nilai $\dot{Q}_{dis,i}$ konstan terhadap waktu serta
+perpindahan panas antar \textit{node} satelit terjadi akibat konduksi dan
+radiasi saja. Selain itu, suhu lingkungan ruang angkasa (2.7 K) dianggap jauh
+lebih kecil daripada rentang suhu yang mungkin dicapai satelit. Penjabaran
+suku-suku termal pada Persamaan \ref{eq:qeq} menghasilkan Persamaan
+\ref{eq:raweq}:
 
 \begin{equation}
 \label{eq:raweq}
@@ -519,7 +533,7 @@ Y = Xw + \varepsilon
 \end{equation}
 
 dengan $Y$ adalah matriks variabel dependen, $X$ matriks variabel independen,
-$w$ matriks koefisien yang tidak diketahui dan akan dihitung, serta
+$w$ matriks koefisien yang tidak diketahui, serta
 $\varepsilon$ matriks kesalahan atau gangguan. Pada model termal satelit
 LAPAN-A3 yang ditampilkan pada Persamaan \ref{eq:lineq}, $Y$ mewakili laju
 perubahan suhu \textit{node-node} satelit, $X$ parameter dan hasil perkalian parameter satelit yang
