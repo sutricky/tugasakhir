@@ -7,60 +7,111 @@ Satelit LAPAN-A3 merupakan satelit yang diluncurkan oleh LAPAN pada 22 Juni
 Organization} (ISRO) dari Sriharikota, India. Satelit ini adalah satelit ketiga
 yang telah diluncurkan LAPAN setelah LAPAN-A1/TUBSAT dan LAPAN-A2/ORARI serta
 merupakan hasil kerja sama LAPAN dengan IPB \cite{hasbi2013}. Gambar
-\ref{fig:a3overview} menunjukkan desain konfigurasi LAPAN-A3.
+\ref{fig:a3overview} menunjukkan desain LAPAN-A3.
 
 \begin{figure}[!ht]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{fig/a3overview.jpg}
-\caption{Konfigurasi LAPAN-A3}
+\caption{Desain LAPAN-A3}
 \label{fig:a3overview}
 \end{center}
 \end{figure}
 
 LAPAN-A3 memiliki misi utama untuk mendukung ketahanan pangan nasional melalui
-pemantauan Bumi, khususnya di wilayah Indonesia. Untuk menyelesaikan misi
-tersebut, LAPAN-A3 dilengkapi dengan instrumen pencitra multi-spekstral yang
-juga dikenal sebagai \textit{Line Imager Space Application} (LISA). LISA digunakan
-untuk memonitor penggunaan lahan, kondisi lingkungan, dan kesehatan tanaman panen.
+pemantauan Bumi, khususnya di wilayah Indonesia. Untuk melakukan misi tersebut,
+LAPAN-A3 dilengkapi 4 \textit{payload} utama \cite{hartono2019}. Pertama,
+LAPAN-A3 dilengkapi dengan \textit{payload} utama berupa instrumen pencitra
+multi-spekstral yang juga dikenal sebagai \textit{Line Imager Space
+Application} (LISA). LISA terdiri dari sensor citra multi-spektral KLI-8023
+yang dapat menangkap 4 spektrum cahaya (merah, hijau, biru, dan \textit{near
+infra-red}) serta memiliki rentang suhu operasi minimum 0 \degree C dan
+maksimum 70 \degree C \cite{semiconductor2017}. Hasil pengambilan citra Bumi
+digunakan untuk memonitor penggunaan lahan, kondisi lingkungan, dan kesehatan
+tanaman panen.
+
 Selain LISA, LAPAN-A3 juga dilengkapi \textit{Digital Space Camera} (DSC) untuk
-menglibrasi LISA serta mengobservasi lebih lanjut lokasi yang diinginkan.
+menglibrasi LISA serta mengobservasi lebih lanjut lokasi yang diinginkan serta
+\textit{Automatic Identification System} (AIS) untuk memonitor lalu lintas
+maritim. AIS dapat mengidentifikasi kapal yang melintas di perairan Indonesia
+serta melacak kapal tersebut jika terjadi pelanggaran hukum maritim. Terakhir,
+LAPAN-A3 juga membawa \textit{payload} pencitra termal eksperimental
+\textit{micro-bolometer}.
 
-Selain misi pengambilan citra Bumi, LAPAN-A3 juga dilengkapi \textit{Automatic
-Identification System} (AIS) untuk memonitor lalu lintas maritim. AIS dapat
-mengidentifikasi kapal yang melintas di perairan Indonesia serta melacak kapal
-tersebut jika terjadi pelanggaran hukum maritim. Terakhir, LAPAN-A3 juga
-memiliki misi untuk mengukur medan magnet Bumi.
+Orbit LAPAN-A3 adalah orbit lingkaran \textit{sun-synchronous} dengan
+ketinggian 515 km dan sudut inklinasi 97.5 \degree. Satelit dengan orbit
+\textit{sun-synchronous} memiliki vektor normal orbit satelit yang membentuk
+sudut konstan terhadap vektor arah Matahari-Bumi \cite{mortari}. Dengan begitu,
+satelit tersebut akan mendapatkan pencahayaan yang cukup konsisten sepanjang
+tahun dan akan melintasi khatulistiwa Bumi pada waktu lokal yang relatif sama
+setiap harinya meski tetap membutuhkan maneuver koreksi secara berkala.
 
-Orbit satelit LAPAN-A3 adalah orbit lingkaran \textit{sun-synchronous} dengan
-ketinggian 515 km serta sudut inklinasi 97.5 \degree. Orbit LAPAN-A3 juga dapat
-dikategorikan sebagai orbit polar dengan waktu lokal \textit{descending node}
-sekitar pukul 09.30. Dalam 1 hari, LAPAN-A3 biasanya dapat melakukan kontak
-dengan stasiun kendali sebanyak 2 kali (siang dan malam) selama kurang lebih 11
-menit. Orbit LAPAN-A3 diatur sedemikian rupa sehingga dapat mencakup wilayah
-Indonesia dan memungkinkan pengunduhan data mendekati waktu \textit{real-time}
-dalam kondisi \textit{downlink}.
+Karakteristik orbit \textit{sun-synchronous} LAPAN-A3 digunakan dalam
+pengambilan citra Bumi lewat LISA untuk penyamaan kondisi pencahayaan saat
+pengambilan citra antar observasi untuk seluruh wilayah cakupan observasi
+LAPAN-A3. Dalam 1 hari, LAPAN-A3 biasanya dapat melakukan kontak dengan stasiun
+kendali sebanyak 2 kali (siang dan malam) selama kurang lebih 11 menit. Orbit
+LAPAN-A3 juga terus dijaga sehingga dapat mencakup wilayah Indonesia dan
+memungkinkan pengunduhan data mendekati waktu \textit{real-time} dalam kondisi
+\textit{downlink}. Gambar \ref{fig:coverage} menunjukkan cakupan wilayah
+Indonesia dari hasil pengambilan citra oleh LAPAN-A3 sejak Januari 2017 sampai
+dengan tahun 2018. 
 
-Kebutuhan energi satelit dipenuhi dari sinar Matahari yang ditangkap panel
-surya satelit. Selain sebagai sumber energi, sinar Matahari juga digunakan
-untuk memanaskan komponen satelit. Seperti yang disebutkan pada bagian Latar
-Belakang sebelumnya, sistem kendali termal pasif LAPAN-A3 sendiri saja tidak
-cukup untuk menjaga \textit{payload} utamanya pada suhu di atas 0 \degree C.
-Dari pengumpulan data suhu LAPAN-A3 saat kondisi malam orbit serta pencitra
-dimatikan, ditemukan bahwa suhu pencitra berada pada rentang nilai -2 dan -3
-\degree C pada bulan Mei sampai dengan Juni. Karena itu, satelit LAPAN-A3
-membutuhkan maneuver khusus agar suhu pencitra dapat dinaikkan ke atas 0
-\degree C.
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{fig/coverage.png}
+	\caption{Cakupan wilayah Indonesia dari hasil pengambilan citra LAPAN-A3 \cite{hakim2018}}
+\label{fig:coverage}
+\end{center}
+\end{figure}
+
+Kebutuhan energi LAPAN-A3 dipenuhi dari tangkapan sinar Matahari oleh 5 panel
+surya yang tersebar di 4 sisi satelit. Untuk mendeteksi arah sinar Matahari,
+setiap sisi satelit LAPAN-A3 dilengkapi dengan \textit{coarse sun sensor}
+(CSS). Gambar \ref{fig:css} menunjukkan contoh penempatan sensor Matahari pada
+satelit. Jika sinar Matahari mengenai sensor pada permukaan sisi satelit, akan
+muncul arus listrik yang proporsional dengan nilai cosinus sudut antara sinar
+Matahari dan garis normal permukaan satelit $\theta_i$ sesuai persamaan berikut
+\cite{zahran2009}:
+
+\begin{equation}
+\label{eq:current}
+	\cos{\theta_i} = \frac{I_i}{I_0}
+\end{equation}
+
+dengan $I_i$ merupakan bacaan arus sensor Matahari \textit{node} dan $I_0$ arus
+maksimum sensor Matahari satelit.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{fig/css.png}
+	\caption{Contoh penempatan sensor Matahari pada satelit \cite{post2013}}
+\label{fig:css}
+\end{center}
+\end{figure}
 
 \section{Two-line Element}
 
 Format data \textit{two-line element} atau TLE mendeskripsikan parameter orbit
 objek ruang angkasa yang mengorbit Bumi pada suatu waktu tertentu. TLE dirilis
 secara berkala ke publik oleh \textit{United States Space Command} (USSPACECOM)
-yang melacak semua objek angkasa di orbit Bumi yang dapat dideteksi. Pada
-praktiknya, TLE dapat digunakan untuk menghitung vektor posisi dan kecepatan
-satelit yang mengorbit Bumi dengan menggunakan algoritma bernama SGP4 yang
-telah ditentukan pada kode sumber TLE \cite{vallado2008}.
+yang melacak semua objek angkasa di orbit Bumi yang dapat dideteksi. Setiap
+kolom dan baris TLE memiliki peruntukkan parameter tersendiri seperti yang
+dapat dilihat pada Gambar \ref{fig:tlemeaning}. Secara singkat, TLE dapat
+digunakan untuk menghitung vektor posisi dan kecepatan satelit yang mengorbit
+Bumi dengan menggunakan algoritma bernama SGP4 yang telah diprogram pada kode
+sumber TLE \cite{vallado2008}.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{fig/tlemeaning.png}
+	\caption{Arti kolom dan baris TLE \cite{2011}}
+\label{fig:tlemeaning}
+\end{center}
+\end{figure}
 
 Algoritma SGP4 ditulis dalam bahasa pemrograman Fortran \cite{vallado2006},
 tapi saat ini sudah diimplementasikan dalam banyak bahasa pemrograman lain
@@ -69,13 +120,69 @@ observasi diambil dari situs Celestrak \cite{kelso}. TLE yang dikumpulkan
 kemudian dijadikan acuan untuk propagasi orbit satelit LAPAN-A3 menggunakan
 bahasa pemrograman Python lewat modul Skyfield.
 
-\section{Persamaan Termal Satelit LAPAN-A3}
+\section{Pemodelan Termal Satelit}
 
-Untuk sebuah model diskrit umum satelit dengan N \textit{node} yang mengorbit
-Bumi, persamaan keseimbangan termal \textit{node} $i$ yang sudah
-memperhitungkan sumber masukan serta keluaran panas dan interaksi dengan
-\textit{node-node} lain $j$ dapat dituliskan sebagai berikut
-\cite{martinez2022}:
+Pemodelan termal satelit bertujuan untuk memodelkan karakteristik termal
+satelit. Hal ini dapat dilakukan dengan menganalisis perpindahan panas yang
+terjadi pada satelit sehingga didapatkan persamaan matematis yang
+mendeskripsikan karakteristik termal satelit. Sebagai contoh, pemodelan termal
+satelit dapat dilakukan dengan menghitung persamaan yang menggambarkan hubungan
+perubahan suhu satelit seiring perubahan waktu. Pada karya tulis ini, pemodelan
+termal satelit dilakukan secara semi-empiris. Hal ini berarti pemodelan termal
+satelit dilakukan dengan menggunakan asumsi, pendekatan, dan generalisasi untuk
+menyederhanakan perhitungan teoretis berdasarkan hasil observasi pada satelit.
+
+Perpindahan panas yang terjadi pada satelit dapat dibagi menjadi perpindahan
+panas secara internal dan eskternal. Perpindahan panas internal terjadi antar
+komponen satelit lewat konduksi, konveksi, atau radiasi sedangkan perpindahan
+panas eksternal umumnya terjadi antara satelit dan lingkungannya melalui
+radiasi. Gambar \ref{fig:externalsource} menggambarkan sumber
+perpidahan panas eksternal untuk satelit yang mengorbit Bumi.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{fig/external_source.png}
+	\caption{Sumber perpindahan panas eksternal satelit yang mengorbit Bumi}
+\label{fig:externalsource}
+\end{center}
+\end{figure}
+
+Pemodelan termal satelit biasanya dilakukan dengan membagi satelit menjadi
+beberapa titik analisis diskrit atau \textit{node}. Setiap \textit{node}
+mewakili bagian satelit yang dianggap memiliki karakteristik termal dan suhu
+sama (isotermal). Pemodelan termal paling sederhana mengasumsikan satelit
+sebagai 1 \textit{node} dengan suhu rata-rata satelit. Kemudian, dapat juga
+dilakukan pemodelan dengan 2 \textit{node} : 1 \textit{node} untuk bagian luar
+satelit dan 1 \textit{node} lainnya untuk bagian dalam satelit. Lalu, untuk
+memodelkan karakteristik termal satelit secara lebih akurat, dapat digunakan
+model \textit{node} banyak dengan jumlah yang disesuaikan dengan kebutuhan
+pemodelan. Pendekatan model \textit{node} banyak ini akan digunakan pada karya
+tulis ini
+
+Untuk sebuah model termal umum satelit dengan N \textit{node} yang mengorbit
+Bumi, persamaan keseimbangan termal
+sebuah \textit{node} $i$ yang sudah memperhitungkan sumber masukan dan keluaran
+panas serta interaksi dengan \textit{node-node} lain $j$ dapat dituliskan
+sebagai berikut \cite{martinez2022}:
+
+\begin{equation}
+\label{eq:qeq}
+\begin{split}
+	C_{i} \frac{\Delta T_i}{\Delta t} = &\ \dot{Q}_{S,i}(t)\\
+	&+ \dot{Q}_{a,i}(t) \\
+	&+ \dot{Q}_{E,i}(t) \\
+	&- \dot{Q}_{\infty,i}(t) \\
+	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \dot{Q}_{cond,ij}(t) \\
+	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \dot{Q}_{rad,ij}(t) \\
+	&+ \dot{Q}_{dis,i}
+\end{split}
+\end{equation}
+
+dengan $C_i$ kapasitas termal rata-rata \textit{node}, $\Delta T_i$ perubahan suhu \textit{node},
+$\Delta t$ selang waktu, $T_i$ suhu \textit{node}, $T_j$ suhu \textit{node-node} lain, $\dot{Q}_{S,i}$ laju masukan panas akibat radiasi Matahari, $\dot{Q}_{a,i}$ laju masukan panas akibat albedo Bumi, $\dot{Q}_{E,i}$ laju masukan panas akibat radiasi Bumi, $\dot{Q}_{\infty,i}$ laju keluaran panas akibat disipasi ke lingkungan ruang angkasa, $\dot{Q}_{cond,ij}$ laju masukan panas ke \textit{node i} akibat konduksi, $\dot{Q}_{rad,ij}$ laju masukan panas ke \textit{node i} akibat radiasi dari \textit{node j}, dan  $\dot{Q}_{dis,i}$ laju masukan panas akibat disipasi elektrik \textit{node}.
+
+Persamaan \ref{eq:qeq} mengasumsikan satelit memiliki sistem kendali termal pasif sehingga memiliki nilai $\dot{Q}_{dis,i}$ konstan terhadap waktu serta perpindahan panas antar \textit{node} satelit terjadi akibat konduksi dan radiasi saja. Selain itu, suhu lingkungan ruang angkasa (2.7 K) dianggap jauh lebih kecil daripada rentang suhu yang mungkin dicapai satelit. Penjabaran suku-suku termal pada Persamaan \ref{eq:qeq} menghasilkan Persamaan \ref{eq:raweq}:
 
 \begin{equation}
 \label{eq:raweq}
@@ -86,12 +193,11 @@ memperhitungkan sumber masukan serta keluaran panas dan interaksi dengan
 	&- \varepsilon_i A_i F_{i,\infty}(t) \sigma T_{i}(t)^4 \\
 	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} G_{ij} \left(T_j(t) - T_i(t)\right) \\
 	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \sigma R_{ij}(T_{j}(t)^4-T_{i}(t)^4) \\
-	&+ \dot{Q}_{dis,i}(t)
+	&+ \dot{Q}_{dis,i}
 \end{split}
 \end{equation}
 
-dengan $C_i$ kapasitas termal rata-rata \textit{node}, $\Delta T_i$ perubahan suhu \textit{node},
-$\Delta t$ selang waktu, $T_i$ suhu \textit{node}, $T_j$ suhu \textit{node-node} lain,
+dengan $T_i$ suhu \textit{node}, $T_j$ suhu \textit{node-node} lain,
 $\alpha_{s,i}$ absorpsi surya total \textit{node}, $\eta$ efisiensi listrik panel surya,
 $F_{pg,i}$ rasio luas panel surya terhadap luas \textit{node}, $E_s$ penyinaran surya
 tegak lurus terhadap arah Matahari, $A_i$ luas \textit{node}, $\theta_i$ sudut antara
@@ -101,33 +207,27 @@ antara bidang orbit satelit dengan vektor Matahari, $F_a$ faktor albedo
 satelit, $\varepsilon_i$ emisivitas \textit{node}, $\varepsilon_E$ emisivitas Bumi, $\sigma$
 konstanta Stefan–Boltzmann, $F_{i,\infty}$ \textit{view factor} \textit{node} terhadap
 lingkungan ruang angkasa, $G_{ij}$ koefisien kopling konduksi antara \textit{node} $i$
-dan $j$, $R_{ij}$ koefisien kopling radiasi antara \textit{node} $i$ dan $j$, serta
-$\dot{Q}_{dis,i}$ laju disipasi elektrik \textit{node}.
+dan $j$, serta $R_{ij}$ koefisien kopling radiasi antara \textit{node} $i$ dan $j$.
+
+\section{Persamaan Termal Satelit LAPAN-A3}
 
 Pendekatan analisis termal konvensional mengharuskan perhitungan semua variabel
-suku di ruas kanan Persamaan \ref{eq:raweq} untuk mendapatkan laju perubahan
-suhu \textit{node} $i$. Karena pendekatan yang digunakan pada karya tulis ini adalah
-regresi linear lewat metode \textit{machine learning}, Persaman \ref{eq:raweq} harus
-diubah menjadi bentuk linear terlebih dahulu. Persamaan linear tersebut
-nantinya akan digunakan sebagai dasar model regresi linear menggunakan metode
-\textit{machine learning}.
+suku di ruas kanan Persamaan \ref{eq:raweq} untuk mendapatkan persamaan termal
+yang dapat mendeskripsikan karakteristik termal satelit. Karena pendekatan yang
+digunakan untuk memodelkan LAPAN-A3 secara termal adalah regresi linear lewat
+metode \textit{machine learning}, Persaman \ref{eq:raweq} harus diubah menjadi
+bentuk linear terlebih dahulu. Lebih spesifik lagi, persamaan termal yang akan
+dihitung untuk LAPAN-A3 adalah persamaan laju perubahan suhu \textit{node}
+satelit.
 
-LAPAN-A3 merupakakan satelit yang memiliki sistem kendali termal pasif serta
-mengorbit Bumi secara \textit{sun-synchronous}. Dengan demikian, diasumsikan
-bahwa satelit ini memiliki nilai laju disipasi elektrik $\dot{Q}_{dis,i}$ dan
-\textit{view factor} \textit{node} ke lingkungan $F_{i,\infty}$ yang konstan. Satelit
-LAPAN-A3 juga dilengkapi sensor sinar Matahari pada setiap sisinya
-\cite{hasbi2013} sehingga sudut antara garis normal permukan \textit{node} dengan sinar
-Matahari dapat dihitung berdasarkan bacaan arus sensor sinar Matahari sebagai
-berikut \cite{zahran2009}:
-
-\begin{equation}
-\label{eq:current}
-	\cos{\theta_i} = \frac{I_i}{I_0}
-\end{equation}
-
-dengan $I_i$ merupakan bacaan arus sensor Matahari \textit{node} dan $I_0$ arus
-maksimum sensor Matahari satelit.
+LAPAN-A3 merupakakan satelit mengorbit Bumi secara \textit{sun-synchronous}
+sehingga memiliki orientasi terhadap Matahari yang sama sepanjang tahun serta
+kondisi pencahayaan yang cukup konsisten juga. Dengan demikian, nilai
+\textit{view factor} \textit{node} LAPAN-A3 ke lingkungan $F_{i,\infty}$
+dianggap konstan. Satelit LAPAN-A3 juga dilengkapi sensor sinar Matahari pada
+setiap sisinya sehingga sudut antara garis normal permukan \textit{node} dengan
+sinar Matahari dapat dihitung berdasarkan Persamaan \ref{eq:current} yang sudah
+dijabarkan sebelumnya.
 
 Selanjutnya, untuk memudahkan penulisan dan penurunan persamaan,
 variabel-variabel pada 4 suku pertama Persamaan \ref{eq:raweq} yang tidak
@@ -178,14 +278,14 @@ Dengan demikian, didapatkan persamaan laju perubahan suhu \textit{node} LAPAN-A3
 
 Persamaan \ref{eq:lineq} merupakan persamaan linear variabel banyak biasa yang
 dapat diselesaikan lewat regresi linear serta akan digunakan dalam model
-\textit{machine learning}. Dapat dilihat juga dari Persamaan \ref{eq:lineq} bahwa jumlah
-variabel yang harus dihitung telah berkurang menjadi hanya variabel yang
-berubah terhadap waktu atau hasil perkaliannya karena model regresi linear
-dapat menghitung koefisien dan konstanta persamaan yang tersisa. Selain itu,
-variabel seperti suhu \textit{node-node} satelit dapat langsung diketahui dari data
-telemetri satelit LAPAN-A3 sehingga praktis variabel yang perlu dihitung hanya
-3 faktor panas satelit. Secara singkat, Tabel \ref{table:unknown} merangkum
-variabel yang masih perlu diketahui.
+\textit{machine learning} karya tulis ini. Dapat dilihat juga dari Persamaan
+\ref{eq:lineq} bahwa jumlah variabel yang harus dihitung telah berkurang
+menjadi hanya variabel yang berubah terhadap waktu atau hasil perkaliannya
+karena model regresi linear dapat menghitung koefisien dan konstanta persamaan
+yang tersisa. Selain itu, variabel seperti suhu \textit{node-node} satelit
+dapat langsung diketahui dari data telemetri satelit LAPAN-A3 sehingga praktis
+variabel yang perlu dihitung hanya 3 faktor panas satelit. Secara singkat,
+Tabel \ref{table:unknown} merangkum variabel yang masih perlu diketahui.
 
 \begin{table}[!ht]
 \begin{center}
@@ -297,7 +397,7 @@ bola 2 kemudian dapat dihitung berdasarkan persamaan berikut \cite{martinez2022a
 \label{eq:vf}
 \end{equation}
 
-\section{Perhitungan Faktor Albedo}
+\section{Perhitungan Faktor Albedo Satelit}
 
 Masukan panas dari albedo pada satelit bersumber dari radiasi sinar Matahari
 yang dipantulkan benda langit seperti planet, bulan, atau wahana antariksa
@@ -331,7 +431,7 @@ yang perlu diselesaikan dari kumpulan data yang diberikan tanpa intervensi
 operator manusia. Karena itu, metode \textit{machine learning} sudah umum
 digunakan dalam penyelesaian berbagai permasalahan dalam bidang-bidang lain.
 Sebagai contoh, pengelompokan wajah manusia, pembuatan rekomendasi produk, dan
-analisis finansial modern lazim menggunakan metode \textit{machine learning}
+analisis finansial modern lazim menggunakan metode \textit{machine learning}.
 
 \subsection{Aplikasi Machine Learning Dalam Pemodelan Termal Satelit}
 
@@ -352,26 +452,24 @@ satelit seperti yang dituliskan pada Persamaan \ref{eq:lineq}. Secara spesifik,
 metode \textit{machine learning} yang digunakan adalah pemodelan regresi linear
 menggunakan bahasa pemrograman Python yang dilatih menggunakan data TLE beserta
 data telemetri satelit LAPAN-A3 untuk periode observasi 19 dan 20 Mei 2018.
-Mirip dengan regresi linear dalam statistik, model regresi linear
-\textit{machine learning} akan menghitung koefisien suku-suku pada Persamaan
-\ref{eq:lineq} yang belum diketahui berdasarkan data masukan model
-\textit{machine learning}. Hasil perhitungan koefisien suku-suku termal
-tersebut kemudian akan digunakan untuk memprediksi laju perubahan suhu
+
+Model regresi linear \textit{machine learning} akan menghitung koefisien
+suku-suku pada Persamaan \ref{eq:lineq} yang belum diketahui berdasarkan data
+masukan model \textit{machine learning}. Hasil perhitungan koefisien suku-suku
+termal tersebut kemudian akan digunakan untuk memprediksi laju perubahan suhu
 \textit{node} dataset ujian model. Lewat prediksi laju perubahan suhu
 \textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada selang
 waktu pengamatan berikutnya dapat diprediksi juga.
 
 \subsection{Evaluasi Performa Model Machine Learning}
 
-Performa model termal satelit dapat diukur dari kemampuan model untuk
-memprediksi tren perubahan suhu satelit serta keakuratan model dalam
-memprediksi nilai perubahan suhu satelit. Untuk mengevaluasi performa prediksi
-model regresi linear, dapat digunakan skor koefisien determinasi ($R^2$)
-\cite{gupta2021} dan nilai \textit{root mean squared error} (RMSE)
-\cite{zheng}. Perhitungan skor $R^2$ dan nilai RMSE sesuai konteks model
-\textit{machine learning} sudah tersedia pada modul \textit{machine learning}
-dalam bahasa pemrograman Python yang dipakai dalam karya tulis ini sehingga
-sub-bagian ini hanya akan mendeskripsikan kedua parameter tersebut.
+Untuk mengevaluasi performa prediksi regresi linear model \textit{machine
+learning}, dapat digunakan skor koefisien determinasi ($R^2$) \cite{gupta2021}
+dan nilai \textit{root mean squared error} (RMSE) \cite{zheng}. Perhitungan
+skor $R^2$ dan nilai RMSE sesuai konteks model \textit{machine learning} sudah
+tersedia pada modul \textit{machine learning} dalam bahasa pemrograman Python
+yang dipakai dalam karya tulis ini sehingga sub-bagian ini hanya akan
+mendeskripsikan kedua parameter tersebut.
 
 Skor koefisien determinasi atau $R^2$ mengukur seberapa baik model regresi
 memprediksi tren data observasi. Parameter ini bernilai maksimum 1 dan semakin
