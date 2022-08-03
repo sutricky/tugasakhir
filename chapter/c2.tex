@@ -425,13 +425,68 @@ satelit tidak dalam fase gerhana.
 
 Bidang \textit{machine learning} secara umum mempelajari metode dan algoritma
 komputer yang dapat menggunakan data untuk meningkatkan performa dalam
-mengerjakan serangkaian tugas secara otomatis \cite{mitchell1997}. Sebuah model
-\textit{machine learning} mampu mempelajari sendiri karakteristik permasalahan
-yang perlu diselesaikan dari kumpulan data yang diberikan tanpa intervensi
-operator manusia. Karena itu, metode \textit{machine learning} sudah umum
-digunakan dalam penyelesaian berbagai permasalahan dalam bidang-bidang lain.
-Sebagai contoh, pengelompokan wajah manusia, pembuatan rekomendasi produk, dan
-analisis finansial modern lazim menggunakan metode \textit{machine learning}.
+mengerjakan serangkaian tugas secara otomatis \cite{mitchell1997}. Bidang ini
+termasuk dalam bagian dari kecerdasan buatan (\textit{artificial intelligence})
+dan aplikasinya memungkinkan komputer untuk mengenali pola dalam data sehingga
+dapat memperoleh pengetahuan dari data tersebut tanpa pemrograman eksplisit
+\cite{v2020}. Gambar \ref{fig:aiml} menunjukkan posisi \textit{machine learning}
+sebagai bagian dari kecerdasan buatan.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{fig/aiml.jpg}
+	\caption{Bidang \textit{machine learning} sebagai bagian dari kecerdasan buatan \cite{2020}}
+\label{fig:aiml}
+\end{center}
+\end{figure}
+
+Algoritma \textit{machine learning} mampu mempelajari sendiri karakteristik
+permasalahan yang perlu diselesaikan dari kumpulan data yang diberikan tanpa
+intervensi operator manusia. Karena itu, metode \textit{machine learning} sudah
+umum digunakan dalam penyelesaian berbagai permasalahan dalam bidang-bidang
+lain. Sebagai contoh, pengelompokan wajah manusia, pembuatan rekomendasi
+produk, dan analisis finansial modern lazim menggunakan metode \textit{machine
+learning}. Implementasi algoritma pembuatan \textit{machine learning} sudah
+dilakukan untuk berbagai bahasa pemrograman termasuk bahasa pemrograman Python.
+
+Gambar \ref{fig:mldiagram} menunjukkan diagram cara kerja metode
+\textit{machine learning} secara umum untuk menyelesaikan suatu masalah.
+Dataset latihan berupa kumpulan data yang akan dianalisis diberikan kepada
+algoritma \textit{machine learning}. Dari dataset latihan tersebut, algoritma
+\textit{machine learning} akan membuat hipotesis berupa model yang
+mendeskripsikan pola-pola dan hubungan antar elemen data masukan. Hipotesis
+model kemudian diterapkan ke data pengujian dan hasil evaluasi performa
+keluaran dari data pengujian tersebut dijadikan umpan balik untuk meningkatkan
+performa iterasi model selanjutnya.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{fig/mldiagram.jpg}
+	\caption{Cara kerja metode \textit{machine learning} secara umum \cite{2012}}
+\label{fig:mldiagram}
+\end{center}
+\end{figure}
+
+Metode \textit{machine learning} secara umum dapat terbagi menjadi 3 kategori
+luas : \textit{supervised learning}, \textit{unsupervised learning}, dan
+\textit{reinforcement learning} \cite{russell1995}. Metode \textit{supervised learning} dilakukan
+dengan memberikan komputer dataset yang sudah dilabeli berupa data masukan dan
+data keluaran yang diinginkan. Algoritma \textit{machine learning} kemudian
+akan mencoba membuat hubungan matematis yang memetakan data masukan ke data
+keluaran. Sebagai contoh, model \textit{machine learning} untuk mengkategorikan
+bunga dapat diberikan data masukan gambar bunga dan data keluaran jenis bunga.
+
+Selanjutnya, metode \textit{unsupervised learning} menggunakan data masukan
+yang tidak dilabeli sehingga algoritma \textit{machine learning} harus
+menentukan sendiri struktur dari data masukan tersebut. Metode ini dapat
+digunakan menemukan pola dan fitur dari data masukan. Terakhir, pada metode
+\textit{reinforcement learning} komputer akan diberikan suatu tujuan dan
+dibiarkan berinteraksi dengan sistem yang akan memberikan umpan balik berupa
+\textit{reward} dan \textit{penalty}. Model \textit{reinforcement learning}
+akan berusaha mencari rangkaian tindakan untuk mencapai tujuan yang dapat
+memaksimalkan \textit{reward} dan meminimalkan \textit{penalty}.
 
 \subsection{Aplikasi Machine Learning Dalam Pemodelan Termal Satelit}
 
