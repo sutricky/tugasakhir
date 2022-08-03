@@ -120,7 +120,7 @@ jelas berada fase gerhana. Gambar \ref{fig:solarfactor} menunjukkan contoh hasil
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
-\includegraphics[width=0.8\textwidth]{fig/solarfactor.png}
+\includegraphics[width=0.6\textwidth]{fig/solarfactor.png}
 \caption{Contoh hasil perhitungan faktor panas akibat Matahari}
 \label{fig:solarfactor}
 \end{center}
@@ -153,7 +153,7 @@ satelit ke Bumi dan Gambar \ref{fig:earthfactor} menunjukkan contoh hasil perhit
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
-\includegraphics[width=0.8\textwidth]{fig/vffig.png}
+\includegraphics[width=0.6\textwidth]{fig/vffig.png}
 \caption{Contoh hasil perhitungan \textit{view factor node} satelit ke Bumi}
 \label{fig:vffig}
 \end{center}
@@ -162,7 +162,7 @@ satelit ke Bumi dan Gambar \ref{fig:earthfactor} menunjukkan contoh hasil perhit
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
-\includegraphics[width=0.8\textwidth]{fig/earthfactor.png}
+\includegraphics[width=0.6\textwidth]{fig/earthfactor.png}
 \caption{Contoh hasil perhitungan faktor panas akibat Bumi}
 \label{fig:earthfactor}
 \end{center}
@@ -183,16 +183,26 @@ Untuk mencari posisi sudut satelit dan mulainya fase gerhana terhadap titik
 fase gerhana mulai dan berakhir. Nilai anomali benar satelit dapat dicari lewat
 propagasi orbit menggunakan modul Skyfield berdasarkan data TLE sesuai data
 waktu satelit dari data telemetri satelit. Dengan mengasumsikan simetri orbit
-satelit, anomali benar titik \textit{sub-solar} dapat dihitung. Selanjutnya,
-posisi sudut satelit terhadap titik \textit{sub-solar} untuk waktu tertentu
-dapat dicari dengan mengurangi anomali benar satelit dengan anomali benar titik
-\textit{sub-solar}. Gambar \ref{fig:albedofactor} menunjukkan contoh hasil
-perhitungan faktor panas akibat albedo.
+lingkaran sehingga titik \textit{sub-solar} berada di tengah titik akhir dan mulai fase gerhana satelit seperti yang ditunjukkan lokasi \textit{conjunction point} pada Gambar \ref{fig:ssp}, anomali benar titik \textit{sub-solar} dapat dihitung.
 
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
-\includegraphics[width=0.8\textwidth]{fig/albedofactor.png}
+\includegraphics[width=0.6\textwidth]{fig/ssp.jpg}
+	\caption{Ilustrasi fase gerhana pada orbit satelit \cite{ismail2015}}
+\label{fig:ssp}
+\end{center}
+\end{figure}
+
+Selanjutnya, posisi sudut satelit terhadap titik \textit{sub-solar} untuk waktu
+tertentu dapat dicari dengan mengurangi anomali benar satelit dengan anomali
+benar titik \textit{sub-solar}. Gambar \ref{fig:albedofactor} menunjukkan
+contoh hasil perhitungan faktor panas akibat albedo.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{fig/albedofactor.png}
 \caption{Contoh hasil perhitungan faktor panas akibat albedo}
 \label{fig:albedofactor}
 \end{center}
