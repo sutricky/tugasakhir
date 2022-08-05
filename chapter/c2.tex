@@ -540,10 +540,14 @@ perubahan suhu \textit{node-node} satelit, $X$ parameter dan hasil perkalian par
 berubah terhadap waktu, $w$ koefisien suku-suku pada persamaan termal, dan
 $\varepsilon$ kesalahan pada hasil pengukuran parameter.  
 
-Model regresi linear \textit{machine learning} akan menghitung koefisien
-suku-suku pada Persamaan \ref{eq:lineq} yang belum diketahui berdasarkan data
-masukan model \textit{machine learning}. Hasil perhitungan koefisien suku-suku
-pada persamaan termal tersebut kemudian akan digunakan untuk memprediksi laju
+Model regresi linear \textit{machine learning} termasuk dalam
+\textit{supervised learning} dan akan menghitung koefisien suku-suku pada
+Persamaan \ref{eq:lineq} yang belum diketahui berdasarkan dataset yang
+digunakan untuk model \textit{machine learning}. Data masukan yang diberikan ke
+model adalah parameter \textit{node} yang berubah terhadap waktu sesuai
+Persamaan \ref{eq:lineq} sedangkan data keluaran yang diinginkan adalah laju
+perubahan suhu \textit{node}. Hasil perhitungan koefisien suku-suku pada
+persamaan termal tersebut kemudian akan digunakan untuk memprediksi laju
 perubahan suhu \textit{node} dataset ujian model. Lewat prediksi laju perubahan
 suhu \textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada
 selang waktu pengamatan berikutnya dapat diprediksi juga.
