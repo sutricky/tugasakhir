@@ -277,16 +277,16 @@ Lalu, dari Persamaan \ref{eq:lineq} dapat dilihat juga bahwa perubahan suhu
 suatu \textit{node} dipengaruhi perubahan suhu \textit{node} lain akibat adanya
 perpindahan panas lewat konduksi dan radiasi antar \textit{node}. Merujuk
 aplikasi lain dari \textit{machine learning} pada pemodelan termal satelit,
-analisis inferensi dapat dilakukan untuk menentukan suku-suku dominan dalam
-Persamaan \ref{eq:lineq} yang mungkin menyumbang error paling besar. Jika hasil
-inferensi menunjukkan bahwa perubahan suhu \textit{node} 4 didominasi oleh
-pengaruh perubahan suhu \textit{node} 3 dan 7, penjelasan sebelumnya dapat
-turut menjawab hasil nilai RMSE \textit{node} 4. Sebaliknya, hasil analisis
-tersebut dapat digunakan untuk melihat akurasi suku termal mana yang perlu
-ditingkatkan agar perbedaan antara nilai hasil prediksi model dengan data
-observasi dapat dikurangi.
+analisis inferensi dapat dilakukan untuk menentukan variabel-variabel dominan
+dalam Persamaan \ref{eq:lineq} yang mungkin menyumbang \textit{error} paling
+besar. Jika hasil inferensi menunjukkan bahwa perubahan suhu \textit{node} 4
+didominasi oleh pengaruh perubahan suhu \textit{node} 3 dan 7, penjelasan
+sebelumnya dapat turut menjawab hasil nilai RMSE \textit{node} 4. Sebaliknya,
+hasil analisis tersebut dapat digunakan untuk melihat akurasi suku termal mana
+yang perlu ditingkatkan agar perbedaan antara nilai hasil prediksi model dengan
+data observasi dapat dikurangi.
 
-Analisis inferensi untuk melihat dampak tiap suku dalam Persamaan
+Analisis inferensi untuk mengetahui kontribusi tiap variabel dalam Persamaan
 \ref{eq:lineq} membutuhkan modifikasi metode \textit{machine learning} yang
 digunakan. Dapat dilihat dari persamaan tersebut bahwa variabel suhu
 \textit{node} berkorelasi erat dengan variabel suhu \textit{node} pangkat 4.
