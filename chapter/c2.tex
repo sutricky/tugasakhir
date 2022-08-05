@@ -466,13 +466,33 @@ dilakukan untuk berbagai bahasa pemrograman termasuk bahasa pemrograman Python.
 
 Gambar \ref{fig:mldiagram} menunjukkan diagram cara kerja metode
 \textit{machine learning} secara umum untuk menyelesaikan suatu masalah.
-Dataset latihan berupa kumpulan data yang akan dianalisis diberikan kepada
-algoritma \textit{machine learning}. Dari dataset latihan tersebut, algoritma
-\textit{machine learning} akan membuat hipotesis berupa model yang
-mendeskripsikan pola-pola dan hubungan antar elemen data masukan. Hipotesis
-model kemudian diterapkan ke data pengujian dan hasil evaluasi performa
-keluaran dari data pengujian tersebut dijadikan umpan balik untuk meningkatkan
-performa iterasi model selanjutnya.
+Dataset masukan berupa kumpulan data yang akan dianalisis dibagi menjadi 2 set
+: dataset latihan dan dataset ujian. Dataset latihan diberikan kepada algoritma
+\textit{machine learning}. Dataset masukan ke algoritma \textit{machine
+learning} disaring terlebih dahulu dengan penyaringan yang mencakup kelengkapan
+data, format data (satuan, skala, dan bentuk), dan nilai data.
+
+Selanjutnya, dari dataset latihan tersebut, algoritma \textit{machine learning}
+akan membuat hipotesis berupa model yang mendeskripsikan pola-pola dan hubungan
+antar elemen data masukan. Hipotesis model kemudian diterapkan ke dataset ujian
+dan hasil evaluasi performa keluaran dari dataset ujian tersebut dijadikan
+umpan balik untuk meningkatkan performa iterasi model selanjutnya.
+
+Pembagian data menjadi set latihan dan ujian dengan proporsi jumlah data
+latihan lebih besar daripada data ujian dilakukan agar model yang dihasilkan
+dapat memprediksi tren dan nilai dataset masukan secara umum sehingga resilien
+terhadap penambahan dataset baru dan \textit{noise} atau gangguan data yang
+secara inheren dimiliki dataset masukan.
+
+Jika model \textit{machine learning} dilatih dengan seluruh dataset masukan, model
+memiliki kecenderungan mengalami \textit{overfitting}, yaitu fenomena
+berkurangnya akurasi model dalam memprediksi dataset baru akibat terlalu
+fokus dengan dataset masukan. Model yang mengalami \textit{overfitting} sulit
+atau tidak dapat membedakan \textit{noise} bawaan dataset yang harusnya
+diabaikan dengan tren nilai dataset yang seharusnya diperhitungkan. Sebaliknya,
+jika jumlah dataset latihan terlalu sedikit, model akan mengalami
+\textit{underfitting} atau ketidakmampuan model dalam menangkap tren atau fitur
+dataset masukan sehingga tidak dapat memprediksi nilai data dengan tepat.
 
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
@@ -533,24 +553,24 @@ Y = Xw + \varepsilon
 \end{equation}
 
 dengan $Y$ adalah matriks variabel dependen, $X$ matriks variabel independen,
-$w$ matriks koefisien yang tidak diketahui, serta
-$\varepsilon$ matriks kesalahan atau gangguan. Pada model termal satelit
-LAPAN-A3 yang ditampilkan pada Persamaan \ref{eq:lineq}, $Y$ mewakili laju
-perubahan suhu \textit{node-node} satelit, $X$ parameter dan hasil perkalian parameter satelit yang
-berubah terhadap waktu, $w$ koefisien suku-suku pada persamaan termal, dan
+$w$ matriks koefisien yang tidak diketahui, serta $\varepsilon$ matriks
+kesalahan atau gangguan. Pada model termal satelit LAPAN-A3 yang ditampilkan
+pada Persamaan \ref{eq:lineq}, $Y$ mewakili laju perubahan suhu
+\textit{node-node} satelit, $X$ parameter dan hasil perkalian parameter satelit
+yang berubah terhadap waktu, $w$ koefisien suku-suku pada persamaan termal, dan
 $\varepsilon$ kesalahan pada hasil pengukuran parameter.  
 
 Model regresi linear \textit{machine learning} termasuk dalam
 \textit{supervised learning} dan akan menghitung koefisien suku-suku pada
-Persamaan \ref{eq:lineq} yang belum diketahui berdasarkan dataset yang
-digunakan untuk model \textit{machine learning}. Data masukan yang diberikan ke
-model adalah parameter \textit{node} yang berubah terhadap waktu sesuai
-Persamaan \ref{eq:lineq} sedangkan data keluaran yang diinginkan adalah laju
-perubahan suhu \textit{node}. Hasil perhitungan koefisien suku-suku pada
-persamaan termal tersebut kemudian akan digunakan untuk memprediksi laju
-perubahan suhu \textit{node} dataset ujian model. Lewat prediksi laju perubahan
-suhu \textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada
-selang waktu pengamatan berikutnya dapat diprediksi juga.
+Persamaan \ref{eq:lineq} yang belum diketahui berdasarkan dataset masukan model
+\textit{machine learning}. Data masukan yang diberikan ke model adalah
+parameter \textit{node} yang berubah terhadap waktu sesuai Persamaan
+\ref{eq:lineq} sedangkan data keluaran yang diinginkan adalah laju perubahan
+suhu \textit{node}. Hasil perhitungan koefisien suku-suku pada persamaan termal
+tersebut kemudian akan digunakan untuk memprediksi laju perubahan suhu
+\textit{node} dataset ujian model. Lewat prediksi laju perubahan suhu
+\textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada selang
+waktu pengamatan berikutnya dapat diprediksi juga.
 
 \subsection{Evaluasi Performa Model Machine Learning}
 
