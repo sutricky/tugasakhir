@@ -44,11 +44,20 @@ LAPAN-A3 memiliki \textit{payload} utama berupa pencitra multispektral yang
 harus dijaga pada rentang suhu operasional 0 \degree C sampai dengan 70 \degree
 C. Dari hasil observasi data telemetri, ditemukan bahwa suhu pencitra dapat
 turun hingga nilai negatif dan berada pada rentang -2 \degree C dan -3 \degree
-C pada periode bulan Mei sampai dengan Juni \cite{ribah2019}. Kondisi ini
-berdampak buruk pada misi satelit LAPAN-A3 karena pencitra tidak dapat
-dioperasikan pada suhu di bawah 0 \degree C. Akibatnya, frekuensi misi
-pengambilan citra Bumi berkurang sedangkan hal tersebut merupakan misi utama
-dari satelit LAPAN-A3.
+C pada periode bulan Mei sampai dengan Juni seperti yang dapat dilihat pada
+Gambar \ref{fig:multispectralimager} \cite{ribah2019}. Kondisi ini berdampak
+buruk pada misi satelit LAPAN-A3 karena pencitra tidak dapat dioperasikan pada
+suhu di bawah 0 \degree C. Akibatnya, frekuensi misi pengambilan citra Bumi
+harus dikurangi sedangkan hal tersebut merupakan misi utama dari satelit LAPAN-A3.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{fig/multispectralimager.png}
+	\caption[Grafik suhu \textit{multispectral imager} LAPAN-A3 sepanjang tahun 2017]{Grafik suhu \textit{multispectral imager} LAPAN-A3 sepanjang tahun 2017~\cite{ribah2019}}
+\label{fig:multispectralimager}
+\end{center}
+\end{figure}
 
 Analisis lebih lanjut dari simulasi orbit satelit menemukan hubungan fenomena
 penurunan suhu pencitra dengan variasi sudut antara bidang orbit satelit dan
@@ -58,33 +67,52 @@ vektor Matahari (sudut $\beta$ orbit) akibat perubahan musim seperti yang dapat 
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{fig/betaorbit.png}
-	\caption{Ilustrasi sudut $\beta$ orbit satelit \cite{2012a}}
+	\caption[Ilustrasi sudut $\beta$ orbit satelit]{Ilustrasi sudut $\beta$ orbit satelit~\cite{2012a}}
 \label{fig:betaorbit}
 \end{center}
 \end{figure}
 
 Untuk menaikkan suhu pencitra dan melawan penurunan sudut $\beta$ tersebut,
 operator LAPAN-A3 memberikan perintah maneuver \textit{stop and release} serta
-\textit{stop and release with roll} sehingga sisi satelit yang memuat pencitra
+\textit{stop and release with roll} seperti yang ditunjukkan Gambar \ref{fig:maneuver1} dan \ref{fig:maneuver2} sehingga sisi satelit yang memuat pencitra
 menerima paparan sinar Matahari lebih banyak. Periode pemberian perintah
 maneuver tidak dilakukan secara acak, tapi diatur sedemikian rupa agar satelit
 dapat kembali pada sikap \textit{nadir pointing} di akhir maneuver.
 
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{fig/maneuver1.png}
+	\caption[Ilustrasi maneuver \textit{stop and release}]{Ilustrasi maneuver \textit{stop and release}~\cite{ribah2019}}
+\label{fig:maneuver1}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{fig/maneuver2.png}
+	\caption[Ilustrasi maneuver \textit{stop and release with roll}]{Ilustrasi maneuver \textit{stop and release with roll}~\cite{ribah2019}}
+\label{fig:maneuver2}
+\end{center}
+\end{figure}
+
 Jelas dapat dilihat bahwa perlindungan termal pasif pada struktur LAPAN-A3
 berupa alumunium yang telah diberi anode hitam sendiri saja tidak dapat
-memenuhi persyaratan termal misi LAPAN-A3. Tanpa maneuver spesial, praktis
-satelit tidak dapat menjalankan misi utamanya dengan optimal selama bulan Mei
-sampai dengan Juni. Selain itu, penggunaan maneuver khusus sebagai solusi tetap
-memiliki konsekuensi negatif terhadap operasi harian LAPAN-A3. 
+memenuhi persyaratan termal misi LAPAN-A3. Tanpa maneuver spesial, satelit
+tidak dapat menjalankan misi dengan optimal selama bulan Mei sampai dengan
+Juni. Selain itu, penggunaan maneuver khusus sebagai solusi tetap memiliki
+konsekuensi negatif terhadap operasi harian LAPAN-A3. 
 
-Pertama, pencitra harus dimatikan selama durasi maneuver. Hal ini tetap
-berakibat pada berkurangnya frekuensi misi pengambilan citra meski tidak
-sebanyak pengurangan yang terjadi jika pencitra harus dimatikan selama bulan
-Mei sampai dengan Juni. Kemudian, maneuver khusus membuat satelit terkunci
-dalam sikap \textit{off-nadir pointing} selama durasi maneuver. Akibatnya, misi
-yang membutuhkan sikap \textit{nadir pointing} tidak bisa dilakukan sampai
-maneuver berakhir dan harus dikompensasi dengan misi lain yang tidak
-membutuhkan \textit{nadir pointing} seperti pengukuran medan magnet Bumi.
+Pertama, pencitra harus dimatikan selama durasi maneuver yang berkisar antara
+90 sampai dengan 280 menit. Hal ini tetap berakibat pada berkurangnya frekuensi
+misi pengambilan citra meski tidak sebanyak pengurangan yang terjadi jika
+pencitra harus dimatikan selama bulan Mei sampai dengan Juni. Kemudian,
+maneuver khusus membuat satelit terkunci dalam sikap \textit{off-nadir
+pointing} selama durasi maneuver. Akibatnya, misi yang membutuhkan sikap
+\textit{nadir pointing} tidak bisa dilakukan sampai maneuver berakhir dan harus
+dikompensasi dengan misi lain yang tidak membutuhkan \textit{nadir pointing}
+seperti pengukuran medan magnet Bumi.
 
 Agar permasalahan yang terjadi pada satelit LAPAN-A3 saat ini tidak terulangi
 pada desain satelit-satelit LAPAN di masa depan, dibutuhkan sebuah model termal
@@ -164,7 +192,7 @@ Dari latar belakang yang telah dijelaskan sebelumnya, dapat dibuat rumusan masal
 Berlandaskan rumusan masalah, penelitian pada karya tulis ini bertujuan untuk :
 
 \begin{enumerate}
-\item Melakukan penjabaran langkah-langkah untuk membuat model termal satelit \textit{node} banyak secara semi-empiris menggunakan metode \textit{machine learning}
+\item Melakukan penjabaran langkah-langkah untuk membuat model termal satelit \textit{node} banyak secara semi-empiris ~enggunakan metode \textit{machine learning}
 \item Membuat model termal satelit yang dapat memprediksi perubahan suhu sisi-sisi satelit LAPAN-A3
 \item Membandingkan perubahan suhu \textit{node} satelit hasil prediksi model termal dengan data telemetri satelit
 \item Menganalisis performa hasil prediksi dari model termal satelit yang telah dibuat
