@@ -226,12 +226,30 @@ dan $j$, serta $R_{ij}$ koefisien kopling radiasi antara \textit{node} $i$ dan $
 
 Pendekatan analisis termal konvensional mengharuskan perhitungan semua variabel
 suku di ruas kanan Persamaan \ref{eq:raweq} untuk mendapatkan persamaan termal
-yang dapat mendeskripsikan karakteristik termal satelit. Karena pendekatan yang
-digunakan untuk memodelkan LAPAN-A3 secara termal adalah regresi linear lewat
-metode \textit{machine learning}, Persaman \ref{eq:raweq} harus diubah menjadi
-bentuk linear terlebih dahulu. Lebih spesifik lagi, persamaan termal yang akan
-dihitung untuk LAPAN-A3 adalah persamaan laju perubahan suhu \textit{node}
-satelit.
+yang dapat mendeskripsikan karakteristik termal satelit. Pada karya tulis ini,
+hanya variabel-variabel pada Persamaan \ref{eq:raweq} yang berubah terhadap
+waktu selama periode observasi yang akan dihitung sedangkan variabel-variabel
+yang tidak berubah terhadap waktu akan didapatkan secara otomatis. Hal ini
+dapat dilakukan lewat penggunaan metode regresi linear.
+
+Regresi linear merupakan pendekatan untuk memodelkan hubungan antara variabel
+dependen dengan variabel independen secara linear. Lewat regresi linear,
+hubungan antar variabel dependen dan variabel independen didekati lewat
+persamaan linear umum sebagai berikut \cite{freedman2009}:
+
+\begin{equation}
+\label{eq:reglinear}
+Y = Xw + \varepsilon
+\end{equation}
+
+dengan $Y$ adalah matriks variabel dependen, $X$ matriks variabel independen,
+$w$ matriks koefisien yang tidak diketahui, serta $\varepsilon$ matriks
+kesalahan atau gangguan. Model regresi linear akan menghitung matriks $w$ yang dapat memetakan matriks $X$ ke matriks $Y$ dan meminimalkan matriks $\varepsilon$.
+
+Agar dapat diselesaikan lewat regresi linear, Persaman \ref{eq:raweq} harus
+diubah menjadi bentuk linear terlebih dahulu. Lebih spesifik lagi, persamaan
+termal yang akan diselesaikan lewat regresi linear adalah persamaan laju
+perubahan suhu \textit{node} satelit.
 
 LAPAN-A3 merupakakan satelit mengorbit Bumi secara \textit{sun-synchronous}
 sehingga memiliki orientasi terhadap Matahari yang sama sepanjang tahun serta
@@ -290,14 +308,18 @@ Dengan demikian, didapatkan persamaan laju perubahan suhu \textit{node} LAPAN-A3
 \end{equation}
 
 Persamaan \ref{eq:lineq} merupakan persamaan linear variabel banyak biasa yang
-dapat diselesaikan lewat regresi linear serta akan digunakan dalam model
-\textit{machine learning} karya tulis ini. Dapat dilihat juga dari Persamaan
-\ref{eq:lineq} bahwa jumlah variabel yang harus dihitung telah berkurang
-menjadi hanya variabel yang berubah terhadap waktu atau hasil perkaliannya
-karena model regresi linear dapat menghitung koefisien dan konstanta persamaan
-yang tersisa. Selain itu, variabel seperti suhu \textit{node-node} satelit
-dapat langsung diketahui dari data telemetri satelit LAPAN-A3 sehingga praktis
-variabel yang perlu dihitung hanya 3 faktor panas satelit. Secara singkat,
+dapat diselesaikan lewat regresi linear. Merujuk pada Persamaan
+\ref{eq:reglinear}, $Y$ diwakili matriks laju perubahan suhu \textit{node-node}
+satelit $\frac{\Delta T_i}{\Delta t}$, $X$ parameter dan hasil perkalian
+parameter satelit yang berubah terhadap waktu (ditandai (t) pada Persamaan
+\ref{eq:lineq}), $w$ parameter yang tidak berubah terhadap waktu selama periode
+ovservasi yang akan dicari, dan $\varepsilon$ kesalahan pada hasil pengukuran parameter.  
+
+Dengan demikian, hanya variabel-variabel yang berubah terhadap waktu pada
+Persamaan \ref{eq:lineq} atau hasil perkaliannya yang masih perlu dicari.
+Selain itu, variabel seperti suhu \textit{node-node} satelit dapat langsung
+diketahui dari data telemetri satelit LAPAN-A3 sehingga praktis variabel yang
+perlu dihitung hanya 3 faktor sumber perpindahan panas satelit. Secara singkat,
 Tabel \ref{table:unknown} merangkum variabel yang masih perlu diketahui.
 
 \begin{table}[!ht]
@@ -540,24 +562,6 @@ satelit seperti yang dituliskan pada Persamaan \ref{eq:lineq}. Secara spesifik,
 metode \textit{machine learning} yang digunakan adalah pemodelan regresi linear
 menggunakan bahasa pemrograman Python yang dilatih menggunakan data TLE beserta
 data telemetri satelit LAPAN-A3 untuk periode observasi 19 dan 20 Mei 2018.
-
-Regresi linear merupakan pendekatan untuk memodelkan hubungan antara variabel
-dependen dengan variabel independen secara linear. Lewat regresi linear,
-hubungan antar variabel dependen dan variabel independen didekati lewat
-persamaan linear umum sebagai berikut \cite{freedman2009}:
-
-\begin{equation}
-\label{eq:reglinear}
-Y = Xw + \varepsilon
-\end{equation}
-
-dengan $Y$ adalah matriks variabel dependen, $X$ matriks variabel independen,
-$w$ matriks koefisien yang tidak diketahui, serta $\varepsilon$ matriks
-kesalahan atau gangguan. Pada model termal satelit LAPAN-A3 yang ditampilkan
-pada Persamaan \ref{eq:lineq}, $Y$ mewakili laju perubahan suhu
-\textit{node-node} satelit, $X$ parameter dan hasil perkalian parameter satelit
-yang berubah terhadap waktu, $w$ koefisien suku-suku pada persamaan termal, dan
-$\varepsilon$ kesalahan pada hasil pengukuran parameter.  
 
 Model regresi linear \textit{machine learning} termasuk dalam
 \textit{supervised learning} dan akan menghitung koefisien suku-suku pada
