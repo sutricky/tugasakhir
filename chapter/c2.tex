@@ -234,7 +234,7 @@ dapat dilakukan lewat penggunaan metode regresi linear.
 
 Regresi linear merupakan pendekatan untuk memodelkan hubungan antara variabel
 dependen dengan variabel independen secara linear. Lewat regresi linear,
-hubungan antar variabel dependen dan variabel independen didekati lewat
+hubungan antara variabel dependen dan variabel independen didekati lewat
 persamaan linear umum sebagai berikut \cite{freedman2009}:
 
 \begin{equation}
@@ -531,7 +531,7 @@ dengan memberikan komputer dataset yang sudah dilabeli berupa data masukan dan
 data keluaran yang diinginkan. Algoritma \textit{machine learning} kemudian
 akan mencoba membuat hubungan matematis yang memetakan data masukan ke data
 keluaran. Sebagai contoh, model \textit{machine learning} untuk mengkategorikan
-bunga dapat diberikan data masukan gambar bunga dan data keluaran jenis bunga.
+bunga dapat diberikan data masukan gambar bunga serta data keluaran jenis bunga.
 
 Selanjutnya, metode \textit{unsupervised learning} menggunakan data masukan
 yang tidak dilabeli sehingga algoritma \textit{machine learning} harus
@@ -545,35 +545,41 @@ memaksimalkan \textit{reward} dan meminimalkan \textit{penalty}.
 
 \subsection{Aplikasi Machine Learning Dalam Pemodelan Termal Satelit}
 
-Aplikasi metode \textit{machine learning} dalam analisis termal secara umum
-dapat dibagi menjadi 2 : inferensi dan prediksi. Inferensi merupakan proses
-pembuatan model matematis yang menggambarkan hubungan variabel-variabel dalam
-cara kerja suatu sistem sedangkan prediksi adalah proses pembuatan prakiraan
-hasil masa depan atau variabel yang belum diobservasi berdasarkan data
-observasi yang sudah ada. Dalam konteks pemodelan termal satelit, inferensi
-dapat digunakan untuk menghitung kontribusi tiap suku dalam persamaan termal
-satelit sehingga dampak masing-masing suku secara individual dapat diketahui.
-Prediksi sendiri dapat digunakan untuk menentukan besaran parameter termal yang
-sebelumnya tidak diketahui berdasarkan parameter yang sudah diketahui.
+Metode \textit{machine learning} berupa pendekatan \textit{supervised learning}
+dapat digunakan untuk membuat model regresi linear yang dapat menyelesaikan
+persamaan termal satelit. Berbeda dengan pembuatan model regresi linear
+konvensional yang mengharuskan pembuatan fungsi regresi yang akan diselesaikan
+untuk mencari fungsi yang dapat memetakan variabel independen ke variabel
+dependen, pembuatan model regresi \textit{machine learning} hanya membutuhkan
+dataset berupa data masukan variabel serta data keluaran variabel dependen yang
+diinginkan. Algoritma \textit{machine learning} kemudian akan mencari fungsi
+yang dapat mendeskripsikan hubungan matematis antara data masukan dan data
+keluaran berupa matriks koefisien. Pembagian dataset menjadi set latihan dan ujian pada metode \textit{machine learning} juga dapat menghasilkan model termal yang resilien terhadap \textit{noise} atau gangguan inheren yang ada pada data telemetri satelit.
 
-Dalam karya tulis ini, prediksi menggunakan metode \textit{machine learning}
-akan digunakan untuk menyelesaikan persamaan laju perubahan suhu \textit{node}
-satelit seperti yang dituliskan pada Persamaan \ref{eq:lineq}. Secara spesifik,
-metode \textit{machine learning} yang digunakan adalah pemodelan regresi linear
-menggunakan bahasa pemrograman Python yang dilatih menggunakan data TLE beserta
+Hasil perhitungan koefisien-koefisien pada persamaan termal satelit lewat
+metode regresi linear dapat digunakan untuk inferensi atau prediksi. Inferensi
+merupakan proses pembuatan model matematis yang menggambarkan hubungan
+variabel-variabel dalam cara kerja suatu sistem sedangkan prediksi adalah
+proses pembuatan prakiraan hasil masa depan atau variabel yang belum
+diobservasi berdasarkan data observasi yang sudah ada. 
+
+Dalam konteks pemodelan termal satelit, inferensi dapat digunakan untuk
+menghitung kontribusi tiap suku dalam persamaan termal satelit sehingga dampak
+masing-masing suku secara individual dapat diketahui. Prediksi sendiri dapat
+digunakan untuk menentukan besaran parameter termal yang sebelumnya tidak
+diketahui berdasarkan parameter yang sudah diketahui. Dalam karya tulis ini, model regresi linear \textit{machine learning} digunakan untuk memprediksi perubahan suhu sisi-sisi satelit LAPAN-A3.
+
+Algoritma \textit{machine learning} diimplementasikan dalam kode pemrograman
+Python untuk membuat model termal yang dilatih menggunakan data TLE beserta
 data telemetri satelit LAPAN-A3 untuk periode observasi 19 dan 20 Mei 2018.
-
-Model regresi linear \textit{machine learning} termasuk dalam
-\textit{supervised learning} dan akan menghitung koefisien suku-suku pada
-Persamaan \ref{eq:lineq} yang belum diketahui berdasarkan dataset masukan model
-\textit{machine learning}. Data masukan yang diberikan ke model adalah
-parameter \textit{node} yang berubah terhadap waktu sesuai Persamaan
-\ref{eq:lineq} sedangkan data keluaran yang diinginkan adalah laju perubahan
-suhu \textit{node}. Hasil perhitungan koefisien suku-suku pada persamaan termal
-tersebut kemudian akan digunakan untuk memprediksi laju perubahan suhu
-\textit{node} dataset ujian model. Lewat prediksi laju perubahan suhu
-\textit{node}, perubahan suhu \textit{node} dan suhu \textit{node} pada selang
-waktu pengamatan berikutnya dapat diprediksi juga.
+Data masukan yang diberikan ke model adalah parameter \textit{node} yang
+berubah terhadap waktu sesuai Persamaan \ref{eq:lineq} sedangkan data keluaran
+yang diinginkan adalah laju perubahan suhu \textit{node}. Hasil perhitungan
+koefisien suku-suku pada persamaan termal tersebut kemudian akan digunakan
+untuk memprediksi laju perubahan suhu \textit{node} set ujian. Lewat
+prediksi laju perubahan suhu \textit{node}, perubahan suhu \textit{node} dan
+suhu \textit{node} pada selang waktu pengamatan berikutnya dapat diprediksi
+juga.
 
 \subsection{Evaluasi Performa Model Machine Learning}
 
