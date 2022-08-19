@@ -281,6 +281,20 @@
   file = {/home/wright/dox/refs/bzdok_et_al_2018_statistics_versus_machine_learning.pdf}
 }
 
+@report{chai2014,
+  type = {preprint},
+  title = {Root Mean Square Error ({{RMSE}}) or Mean Absolute Error ({{MAE}})?},
+  author = {Chai, T. and Draxler, R. R.},
+  date = {2014-02-28},
+  institution = {{Numerical Methods}},
+  doi = {10.5194/gmdd-7-1525-2014},
+  url = {https://gmd.copernicus.org/preprints/7/1525/2014/gmdd-7-1525-2014.pdf},
+  urldate = {2022-08-13},
+  abstract = {Both the root mean square error (RMSE) and the mean absolute error (MAE) are regularly employed in model evaluation studies. Willmott and Matsuura (2005) have suggested that the RMSE is not a good indicator of average model performance and might be a misleading indicator of average error, and thus the MAE would be a better metric for that purpose. While some concerns over using RMSE raised by Willmott and Matsuura (2005) and Willmott et al. (2009) are valid, the proposed avoidance of RMSE in favor of MAE is not the solution. Citing the aforementioned papers, many researchers chose MAE over RMSE to present their model evaluation statistics when presenting or adding the RMSE measures could be more beneficial. In this technical note, we demonstrate that the RMSE is not ambiguous in its meaning, contrary to what was claimed by Willmott et al. (2009). The RMSE is more appropriate to represent model performance than the MAE when the error distribution is expected to be Gaussian. In addition, we show that the RMSE satisfies the triangle inequality requirement for a distance metric, whereas Willmott et al. (2009) indicated that the sums-ofsquares-based statistics do not satisfy this rule. In the end, we discussed some circumstances where using the RMSE will be more beneficial. However, we do not contend that the RMSE is superior over the MAE. Instead, a combination of metrics, including but certainly not limited to RMSEs and MAEs, are often required to assess model performance.},
+  langid = {english},
+  file = {/home/wright/dox/refs/chai_draxler_2014_root_mean_square_error_(rmse)_or_mean_absolute_error_(mae).pdf}
+}
+
 @article{das,
   title = {A {{Simple Thermal Design Procedure}} for {{Micro-}} and {{Nano-}} Satellites with {{Deployable Solar Array Panel}}},
   author = {Das, Tilok K},
@@ -319,6 +333,24 @@
   abstract = {This paper studies the use of artificial evolution to automate the design of a satellite passive thermal control system. This type of adaptation often requires the use of computer simulations to evaluate fitness of a large number of candidate solutions. Simulations are required to be expedient and accurate so that solutions can be successfully transferred to reality. We explore a design process that involves three steps. On a first step candidate solutions (implemented as surface paint tiling patterns) are tested using a FEM model and ranked according to their quality to meet mission temperature requirements. On a second step the best individual is implemented as a real physical satellite mockup and tested inside a vacuum chamber, having light sources imitating the effect of solar light. On a third step the simulation model is adapted with data obtained during the real evaluation. These updated models can be further employed for continuing genetic search. Current differences between our simulation and our real physical setup are in the order of 1.45 °K mean squared error for faces pointing toward the light source and 2.4 °K mean squared errors for shadowed faces. We found that evolved tiling patterns can be 5°K below engineered patterns and 8 °K below using unpainted aluminum satellite surfaces.},
   langid = {english},
   file = {/home/wright/dox/refs/escobar_et_al_2016_evolutionary_design_of_a_satellite_thermal_control_system.pdf}
+}
+
+@article{farissi2019,
+  title = {Implementation and {{Hardware-In-The-Loop Simulation}} of a {{Magnetic Detumbling}} and {{Pointing Control Based}} on {{Three-Axis Magnetometer Data}}},
+  author = {Farissi, M. Salim and Carletta, Stefano and Nascetti, Augusto and Teofilatto, Paolo},
+  date = {2019-12-11},
+  journaltitle = {Aerospace},
+  shortjournal = {Aerospace},
+  volume = {6},
+  number = {12},
+  pages = {133},
+  issn = {2226-4310},
+  doi = {10.3390/aerospace6120133},
+  url = {https://www.mdpi.com/2226-4310/6/12/133},
+  urldate = {2022-08-18},
+  abstract = {The subject of this work is the implementation and experimental testing of a purely magnetic attitude control strategy, which can provide stabilization after the deployment and pointing of the spacecraft without any attitude information. In particular, the control produces the detumbling of the satellite and leads it to a desired attitude with respect to the direction of the Earth magnetic field, based on the only information provided by a three-axis magnetometer. The system is meant to be used as a backup solution, in case of failure of the primary strategy and is designed considering the constraints set on time of operations, power consumption, and peak electric current for a typical CubeSat mission. The detumbling and pointing algorithms are implemented on the FPGA core of a CubeSat on-board computer and tested by Hardware-in-the-loop simulations. The simulation setup includes a Helmholtz cage, recreating the magnetic environment along the orbit, the on-board computer, a MEMS three-axis magnetometer and Simulink software, on which the attitude dynamics is propagated. Test on the real system can provide useful information to select the parameters of the control, such as the gains, to estimate the limits of the system, the time of operations and prevent failures.},
+  langid = {english},
+  file = {/home/wright/.local/share/zotero/storage/FY96HHSU/Farissi et al. - 2019 - Implementation and Hardware-In-The-Loop Simulation.pdf}
 }
 
 @article{freedman2009,
