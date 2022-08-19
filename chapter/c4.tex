@@ -216,7 +216,34 @@ dalam memodelkan karakteristik termal \textit{node} 3, 4, dan 7 dapat dikatakan 
 rendah dibandingkan dengan 4 \textit{node} lainnya dan masih perlu ditingkatkan. Node 3
 dan 7 konsisten memiliki skor $R^2$ lebih rendah dibandingkan \textit{node}-\textit{node} lainnya
 sedangkan \textit{node} 4 memiliki nilai RMSE paling besar untuk kedua periode
-observasi.
+observasi. Untuk memperjelas letak \textit{node-node} yang akan dianalisis, Gambar \ref{fig:node3}, \ref{fig:node4}, dan \ref{fig:node7} memberikan ilustrasi letak \textit{node} 3, 4, dan 7 pada satelit LAPAN-A3.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{fig/node3.png}
+	\caption{Ilustrasi letak \textit{node} 3 pada satelit LAPAN-A3}
+\label{fig:node3}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{fig/node4.png}
+	\caption{Ilustrasi letak \textit{node} 4 pada satelit LAPAN-A3}
+\label{fig:node4}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{fig/node7.png}
+	\caption{Ilustrasi letak \textit{node} 7 pada satelit LAPAN-A3}
+\label{fig:node7}
+\end{center}
+\end{figure}
 
 Dalam menganalisis hasil pemodelan termal, perlu diingat bahwa metrik performa
 model yang dihitung hanya berlaku untuk iterasi dan konfigurasi parameter model
@@ -253,7 +280,7 @@ termal yang besar berarti rentang perubahan suhu antar material dalam \textit{no
 besar juga. Akibatnya, bacaan sensor suhu bisa saja berbeda jauh dengan suhu
 komponen masing-masing sebenarnya.
 
-Dalam konteks LAPAN-A3, \textit{node} 3 terletak di sumbu Y+ satelit yang memuat adaptor
+Dalam konteks LAPAN-A3, seperti yang dapat dilihat pada Gambar \ref{fig:node3} dan \ref{fig:node7}, \textit{node} 3 terletak di sumbu Y+ satelit yang memuat adaptor
 roket dan \textit{separation ring} sedangkan \textit{node} 7 terletak di plat tengah
 satelit yang menyimpan banyak komponen seperti komputer satelit dan sub-sistem
 lainnya. Dengan begitu, karakteristik termal material pada kedua \textit{node} mungkin
