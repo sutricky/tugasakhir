@@ -20,6 +20,10 @@ pendekatan model \textit{node} tunggal atau ganda, persamaan termal satelit
 \textit{node} banyak tidak memiliki persamaan analitik dan harus diselesaikan
 secara numerik.
 
+Tabel \ref{table:inputoutput} merangkum variabel yang didapatkan atau dihitung
+dari data empiris dan observasi satelit serta variabel yang akan dicari oleh
+model regresi linear lewat metode \textit{machine learning}.
+
 \section{Pengumpulan Data}
 
 Data untuk penelitian di karya tulis ini dapat dibagi menjadi 2 jenis : data
@@ -278,12 +282,91 @@ prediksi model sehingga harus dihilangkan dari dataset akhir. Gambar
 \end{center}
 \end{figure}
 
+\section{Pendekatan Model Regresi Linear Machine Learning}
+
+Seperti yang sudah dijelakan pada bab Tinjauan Pustaka, ada beberapa metode
+pendekatan regresi linear dalam metode \textit{machine learning} yang dapat
+digunakan untuk menyelesaikan persamaan termal satelit. Ketiga pendekatan
+regresi linear juga sudah tersedia pada modul Scikit-learn sehingga tidak perlu
+diimplementasikan dari awal. Pemodelan pada karya tulis ini menggunakan
+pendekatan regresi linear OLS untuk menghitung variabel-variabel termal satelit
+yang tidak diketahui. Pendekatan OLS dipilih karena beberapa alasan dan
+pertimbangan terkait data telemetri satelit dan model termal yang akan dibuat. 
+
+Pertama, pendekatan OLS adalah pendekatan paling sederhana untuk menyelesaikan
+persamaan regresi linear. Berbeda dengan pendekatan regresi linear lainnya,
+pendekatan ini tidak membutuhkan asumsi maupun pengetahuan tambahan mengenai
+dataset yang akan dianalisis. Jika ditemukan bahwa performa model regresi
+linear menggunakan OLS tidak mencapai tingkat akurasi yang diinginkan, evaluasi
+yang dilakukan dapat menjadi bahan pertimbangan untuk menganalisis
+karakteristik dataset pada pengembangan model termal selanjutnya. Sebaliknya,
+jika performa model regresi linear OLS sudah memenuhi tingkat akurasi yang
+diinginkan, analisis lebih lanjut pada hasil pemodelan tersebut dapat memberi
+petunjuk untuk meningkatkan performa model termal di masa depan.
+
+Selanjutnya, pendekatan OLS tidak membutuhkan pengaturan \textit{hyperparameter}
+(parameter \textit{machine learning} yang mengatur jalannya proses pelatihan
+model) seperti yang dibutuhkan pendekatan PLS dan RLS. Keberadaan
+\textit{hyperparameter} mengharuskan pembagian dataset menjadi set latihan,
+\textit{cross-validation}, dan ujian karena nilai optimum \textit{hyperparameter}
+dicari pada tahap \textit{cross-validation}.
+
+Pembagian data menjadi 3 kategori akan mengurangi jumlah data yang tersedia
+untuk tahap pelatihan dan pengujian sedangkan dataset yang tersedia dari kedua
+periode observasi hanya berkisar di rentang 280-300 poin data akibat adanya
+jeda observasi yang cukup lama. Jumlah data tersebut adalah jumlah data mentah
+yang belum disaring sehingga jumlah data final yang akan digunakan model akan
+lebih sedikit dari jumlah awal tersebut. Lebih lanjut, karena tujuan utama dari
+model termal pada karya tulis ini adalah prediksi, keuntungan penggunaan PLS
+dan RLS yang resilien terhadap kolinearitas tidak berdampak banyak pada akurasi
+model.
+
+Terakhir, metode OLS lazim digunakan sebagai referensi \textit{baseline}
+performa model regresi linear. Dengan demikian, jika performa model termal
+dengan regresi linear OLS sudah diketahui, pengembangan model termal satelit
+selanjutnya tidak perlu memulai pembuatan model termal dari awal, tapi bisa
+langsung melanjutkan eksplorasi pendekatan-pendekatan regresi linear lain untuk
+kemudian dibandingkan dengan \textit{baseline} performa pendekatan OLS. Dengan
+begitu, model termal satelit selanjutnya dapat dijamin mengalami peningkatan
+performa.
 
 \section{Pelatihan dan Pengujian Model}
 
 Dataset yang sudah disaring kemudian dibagi menjadi set latihan
 (\textit{training}) dan ujian (\textit{test}) dengan menggunakan modul
-Scikit-learn. Pemodelan pada karya tulis ini menggunakan rasio jumlah data
+Scikit-learn. Gambar \ref{fig:mlthermalsetup} menunjukkan cara kerja model
+\textit{machine learning} yang digunakan pada karya tulis ini.
+
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/mlthermalsetup.png}
+	\caption{Cara kerja model termal menggunakan metode \textit{machine learning}}
+\label{fig:mlthermalsetup}
+\end{center}
+\end{figure}
+
+Dapat dilihat bahwa set latihan digunakan oleh algoritma \textit{machine
+learning} untuk mempelajari hubungan antar data masukan per periode observasi.
+Secara konkret, model \textit{machine learning} akan menerapkan pendekatan
+regresi linear OLS seperti yang dijelaskan pada bagian awal bab ini untuk
+mencari fungsi matematis yang dapat memetakan parameter-parameter \textit{node}
+satelit set ke laju perubahan suhu \textit{node} pada set latihan seperti yang
+dapat dilihat pada Tabel \ref{table:inputoutput} sebelumnya. Keluaran dari
+proses pelatihan ini adalah matriks yang berisi koefisien persamaan termal
+satelit pada periode observasi.
+
+Matriks koefisien tersebut kemudian diterapkan pada parameter-parameter
+\textit{node} satelit set ujian sehingga menghasilkan prediksi laju perubahan
+suhu \textit{node} satelit. Dari prediksi laju perubahan suhu \textit{node} dan
+data waktu observasi satelit, prediksi perubahan suhu \textit{node} dan suhu
+\textit{node} dapat dihitung. Prediksi suhu \textit{node-node} satelit inilah
+yang akan dibandingkan dengn suhu \textit{node-node} satelit dari data
+telemetri satelit sebenarnya. Dengan demikian, prediksi yang dihasilkan berasal
+dari model termal yang belum pernah melihat set ujian sebelumnya karena model
+tersebut dilatih menggunakan set latihan terpisah. 
+
+Pemodelan pada karya tulis ini menggunakan rasio jumlah data
 pelatihan dibanding pengujian sebesar 0.7:0.3 serta pengaturan \textit{seed
 number} 0. Tabel \ref{table:dataset} memuat detail jumlah dataset yang
 digunakan dalam pemodelan untuk kedua periode observasi.
