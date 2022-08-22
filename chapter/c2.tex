@@ -174,13 +174,8 @@ sebagai berikut \cite{martinez2022}:
 \begin{equation}
 \label{eq:qeq}
 \begin{split}
-	C_{i} \frac{\Delta T_i}{\Delta t} = &\ \dot{Q}_{S,i}(t)\\
-	&+ \dot{Q}_{a,i}(t) \\
-	&+ \dot{Q}_{E,i}(t) \\
-	&- \dot{Q}_{\infty,i}(t) \\
-	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \dot{Q}_{cond,ij}(t) \\
-	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \dot{Q}_{rad,ij}(t) \\
-	&+ \dot{Q}_{dis,i}
+	C_{i} \frac{\Delta T_i}{\Delta t} = &\ \dot{Q}_{S,i}(t) + \dot{Q}_{a,i}(t) + \dot{Q}_{E,i}(t) - \dot{Q}_{\infty,i}(t) + \mathop{\sum_{j=1}^{N}}_{j \neq i} \dot{Q}_{cond,ij}(t) \\
+	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \dot{Q}_{rad,ij}(t) + \dot{Q}_{dis,i}
 \end{split}
 \end{equation}
 
@@ -207,11 +202,8 @@ suku-suku termal pada Persamaan \ref{eq:qeq} menghasilkan Persamaan
 \begin{split}
 	C_{i} \frac{\Delta T_i}{\Delta t} = &\ \left(\alpha_{s,i} - \eta F_{pg,i}\right) E_s A_i \cos{\theta_{i}(t)} F_{e,i}(t) \\
 	&+ \left(\alpha_{s,i} - \eta F_{pg,i}\right)\rho_{E} E_s A_i F_{i,E}(t) \cos{\beta} F_a(t) \\
-	&+ \varepsilon_i A_i F_{i,E}(t) \varepsilon_E \sigma T_{i}(t)^4 \\
-	&- \varepsilon_i A_i F_{i,\infty}(t) \sigma T_{i}(t)^4 \\
-	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} G_{ij} \left(T_j(t) - T_i(t)\right) \\
-	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \sigma R_{ij}(T_{j}(t)^4-T_{i}(t)^4) \\
-	&+ \dot{Q}_{dis,i}
+	&+ \varepsilon_i A_i F_{i,E}(t) \varepsilon_E \sigma T_{i}(t)^4 - \varepsilon_i A_i F_{i,\infty}(t) \sigma T_{i}(t)^4 \\
+	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} G_{ij} \left(T_j(t) - T_i(t)\right) + \mathop{\sum_{j=1}^{N}}_{j \neq i} \sigma R_{ij}(T_{j}(t)^4-T_{i}(t)^4) + \dot{Q}_{dis,i}
 \end{split}
 \end{equation}
 
