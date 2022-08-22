@@ -38,20 +38,21 @@ serta melacak kapal tersebut jika terjadi pelanggaran hukum maritim. Terakhir,
 LAPAN-A3 juga membawa \textit{payload} pencitra termal eksperimental
 \textit{micro-bolometer}.
 
-Orbit LAPAN-A3 adalah orbit lingkaran \textit{sun-synchronous} dengan
-ketinggian 515 km dan sudut inklinasi 97.5 \degree. Satelit dengan orbit
+Orbit LAPAN-A3 adalah orbit lingkaran \textit{sun-synchronous} dengan sudut
+inklinasi (\textit{i}) sebesar 97.5 $^\circ$C dan ketinggian orbit (\textit{h})
+515 km seperti yang ditunjukkan Gambar \ref{fig:a3orbit}. Satelit dengan orbit
 \textit{sun-synchronous} memiliki vektor normal orbit satelit yang membentuk
 sudut konstan terhadap vektor arah Matahari-Bumi \cite{mortari}. Dengan begitu,
 satelit tersebut akan mendapatkan pencahayaan yang cukup konsisten sepanjang
 tahun dan akan melintasi khatulistiwa Bumi pada waktu lokal yang relatif sama
-setiap harinya meski tetap membutuhkan maneuver koreksi secara berkala. Gambar \ref{fig:orbitexample} menunjukkan ilustrasi contoh orbit satelit LAPAN-A3.
+setiap harinya meski tetap membutuhkan maneuver koreksi secara berkala.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
 \begin{center}
-\includegraphics[width=0.7\textwidth]{fig/orbitexample.png}
+\includegraphics[width=0.4\textwidth]{fig/a3orbit.png}
 	\caption[Ilustrasi contoh orbit satelit LAPAN-A3]{Ilustrasi contoh orbit satelit LAPAN-A3 \cite{beck2013}}
-\label{fig:orbitexample}
+\label{fig:a3orbit}
 \end{center}
 \end{figure}
 
@@ -134,11 +135,7 @@ bahasa pemrograman Python lewat modul Skyfield.
 Pemodelan termal satelit bertujuan untuk memodelkan karakteristik termal
 satelit. Hal ini dapat dilakukan dengan menganalisis perpindahan panas yang
 terjadi pada satelit sehingga didapatkan persamaan keseimbangan termal yang
-mendeskripsikan perpindahan panas satelit seiring perubahan waktu. Pada karya
-tulis ini, pemodelan termal satelit dilakukan secara semi-empiris. Hal ini
-berarti pemodelan termal satelit dilakukan dengan menggunakan asumsi,
-pendekatan, dan generalisasi untuk menyederhanakan perhitungan teoretis
-berdasarkan hasil observasi pada satelit.
+mendeskripsikan perpindahan panas satelit seiring perubahan waktu.
 
 Perpindahan panas yang terjadi pada satelit dapat dibagi menjadi perpindahan
 panas secara internal dan eskternal. Perpindahan panas internal terjadi antar
