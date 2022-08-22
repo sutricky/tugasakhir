@@ -294,13 +294,9 @@ Dengan demikian, didapatkan persamaan laju perubahan suhu \textit{node} LAPAN-A3
 \begin{equation}
 \label{eq:lineq}
 \begin{split}
-	\frac{\Delta T_i}{\Delta t} = &\ \frac{c_S}{C_i I_0} I_{i}(t) F_{e,i}(t) \\
-	&+ \frac{c_a}{C_i} F_{i,E}(t) F_a(t) \\
-	&+ \frac{c_E}{C_i} F_{i,E}(t) T_{i}(t)^4 \\
-	&- \frac{\left( \mathop{\sum_{j=1}^{N}}_{j \neq i} \sigma R_{ij} + c_{env} \right) }{C_i} T_{i}(t)^4 \\
-	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \frac{G_{ij}}{C_i} \left(T_j(t) - T_i(t)\right) \\
-	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \frac{\sigma R_{ij}}{C_i}T_{j}(t)^4 \\
-	&+ \frac{\dot{Q}_{dis,i}}{C_i}
+	\frac{\Delta T_i}{\Delta t} = &\ \frac{c_S}{C_i I_0} I_{i}(t) F_{e,i}(t) + \frac{c_a}{C_i} F_{i,E}(t) F_a(t) + \frac{c_E}{C_i} F_{i,E}(t) T_{i}(t)^4 \\
+	&- \frac{\left( \mathop{\sum_{j=1}^{N}}_{j \neq i} \sigma R_{ij} + c_{env} \right) }{C_i} T_{i}(t)^4 + \mathop{\sum_{j=1}^{N}}_{j \neq i} \frac{G_{ij}}{C_i} \left(T_j(t) - T_i(t)\right) \\
+	&+ \mathop{\sum_{j=1}^{N}}_{j \neq i} \frac{\sigma R_{ij}}{C_i}T_{j}(t)^4 + \frac{\dot{Q}_{dis,i}}{C_i}
 \end{split}
 \end{equation}
 
