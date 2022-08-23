@@ -142,36 +142,37 @@ Untuk model satelit \textit{node} banyak, pendekatan yang umum digunakan adalah
 metode kedua berupa simulasi lewat perangkat lunak komersial. Sebagai contoh,
 Totani et al. menjelaskan prosedur desain termal satelit kelas mikro dan nano
 menggunakan metode perhitungan numerik untuk pendekatan satelit 1 dan 2
-\textit{node} saja \cite{totani2014}. Pada karya tulis yang sama, prosedur
+\textit{node} saja \cite{totani2014}. Pada jurnal yang sama, prosedur
 desain termal satelit dengan pendekatan model \textit{node} banyak dilakukan
 dengan bantuan perangkat lunak SINDA/FLUINT. Selain itu, sampai karya tulis ini
 dibuat, ketiga karya tulis yang telah disebutkan belum memberikan validasi
-metode yang diajukan dengan data telemetri aktual satelit. Karena LAPAN-A3
-sudah mengorbit Bumi sejak 2016, banyak sekali data historis operasional yang
-seharusnya dapat digunakan dalam pemodelan termal satelit LAPAN-A3.
+metode yang diajukan dengan data telemetri aktual satelit. Hal ini cukup
+disayangkan karena LAPAN-A3 sudah mengorbit Bumi sejak 2016 sehingga terdapat
+banyak sekali data historis operasional yang seharusnya dapat digunakan dalam
+pemodelan termal satelit LAPAN-A3.
 
 Berdasarkan alasan yang telah dijelaskan di atas, penelitian pada karya tulis
 ini bertujuan untuk menjabarkan langkah-langkah pembuatan model termal satelit
-semi-empiris sederhana yang dapat mengurangi jumlah perhitungan serta dapat
-divalidasi dengan data telemetri satelit. Kemudian, prosedur pembuatan model
-termal tersebut akan diimplementasikan pada satelit LAPAN-A3. Diharapkan bahwa
-model termal yang dihasilkan pada karya tulis ini dapat memprediksi suhu
-satelit secara akurat sehingga satelit LAPAN di masa depan dapat memiliki
-prediksi suhu komponen yang lebih akurat juga. Model termal yang lebih akurat
-juga akan memungkinkan lebih banyak misi pencitraan multispektral seperti dalam
-LAPAN-A4 atau \textit{payload} yang mengeluarkan panas seperti
-\textit{Synthetic Apperture Radar} (SAR) pada LAPAN-A5/Chibasat.
+sederhana yang dapat mengurangi jumlah perhitungan serta dapat divalidasi
+dengan data telemetri satelit. Kemudian, prosedur pembuatan model termal
+tersebut akan diimplementasikan pada satelit LAPAN-A3. Diharapkan bahwa model
+termal yang dihasilkan pada karya tulis ini dapat memprediksi suhu satelit
+secara akurat sehingga satelit LAPAN di masa depan dapat memiliki prediksi suhu
+komponen yang lebih akurat juga. Model termal yang lebih akurat juga akan
+memungkinkan lebih banyak misi pencitraan multispektral seperti dalam LAPAN-A4
+atau \textit{payload} yang mengeluarkan panas seperti \textit{Synthetic
+Apperture Radar} (SAR) pada LAPAN-A5/Chibasat.
 
 Pada karya tulis ini, metode regresi linear berbasis \textit{machine learning}
 dalam bahasa pemrograman Python akan digunakan untuk membuat model termal
-semi-empiris satelit LAPAN-A3. Pemodelan termal satelit semi-empiris dilakukan
-dengan menggunakan asumsi, pendekatan, dan generalisasi untuk menyederhanakan
-perhitungan teoretis berdasarkan hasil observasi pada satelit. Lebih lanjut,
-data telemetri satelit juga digunakan dalam perhitungan variabel-variabel dalam
-persamaan termal satelit sehingga jumlah variabel yang harus dihitung dapat
-berkurang secara signifikan. Selain itu, lewat metode \textit{machine
-learning}, proses perhitungan variabel-variabel tersebut dapat diotomasi secara
-cepat dan mudah.
+satelit LAPAN-A3 secara semi-empiris. Pemodelan termal satelit semi-empiris
+dilakukan dengan menggunakan asumsi, pendekatan, dan generalisasi untuk
+menyederhanakan perhitungan teoretis berdasarkan hasil observasi pada satelit.
+Lebih lanjut, data telemetri satelit juga digunakan dalam perhitungan
+variabel-variabel dalam persamaan termal satelit sehingga jumlah variabel yang
+harus dihitung dapat berkurang secara signifikan. Selain itu, lewat metode
+\textit{machine learning}, proses perhitungan variabel-variabel tersebut dapat
+diotomasi secara cepat dan mudah.
 
 Penggunaan metode \textit{machine learning} bukanlah fenomena baru dalam
 analisis termal satelit. Sebagai contoh, metode \textit{machine learning} telah
@@ -181,7 +182,7 @@ termal satelit \cite{escobar2016}, serta mengoptimasi desain termal satelit
 \cite{xiong2020}. Metode \textit{machine learning} digunakan untuk membuat
 model regresi linear untuk memudahkan proses pengujian dan evaluasi model sehingga model
 termal yang dihasilkan resilien terhadap perubahan dataset dan gangguan inheren
-(\textit{noise}) dari dataset.
+(\textit{noise}) dari dataset. 
 
 Dengan demikian, diharapkan hasil akhir dari karya tulis ini adalah prosedur
 pemodelan termal semi-empiris satelit LAPAN-A3 menggunakan model regresi linear
@@ -189,11 +190,15 @@ pemodelan termal semi-empiris satelit LAPAN-A3 menggunakan model regresi linear
 satelit (6 \textit{node} untuk setiap sisi satelit dan 1 \textit{node} untuk
 plat tengah satelit) selama periode observasi 19 sampai dengan 20 Mei 2018.
 Hasil prediksi suhu dari model termal satelit juga akan dievaluasi untuk
-memvalidasi keakuratan model termal serta mengukur performa model saat ini. Dengan demikian, pengembangan model termal satelit selanjutnya tidak lagi harus memulai pemodelan dari awal, tapi dapat melanjutkan pengembangan prosedur dan algoritma yang digunakan dalam karya tulis ini.
+memvalidasi keakuratan model termal serta mengukur performa model saat ini.
+Dengan demikian, pengembangan model termal satelit selanjutnya tidak lagi harus
+memulai pemodelan dari awal, tapi dapat melanjutkan pengembangan prosedur dan
+algoritma yang digunakan dalam karya tulis ini.
 
 \section{Rumusan Masalah}
 
-Dari latar belakang yang telah dijelaskan sebelumnya, dapat dibuat rumusan masalah sebagai berikut :
+Dari latar belakang yang telah dijelaskan sebelumnya, dapat dibuat rumusan
+masalah sebagai berikut :
 
 \begin{enumerate}
 \item Bagaimana pemodelan termal semi-empiris satelit LAPAN-A3 menggunakan metode \textit{machine learning} dapat dilakukan?
