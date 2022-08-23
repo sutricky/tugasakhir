@@ -742,9 +742,9 @@ mendeskripsikan kedua parameter tersebut.
 Skor koefisien determinasi atau $R^2$ mengukur seberapa baik model regresi
 memprediksi tren data observasi. Parameter ini bernilai maksimum 1 dan semakin
 tinggi skor $R^2$, semakin dekat tren hasil prediksi model dengan tren data
-observasi. Skor ini juga mengukur proporsi varians dalam data observasi yang
+observasi. Skor ini juga mengukur proporsi varian dalam data observasi yang
 dapat dijelaskan oleh hasil prediksi model. Sebagai contoh, jika hasil prediksi
-model regresi memiliki skor $R^2$ senilai 0.9, 90\% varians dalam data
+model regresi memiliki skor $R^2$ senilai 0.9, 90\% varian dalam data
 observasi dapat dijelaskan oleh hasil prediksi model.
 
 Secara umum, tidak ada batas absolut skor $R^2$ yang menentukan tingkat akurasi
@@ -788,7 +788,7 @@ Pandas adalah modul pemrogaman untuk bahasa Python yang diciptakan oleh Wes
 McKinney. Modul ini biasa digunakan untuk mengolah dan menganalisis objek data
 seperti baris dan kolom tabel \cite{reback2022}. Pada karya tulis ini, modul Pandas
 digunakan untuk mengolah sumber data mentah berupa data telemetri satelit LAPAN
-A3 agar dapat diproses lebih lanjut pada tahap pembuatan model termal satelit.
+A3 agar dapat diproses lebih lanjut pada tahap pembuatan model termal satelit. Modul ini digunakan untuk memproses variabel-variabel hasil perhitungan faktor termal satelit.
 
 \subsection{Numpy}
 
@@ -800,28 +800,29 @@ seperti matriks sudut Euler satelit, matriks posisi satelit, dan lain-lain.
 
 \subsection{Matplotlib}
 
-Matplotlib adalah modul Python untuk membuat plot dan grafik 2D \cite{hunter2007}.
-Modul ini diciptakan oleh John Hunter dan umum digunakan pada proyek sains data
-sebagai sarana visualisasi data. Karya tulis ini menggunakan modul Matplotlib
-untuk menggambarkan hasil pemodelan termal satelit.
+Matplotlib adalah modul Python untuk membuat plot dan grafik 2D
+\cite{hunter2007}. Modul ini diciptakan oleh John Hunter dan umum digunakan
+pada proyek sains data sebagai sarana visualisasi data. Karya tulis ini
+menggunakan modul Matplotlib untuk menggambarkan hasil pemodelan termal
+satelit dan melakukan visualisasi data.
 
 \subsection{Scikit-learn}
 
 Scikit-learn merupakan modul pengolahan data, pembuatan model, validasi, dan
-pengukuran performa model \textit{machine learning} dalam bahasa Python \cite{pedregosa2011}.
-Modul ini pertama kali dikembangkan oleh David Cournapeau pada 2007 dan
-mencakup algoritma-algoritma \textit{machine learning} untuk skala menengah.
-Scikit-learn digunakan untuk pembuatan model \textit{machine learning} pada karya tulis
-ini.
+pengukuran performa model \textit{machine learning} dalam bahasa Python
+\cite{pedregosa2011}. Modul ini pertama kali dikembangkan oleh David Cournapeau
+pada 2007 dan mencakup algoritma-algoritma \textit{machine learning} untuk
+skala menengah. Scikit-learn digunakan untuk pembuatan model \textit{machine
+learning} pada karya tulis ini.
 
 \subsection{Skyfield}
 
 Skyfield adalah sebuah modul astronomi untuk perhitungan posisi bintang,
 planet, dan satelit yang mengorbit di sekitar Bumi \cite{rhodes2019}. Modul ini
 ditulis oleh Brandon Rhodes dan menggunakan implementasi algoritma SGP4 dalam
-bahasa Python \cite{rodriguez} untuk memprediksi dinamika orbit satelit berdasarkan
-data TLE. Karya tulis ini menggunakan Skyfield untuk
-mensimulasikan orbit LAPAN-A3 selama periode observasi.
+bahasa Python \cite{rodriguez} untuk memprediksi dinamika orbit satelit
+berdasarkan data TLE. Karya tulis ini menggunakan Skyfield untuk mensimulasikan
+orbit LAPAN-A3 selama periode observasi.
 
 \subsection{Scipy}
 
@@ -829,5 +830,5 @@ Scipy adalah sebuah modul perhitungan saintifik dalam bahasa Python yang
 dikembangkan pertama kali oleh Travis Oliphant, Pearu Peterson, dan Eric Jones
 \cite{virtanen2020}. Modul ini memuat formula perhitungan aljabar, persamaan
 diferensial, statistik, dan formula-formula umum lain. Pada karya tulis ini,
-Scipy digunakan untuk menghitung skor standar data suhu \textit{node} satelit
-untuk mendeteksi data \textit{outlier}.
+Scipy digunakan untuk menghitung skor standar data suhu dan laju perubahan suhu
+\textit{node} satelit untuk mendeteksi data \textit{outlier}.
