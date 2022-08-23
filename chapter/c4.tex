@@ -2,8 +2,11 @@
 
 \section{Hasil Pemodelan Termal Satelit LAPAN-A3}
 
-Gambar \ref{fig:node119} sampai dengan \ref{fig:node720} menunjukkan perbandingan suhu \textit{node-node} satelit
-hasil prediksi model termal dengan data telemetri LAPAN-A3 aktual untuk periode observasi 19 sampai dengan 20 Mei 2018.
+Gambar \ref{fig:node119} sampai dengan \ref{fig:node720} menunjukkan
+perbandingan suhu \textit{node-node} satelit hasil prediksi model termal dengan
+data telemetri LAPAN-A3 aktual untuk periode observasi 19 sampai dengan 20 Mei
+2018. Karena model termal dibuat lewat regresi linear, grafik-grafik yang
+ditampilkan juga menggunakan pendekatan linear.
 
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
@@ -148,13 +151,17 @@ konstan seperti yang terjadi pada rentang waktu 10000 sampai dengan 20000
 sekon.
 
 Agar dapat dinilai secara kuantitatif, performa model termal dalam memprediksi
-tren perubahan suhu \textit{node-node} satelit dapat dilihat dari hasil perhitungan skor koefisien determinasi $R^2$ prediksi suhu \textit{node-node} satelit pada Gambar \ref{fig:r219} dan
-\ref{fig:r220}. Model termal LAPAN-A3 dapat menjelaskan mayoritas varians suhu
-\textit{node} sehingga menghasilkan skor $R^2$ lebih dari 0.5 untuk semua \textit{node}. Lebih
-lanjut, 5 dari 7 \textit{node} pada kedua periode observasi memiliki skor $R^2$ lebih besar dari 0.95. Ini berarti lebih dari 95\%
-varians dalam data suhu observasi dapat dijelaskan oleh prediksi model kelima \textit{node} tersebut. Dapat
-dilihat juga bahwa \textit{node} 3 memiliki skor $R^2$ paling rendah dari ketujuh \textit{node} pada
-kedua periode observasi dan disusul oleh \textit{node} 7.
+tren perubahan suhu \textit{node-node} satelit dapat dilihat dari hasil
+perhitungan skor koefisien determinasi $R^2$ prediksi suhu \textit{node-node}
+satelit pada Gambar \ref{fig:r219} dan \ref{fig:r220}. Model termal LAPAN-A3
+dapat menjelaskan varian suhu \textit{node} secara substansial sehingga
+menghasilkan skor $R^2$ lebih dari 0.67 untuk semua \textit{node}. Lebih
+lanjut, 5 dari 7 \textit{node} pada kedua periode observasi memiliki skor $R^2$
+lebih besar dari 0.95. Ini berarti lebih dari 95\% varian dalam data suhu
+observasi dapat dijelaskan oleh prediksi model kelima \textit{node} tersebut.
+Dapat dilihat juga bahwa \textit{node} 3 memiliki skor $R^2$ paling rendah dari
+ketujuh \textit{node} pada kedua periode observasi dan disusul oleh
+\textit{node} 7.
 
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
@@ -313,19 +320,19 @@ yang perlu ditingkatkan agar perbedaan antara nilai hasil prediksi model dengan
 data observasi dapat dikurangi.
 
 Analisis inferensi untuk mengetahui kontribusi tiap variabel dalam Persamaan
-\ref{eq:lineq} membutuhkan modifikasi metode \textit{machine learning} yang
+\ref{eq:lineq} membutuhkan modifikasi metode pendekatan regresi linear yang
 digunakan. Dapat dilihat dari persamaan tersebut bahwa variabel suhu
 \textit{node} berkorelasi erat dengan variabel suhu \textit{node} pangkat 4.
 Jika salah satu variabel diketahui, variabel lainnya dapat dihitung juga.
 Fenomena adanya korelasi tinggi antar variabel independen tersebut dinamakan
 kolinearitas. 
 
-Meski kolinearitas tidak berdampak banyak pada akurasi prediksi model regresi
-linear, hal ini harus diperhitungkan dalam analisis inferensi
-\cite{lieberman2014}\cite{mundfrom2018}. Kolinearitas sendiri dapat diatasi
-dengan menyeleksi variabel independen sehingga tidak ada kolinearitas pada
-variabel yang tersisa atau menggunakan metode \textit{machine learning} lain
-yang tidak terpengaruh kolinearitas.
+Meski kolinearitas tidak berdampak banyak pada akurasi prediksi model
+regresi linear, hal ini harus diperhitungkan dalam analisis inferensi.
+Kolinearitas sendiri dapat diatasi dengan menyeleksi variabel
+independen sehingga tidak ada kolinearitas pada variabel yang tersisa
+atau menggunakan pendekatan regresi linear lain yang tidak terpengaruh
+kolinearitas seperti PLS dan RLS.
 
 Analisis inferensi persamaan termal tidak dilakukan pada karya tulis ini karena
 model termal yang dikembangkan pada karya tulis ini memiliki tujuan utama
