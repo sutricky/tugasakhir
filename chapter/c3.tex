@@ -12,26 +12,29 @@ dalam pembuatan model termal lebih mendalam dapat dilihat di kode sumber
 pemrograman karya tulis ini yang tersedia di repositori
 https://github.com/sutricky/a3thermalmodel pada situs \textit{Github}.
 
-\section{Penyelesaian Persamaan Termal Satelit LAPAN-A3 Secara Semi-empiris}
+\section{Penyelesaian Persamaan Termal Satelit LAPAN-A3}
 
 Sesuai dengan penjelasan pada bab Tinjauan Pustaka, persamaan termal satelit
 LAPAN-A3 akan diselesaikan secara semi-empiris lewat regresi linear menggunakan
 metode \textit{machine learning}. Artinya, persamaan laju perubahan suhu
 \textit{node} satelit yang dapat dilihat pada Persamaan \ref{eq:lineq} akan
-diselesaikan dengan kombinasi data empiris serta observasi satelit dengan hasil
+diselesaikan dengan kombinasi data empiris serta observasi satelit beserta hasil
 perhitungan koefisien persamaan tersebut lewat regresi linear yang menggunakan
 modul \textit{machine learning} dalam bahasa pemrograman Python. Hanya variabel
 yang tidak tersedia dari data telemetri satelit maupun dihasilkan model regresi
 linear yang perlu dihitung terpisah. 
 
 Tabel \ref{table:variabellist} merangkum sumber nilai variabel-variabel pada
-Persamaan \ref{eq:lineq}. Berangkat dari variabel-variabel yang didapatkan dari
-data telemetri satelit serta variabel yang masih perlu dihitung di Tabel
-\ref{table:variabellist}, selanjutnya dilakukan pengumpulan data satelit terkait.
+Persamaan \ref{eq:lineq}. Dapat dilihat dari Tabel \ref{table:variabellist}
+bahwa hanya tersisa 3 variabel yang perlu dihitung : faktor gerhana
+\textit{node} $F_{e,i}$, \textit{view factor node} ke Bumi $F_{i,E}$, dan
+faktor albedo satelit $F_{a}$. Ketiga variabel tersebut dibutuhkan untuk
+menghitung faktor-faktor termal satelit yang telah dirangkum pada Tabel
+\ref{table:unknown}.
 
 \begin{table}[!ht]
 \begin{center}
-	\caption{Detail sumber nilai variabel-variabel Persamaan \ref{eq:lineq}}
+	\caption{Detail sumber nilai variabel pada persamaan laju suhu \textit{node} satelit}
 \label{table:variabellist}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -48,11 +51,6 @@ $T_j^4$             &             & $\frac{\dot{Q_{dis,i}}}{C_i}$         \\ \hl
 \vspace{-5mm}
 \end{table}
 
-Dapat dilihat dari Tabel \ref{table:variabellist} bahwa hanya tersisa 3
-variabel yang perlu dihitung : faktor gerhana \textit{node} $F_{e,i}$,
-\textit{view factor node} ke Bumi $F_{i,E}$, dan faktor albedo satelit $F_{a}$. Ketiga
-variabel tersebut dibutuhkan untuk menghitung faktor-faktor termal satelit yang
-sudah dicantumkan pada Tabel \ref{table:unknown}. Karena itu, perhitungan ketiga variabel tersebut akan dilakukan pada bagian Perhitungan Faktor Termal Satelit.
 
 \section{Pengumpulan Data}
 
