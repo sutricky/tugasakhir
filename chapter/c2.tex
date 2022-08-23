@@ -221,18 +221,54 @@ dan $j$, serta $R_{ij}$ koefisien kopling radiasi antara \textit{node} $i$ dan $
 
 \subsection{Persamaan Termal Satelit LAPAN-A3}
 
-Pendekatan analisis termal konvensional mengharuskan perhitungan semua variabel
-suku di ruas kanan Persamaan \ref{eq:raweq} untuk mendapatkan persamaan termal
-yang dapat mendeskripsikan karakteristik termal satelit. Pada karya tulis ini,
-hanya variabel-variabel pada Persamaan \ref{eq:raweq} yang berubah terhadap
-waktu selama periode observasi yang akan dihitung sedangkan variabel-variabel
-yang tidak berubah terhadap waktu akan didapatkan secara otomatis. Hal ini
-dapat dilakukan lewat penggunaan metode regresi linear.
+Secara umum, Persamaan \ref{eq:raweq} pada model satelit \textit{node} banyak
+(lebih dari 2 \textit{node}) tidak memiliki penyelesaian analitik sehingga
+harus diselesaikan secara numerik. Lebih lanjut, persamaan tersebut merupakan
+persamaan diferensial non-linear akibat keberadaan variabel $T_{i}(t)^4$ dan
+$T_{j}(t)^4$. Pemodelan termal konvensional menyelesaikan Persamaan
+\textit{eq:raweq} lewat metode numerik seperti metode elemen hingga
+(\textit{finite element method}) dan metode beda hingga (\textit{finite
+difference method}) atau perangkat lunak komersial khusus. Kedua alternatif
+penyelesaian mendekati Persamaan \ref{eq:raweq} secara linear untuk mempermudah
+dan menyederhanakan perhitungan yang akan dilakukan.
 
-Regresi linear merupakan pendekatan untuk memodelkan hubungan antara variabel
-dependen dengan variabel independen secara linear. Lewat regresi linear,
-hubungan antara variabel dependen dan variabel independen didekati lewat
-persamaan linear umum sebagai berikut \cite{freedman2009}:
+Lebih lanjut, pendekatan analisis termal konvensional mengharuskan perhitungan
+semua variabel suku di ruas kanan Persamaan \ref{eq:raweq} untuk mendapatkan
+persamaan termal yang dapat mendeskripsikan karakteristik termal satelit
+terlepas dari metode penyelesaian yang digunakan. Hal ini disebabkan oleh
+pemodelan termal biasanya dilakukan pada tahap desain satelit sehingga belum
+ada data empiris yang dapat digunakan sebagai acuan dalam perhitungan
+variabel-variabel tersebut. Tujuan pemodelan termal pada tahap tersebut justru
+untuk mencari rentang parameter satelit yang membuat satelit memiliki
+karakteristik termal yang dapat memenuhi persyaratan misi satelit.
+
+Pada karya tulis ini, pemodelan termal dilakukan menggunakan metode numerik
+secara semi-empiris dengan bantuan data telemetri satelit sehingga diharapkan
+jumlah variabel yang harus dihitung dapat berkurang secara signifikan. Untuk
+itu, teknik metode numerik beda hingga berupa metode beda maju Euler (\textit{Euler forward difference method}) digunakan untuk menyelesaikan Persamaan
+\ref{eq:raweq}. Dengan demikian, Persamaan \ref{eq:raweq} dapat didekati secara
+linear dan karena itu sudah diubah menjadi bentuk diskrit.
+
+Pada metode numerik beda hingga menggunakan metode beda maju Euler, turunan
+pertama sebuah fungsi terhadap waktu $\frac{df}{dt}$ didekati sesuai persamaan
+berikut \cite{morton2005}:
+
+\begin{equation}
+\label{eq:forwarddif}
+	\frac{df}{dt} \approx	\frac{f(x + \Delta t) - f(x)}{\Delta t} 
+\end{equation}
+
+dengan $f(x)$ adalah nilai fungsi tersebut pada waktu \textit{t} dan $f(x +
+\Delta t$ adalah nilai fungsi tersebut setelah selang waktu $\Delta t$. Semakin
+kecil nilai $\Delta t$, semakin kecil pula kesalahan numerik yang dihasilkan Persamaan
+\ref{eq:forwarddif}. Dalam konteks pemodelan termal satelit, turunan pertama fungsi yang akan didekati adalah fungsi laju perubahan suhu \textit{node} satelit pada suatu waktu tertentu. Integrasi nilai laju perubahan suhu \textit{node} terhadap waktu akan menghasilkan suhu \textit{node} satelit pada suatu waktu tertentu.
+
+Selanjutnya, berbeda dengan metode numerik beda hingga biasa, Persamaan
+\ref{eq:raweq} akan diselesaikan dengan menggunakan regresi linear. Regresi
+linear merupakan pendekatan untuk memodelkan hubungan antara variabel dependen
+dengan variabel independen secara linear. Lewat regresi linear, hubungan antara
+variabel dependen dan variabel independen didekati lewat persamaan linear umum
+sebagai berikut \cite{freedman2009}:
 
 \begin{equation}
 \label{eq:reglinear}
@@ -243,10 +279,13 @@ dengan $Y$ adalah matriks variabel dependen, $X$ matriks variabel independen,
 $w$ matriks koefisien yang tidak diketahui, serta $\varepsilon$ matriks
 kesalahan atau gangguan. Model regresi linear akan menghitung matriks $w$ yang dapat memetakan matriks $X$ ke matriks $Y$ dan meminimalkan matriks $\varepsilon$.
 
-Agar dapat diselesaikan lewat regresi linear, Persaman \ref{eq:raweq} harus
-diubah menjadi bentuk linear terlebih dahulu. Lebih spesifik lagi, persamaan
-termal yang akan diselesaikan lewat regresi linear adalah persamaan laju
-perubahan suhu \textit{node} satelit.
+Dengan menggunakan metode regresi linear, hanya variabel-variabel pada
+Persamaan \ref{eq:raweq} yang berubah terhadap waktu selama periode observasi
+yang akan dihitung sedangkan variabel-variabel yang tidak berubah terhadap
+waktu akan didapatkan secara otomatis. Untuk itu, diperlukan pemisahan variabel
+yang berubah terhadap waktu dan variabel yang konstan selama periode observasi
+pada Persamaan \ref{eq:raweq}. Hal ini dapat dilakukan dengan mengobservasi
+karakteristik orbit dan sensor satelit LAPAN-A3.
 
 LAPAN-A3 merupakakan satelit mengorbit Bumi secara \textit{sun-synchronous}
 sehingga memiliki orientasi terhadap Matahari yang sama sepanjang tahun serta
@@ -279,7 +318,7 @@ dan $c_{env}$ koefisien suku disipasi ke lingkungan ruang angkasa.
 Lewat substitusi nilai $\cos{\theta_i}$ dengan Persamaan \ref{eq:current} serta
 koefisien-koefisien pada Persamaan \ref{eq:short} dan pembagian kedua ruas
 persamaan dengan $C_i$ disertai perubahan urutan suku-suku,
-Persamaan \ref{eq:raweq} dapat dijadikan persamaan linear variabel banyak
+Persamaan \ref{eq:raweq} dapat diubah bentuk menjadi persamaan linear variabel banyak
 dengan ketentuan sebagai berikut :
 
 \begin{itemize}
@@ -301,14 +340,14 @@ Dengan demikian, didapatkan persamaan laju perubahan suhu \textit{node} LAPAN-A3
 \end{equation}
 
 Persamaan \ref{eq:lineq} merupakan persamaan linear variabel banyak biasa yang
-dapat diselesaikan lewat regresi linear. Merujuk pada Persamaan
+akan diselesaikan lewat regresi linear. Merujuk pada Persamaan
 \ref{eq:reglinear}, $Y$ diwakili matriks laju perubahan suhu \textit{node-node}
 satelit $\frac{\Delta T_i}{\Delta t}$, $X$ parameter dan hasil perkalian
 parameter satelit yang berubah terhadap waktu (ditandai (t) pada Persamaan
 \ref{eq:lineq}), $w$ parameter yang tidak berubah terhadap waktu selama periode
 observasi yang akan dicari, dan $\varepsilon$ kesalahan pada hasil pengukuran parameter.  
 
-Dengan demikian, hanya variabel-variabel yang berubah terhadap waktu pada
+Dengan begitu, hanya variabel-variabel yang berubah terhadap waktu pada
 Persamaan \ref{eq:lineq} atau hasil perkaliannya yang masih perlu dicari.
 Lebih lanjut, variabel suhu \textit{node-node} satelit dapat langsung
 diketahui dari data telemetri satelit LAPAN-A3 sehingga praktis variabel yang
@@ -449,6 +488,119 @@ sudut dihitung dari titik \textit{subsolar}. Faktor gerhana satelit sendiri
 bernilai 0 jika satelit dalam fase gerhana dan sebaliknya bernilai 1 jika
 satelit tidak dalam fase gerhana.
 
+\section{Pendekatan Regresi Linear}
+
+Untuk menyelesaikan persamaan dasar regresi linear yang tercantum pada
+Persamaan \ref{eq:reglinear} ada banyak pendekatan yang dapat digunakan. Setiap
+pendekatan tersebut memiliki karakteristik beserta keuntungan dan kerugian
+masing-masing. Salah satu kategori pendekatan yang umum digunakan untuk
+menyelesaikan Persamaan \ref{eq:reglinear} adalah metode \textit{least
+squares}. 
+
+Persamaan \ref{eq:reglinear} dapat diubah bentuk sehingga variabel yang dicari adalah matriks \textit{error} $\varepsilon$ :
+
+\begin{equation}
+\label{eq:errorreglinear}
+\varepsilon = Y - Xw
+\end{equation}
+
+Misalkan jumlah poin data adalah $n$, metode \textit{least squares} mencari matriks koefisien $w$ dengan menimimalkan jumlah kuadrat selisih prediksi model dengan data observasi $S$ \cite{dekking2005}:
+
+\begin{equation}
+\label{eq:sumerrorreglinear}
+S = \sum_{i = 1}^{n}\varepsilon_{i}^2
+\end{equation}
+
+dengan $\varepsilon_i$ adalah \textit{error} antara prediksi model dengan nilai data observasi.
+
+Metode \textit{least squares} dapat dibagi lagi menjadi pendekatan-pendekatan lainnya sesuai dengan metode yang digunakan untuk meminimalkan nilai $S$. Pada karya tulis ini, akan dibahas 3 jenis pendekatan \textit{least squares} yang paling umum digunakan :
+
+\begin{enumerate}
+	\item \textit{Ordinary Least Squares} (OLS)
+	\item \textit{Partial Least Squares} (PLS)
+	\item \textit{Regularized Least Squares} (RLS)
+\end{enumerate}
+
+Pendekatan \textit{least squares} secara umum memiliki beberapa asumsi karakteristik dataset yang akan dinalisis :
+
+\begin{enumerate}
+	\item Variabel dependen dapat didekati dengan kombinasi linear variabel independen dan matriks koefisien yang akan dihitung
+	\item Variabel independen dianggap bebas dari kesalahan pengukuran
+	\item Variasi nilai \textit{error} tidak bergantung pada nilai variabel independen
+	\item Nilai \textit{error} dianggap tidak berkorelasi satu sama lain
+	\item Tidak ada multikolinearitas sempurna pada variabel independen, yaitu terdapatnya hubungan linear eksak antar variabel independen
+\end{enumerate}
+
+Asumsi-asumsi karakteristik di atas tidak mutlak harus dipenuhi dataset, tapi akan menentukan jenis pendekatan yang dapat digunakan untuk dataset tersebut. Jika hasil regresi linear menggunakan sebuah pendekatan memiliki akurasi yang buruk, dapat dilakukan analisis tambahan untuk mengetahui karakteristik dataset lebih lanjut. Dengan demikian, pendekatan yang digunakan dapat menyesuaikan karakteristik dataset.
+
+\subsection{Ordinary Least Squares}
+
+Pendekatan \textit{ordinary least squares} merupakan pendekatan paling
+sederhana dalam menyelesaikan persamaan regresi linear. Pendekatan ini tidak
+memiliki asumsi karakteristik dataset tambahan dan nilai matriks koefisien
+optimal $\hat{w}$ yang meminimalkan nilai $S$ dicari lewat persamaan berikut
+\cite{rao1997}:
+
+\begin{equation}
+\label{eq:olseq}
+	\hat{w} = w + \left( X^T X \right)^{-1} X^T\varepsilon
+\end{equation}
+
+Pendekatan OLS umum digunakan sebagai \textit{baseline} pemodelan regresi
+linear karena tidak memerlukan analisis tambahan terkait karakteristik dataset.
+Karena itu, pendekatan ini tidak resilien terhadap pelanggaran asumsi
+karakteristik dataset. Sebagai contoh, jika terdapat multikolinearitas
+sempurna, matriks $\left( X^T X \right)^{-1}$ akan bersifat singular. Akibatnya,
+tidak ada solusi unik untuk Persamaan \ref{eq:olseq}.
+
+\subsection{Partial Least Squares}
+
+Pendekatan \textit{partial least squares} meminimalkan nilai $S$ dengan cara
+memaksimalkan kovarian antara matriks Xw dan Y sesuai persamaan berikut
+\cite{xu2016}:
+
+\begin{equation}
+\label{eq:plseq}
+	Y = XwQ^T + F
+\end{equation}
+
+dengan $Q$ matriks \textit{loading} $Y$ dan $F$ adalah matriks \textit{error}.
+
+Pendekatan PLS resilien terhadap multikolinearitas dan dapat digunakan meski
+jumlah variabel independen jauh melebihi jumlah observasi karena algoritma PLS
+akan menentukan jumlah dan kombinasi variabel independen yang optimal. Hal ini
+dapat mengakibatkan tidak semua variabel independen akan digunakan pada model
+regresi linear yang dihasilkan pendekatan PLS.
+
+\subsection{Regularized Least Squares}
+
+Seperti yang telah disebutkan sebelumnya, jika terdapat multikolinearitas
+sempurna pada variabel independen, matriks $X^T X$ bersifat singular sehingga
+tidak memiliki invers. Meski demikian, keberadaan korelasi yang tinggi antar
+variabel independen juga dapat mempersulit perhitungan invers matriks $X^T X$.
+Untuk menyelesaikan permasalahan tersebut, pendekatan \textit{regularized least
+squares} memodifikasi persamaan OLS dengan menambahkan suku regularisasi.
+Penambahan suku regularisasi ini membuat pendekatan RLS resilien terhadap
+multikolinearitas data. Selain itu, penambahan suku regularisasi dapat dianggap
+sebagai batasan tambahan sehingga dapat menambah performa generalisasi model.
+
+Ada berbagai macam suku regularisasi yang dapat digunakan untuk mempermudah
+penyelesaian Persamaan \ref{eq:olseq}. Algoritma RLS nantinya akan mencari
+nilai suku regularisasi yang optimal sehingga nilai $S$ model minimal. Salah
+satu pendekatan regularisasi yang paling umum digunakan adalah pendekatan
+regularisasi Tikhonov. Pendekatan regularisasi Tikhonov menggunakan suku
+regularisasi $kI$ untuk mendapatkan matriks koefisien $\hat{w}$ yang dapat
+meminimalkan nilai $S$ sesuai persamaan berikut \cite{saleh2019}:
+
+\begin{equation}
+\label{eq:rlseq}
+	\hat{w} = w + \left( X^T X + kI \right)^{-1} X^T\varepsilon
+\end{equation}
+
+dengan $k$ adalah konstanta regularisasi dan $I$ adalah matriks identitas. Jika
+$k$ diatur agar bernilai positif, model regresi yang dihasilkan juga dapat
+disebut \textit{ridge regression}.
+
 \section{Machine Learning}
 
 Bidang \textit{machine learning} secara umum mempelajari metode dan algoritma
@@ -541,26 +693,30 @@ memaksimalkan \textit{reward} dan meminimalkan \textit{penalty}.
 Metode \textit{machine learning} berupa pendekatan \textit{supervised learning}
 dapat digunakan untuk membuat model regresi linear yang dapat menyelesaikan
 persamaan termal satelit. Berbeda dengan pembuatan model regresi linear
-konvensional yang mengharuskan pembuatan fungsi regresi yang akan diselesaikan
-untuk mencari fungsi yang dapat memetakan variabel independen ke variabel
-dependen, pembuatan model regresi \textit{machine learning} hanya membutuhkan
-dataset berupa data masukan variabel serta data keluaran variabel dependen yang
-diinginkan. Algoritma \textit{machine learning} kemudian akan mencari fungsi
-yang dapat mendeskripsikan hubungan matematis antara data masukan dan data
-keluaran berupa matriks koefisien. Pembagian dataset menjadi set latihan dan ujian pada metode \textit{machine learning} juga dapat menghasilkan model termal yang resilien terhadap \textit{noise} atau gangguan inheren yang ada pada data telemetri satelit.
+konvensional yang mengharuskan pembuatan fungsi regresi sesuai dengan
+pendekatan regresi linear digunakan, pembuatan model regresi linear
+\textit{machine learning} hanya membutuhkan dataset berupa data masukan
+variabel serta data keluaran variabel dependen yang diinginkan. Algoritma
+\textit{machine learning} kemudian akan mencari fungsi yang dapat
+mendeskripsikan hubungan matematis antara data masukan dan data keluaran berupa
+matriks koefisien persamaan regresi sesuai pendekatan regresi yang dipilih.
+Pembagian dataset menjadi set latihan dan ujian pada metode \textit{machine
+learning} juga dapat menghasilkan model termal yang resilien terhadap
+\textit{noise} atau gangguan inheren yang ada pada data telemetri satelit.
 
-Hasil perhitungan koefisien-koefisien pada persamaan termal satelit lewat
-metode regresi linear dapat digunakan untuk inferensi atau prediksi. Inferensi
-merupakan proses pembuatan model matematis yang menggambarkan hubungan
-variabel-variabel dalam cara kerja suatu sistem sedangkan prediksi adalah
-proses pembuatan prakiraan hasil masa depan atau variabel yang belum
-diobservasi berdasarkan data observasi yang sudah ada. 
+Model regresi linear \textit{machine learning} dapat digunakan untuk inferensi
+atau prediksi. Inferensi merupakan proses pembuatan model matematis yang
+menggambarkan hubungan variabel-variabel dalam cara kerja suatu sistem
+sedangkan prediksi adalah proses pembuatan prakiraan hasil masa depan atau
+variabel yang belum diobservasi berdasarkan data observasi yang sudah ada. 
 
 Dalam konteks pemodelan termal satelit, inferensi dapat digunakan untuk
 menghitung kontribusi tiap suku dalam persamaan termal satelit sehingga dampak
 masing-masing suku secara individual dapat diketahui. Prediksi sendiri dapat
 digunakan untuk menentukan besaran parameter termal yang sebelumnya tidak
-diketahui berdasarkan parameter yang sudah diketahui. Dalam karya tulis ini, model regresi linear \textit{machine learning} digunakan untuk memprediksi perubahan suhu sisi-sisi satelit LAPAN-A3.
+diketahui berdasarkan parameter yang sudah diketahui. Dalam karya tulis ini,
+model regresi linear \textit{machine learning} digunakan untuk memprediksi
+perubahan suhu sisi-sisi satelit LAPAN-A3.
 
 Algoritma \textit{machine learning} diimplementasikan dalam kode pemrograman
 Python untuk membuat model termal yang dilatih menggunakan data TLE beserta
@@ -569,10 +725,9 @@ Data masukan yang diberikan ke model adalah parameter \textit{node} yang
 berubah terhadap waktu sesuai Persamaan \ref{eq:lineq} sedangkan data keluaran
 yang diinginkan adalah laju perubahan suhu \textit{node}. Hasil perhitungan
 koefisien suku-suku pada persamaan termal tersebut kemudian akan digunakan
-untuk memprediksi laju perubahan suhu \textit{node} set ujian. Lewat
-prediksi laju perubahan suhu \textit{node}, perubahan suhu \textit{node} dan
-suhu \textit{node} pada selang waktu pengamatan berikutnya dapat diprediksi
-juga.
+untuk memprediksi laju perubahan suhu \textit{node} set ujian. Lewat prediksi
+laju perubahan suhu \textit{node}, perubahan suhu \textit{node} dan suhu
+\textit{node} pada selang waktu pengamatan berikutnya dapat diprediksi juga.
 
 \subsection{Evaluasi Performa Model Machine Learning}
 
@@ -592,13 +747,28 @@ dapat dijelaskan oleh hasil prediksi model. Sebagai contoh, jika hasil prediksi
 model regresi memiliki skor $R^2$ senilai 0.9, 90\% varians dalam data
 observasi dapat dijelaskan oleh hasil prediksi model.
 
+Secara umum, tidak ada batas absolut skor $R^2$ yang menentukan tingkat akurasi
+model. Dengan kata lain, penentuan batas skor $R^2$ harus disesuaikan dengan
+konteks pembuatan model dan cenderung arbiter sesuai kebutuhan akurasi model.
+Sayangnya, ketiga studi pembanding pada bagian Latar Belakang menggunakan
+metode \textit{machine learning} yang berbeda dengan pemodelan termal yang
+dilakukan pada karya tulis ini. Sementara itu, dari studi pemodelan regresi
+linear dengan pendekatan PLS yang dilakukan pada bidang sistem informasi, skor
+$R^2$ harus mencapai nilai 0.67 agar dianggap substansial \cite{urbach2010}.
+Karena itu, model akan dianggap memenuhi standar akurasi karya tulis ini jika
+mayoritas \textit{node} satelit memiliki skor $R^2$ mencapai minimal 0.95 dan
+tidak ada \textit{node} satelit yang memiliki skor $R^2$ kurang dari 0.67.
+
 Nilai \textit{root mean squared error} atau RMSE mengukur seberapa besar
 perbedaan antara hasil prediksi model dengan data observasi. RMSE selalu
 bernilai positif dan semakin rendah nilai RMSE, semakin dekat pula prediksi
 model regresi dengan data observasi. Parameter ini bergantung pada skala data
-serta dataset yang digunakan oleh model. Karena itu, parameter ini dapat
+serta dataset yang digunakan oleh model sehingga RMSE dapat
 dijadikan pembanding akurasi antara model-model yang memiliki dataset masukan
 yang sama.
+
+Sama dengan skor $R^2$, tidak ada batas absolut nilai RMSE agar model dapat
+dikatakan akurat. Karena itu, batas nilai RMSE ditentukan secara arbiter sebesar 1 $^\circ$C. Dengan demikian, model termal akan dikatakan akurat jika mayoritas \textit{node} satelit menghasilkan nilai RMSE kurang dari 1 $^\circ$C.
 
 \section{Perangkat Lunak}
 
