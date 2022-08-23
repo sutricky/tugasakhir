@@ -953,13 +953,15 @@ latihan terpisah.
 \section{Pelatihan dan Pengujian Model}
 
 Dataset yang sudah disaring kemudian dibagi menjadi set latihan
-(\textit{training}) dan ujian (\textit{test}) secara acak dengan menggunakan modul
-Scikit-learn. Model \textit{machine learning} dilatih dan diuji untuk setiap
-\textit{node} satelit per periode observasi. Pemodelan pada karya tulis ini
-menggunakan rasio jumlah data pelatihan dibanding pengujian sebesar 0.7:0.3
-serta pengaturan \textit{seed number} 0. Tabel \ref{table:dataset} memuat
-detail jumlah dataset yang digunakan dalam pemodelan untuk kedua periode
-observasi.
+(\textit{training}) dan ujian (\textit{test}) secara acak dengan menggunakan
+modul Scikit-learn. Model \textit{machine learning} dilatih dan diuji untuk
+setiap \textit{node} satelit per periode observasi. Pemodelan pada karya tulis
+ini menggunakan rasio jumlah data pelatihan dibanding pengujian sebesar 0.7:0.3
+serta pengaturan \textit{seed number} 0. Karena pendekatan regresi linear yang
+digunakan adalah OLS, tidak diperlukan langkah tambahan
+\textit{cross-validation} dan pengaturan \text{hyperparameter}. Tabel
+\ref{table:dataset} memuat detail jumlah dataset yang digunakan dalam pemodelan
+untuk kedua periode observasi.
 
 \begin{table}[!ht]
 \begin{center}
