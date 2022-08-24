@@ -141,14 +141,14 @@ cukup dekat dengan suhu observasi. Meskipun prediksi model termal mengalami
 memprediksi apakah suhu \textit{node-node} satelit akan naik, turun, atau tetap sama
 pada setiap selang waktu.
 
-Meski demikian, \textit{node} 3 dan 7 menghasilkan prediksi suhu
-dengan tren yang cukup kontras dengan data suhu observasi. Perbedaan tren
-prediksi suhu untuk kedua \textit{node} terlihat paling jelas pada Gambar \ref{fig:node320}
-dan \ref{fig:node720} yang memuat plot suhu \textit{node} 3 dan 7 terhadap waktu untuk
-periode observasi 20 Mei 2018. Dari kedua grafik tersebut, dapat dilihat bahwa
-model termal memprediksi perubahan suhu \textit{node} meski data telemetri suhu node
-konstan seperti yang terjadi pada rentang waktu 10000 sampai dengan 20000
-sekon.
+Meski demikian, \textit{node} 3 dan 7 menghasilkan prediksi suhu dengan tren
+yang cukup kontras dengan data suhu observasi. Perbedaan tren prediksi suhu
+untuk kedua \textit{node} terlihat paling jelas pada Gambar \ref{fig:node320}
+dan \ref{fig:node720} yang memuat plot suhu \textit{node} 3 dan 7 terhadap
+waktu untuk periode observasi 20 Mei 2018. Dari kedua grafik tersebut, dapat
+dilihat bahwa prediksi perubahan suhu \textit{node} cukup berbeda dari
+perubahan suhu \textit{node} menurut data telemetri seperti yang terjadi pada
+rentang waktu sekitar 30000 sampai dengan 40000 sekon.
 
 Agar dapat dinilai secara kuantitatif, performa model termal dalam memprediksi
 tren perubahan suhu \textit{node-node} satelit dapat dilihat dari hasil
@@ -267,7 +267,8 @@ disimpulkan apakah nilai RMSE model termal saat ini dapat dikategorikan rendah
 atau tinggi.
 
 Terlepas dari ketidakpastian dan ketidakakuratan bawaan dari metode numerik dan
-\textit{machine learning} yang digunakan pada karya tulis ini, dapat diduga
+\textit{machine learning} yang digunakan pada karya tulis ini serta kondisi
+data telemetri satelit yang memiliki beberapa jeda pengamatan, dapat diduga
 bahwa model satelit LAPAN-A3 yang digunakan belum dapat mewakili seluruh
 karakteristik termal satelit. Dengan menganalisis sumber ketidakakuratan model
 yang potensial, model termal satelit dapat dikembangkan lebih lanjut pada
