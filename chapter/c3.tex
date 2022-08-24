@@ -64,16 +64,27 @@ Data telemetri satelit LAPAN-A3 yang dibutuhkan mencakup pembacaan sensor suhu
 dan sinar Matahari \textit{node-node} satelit serta sikap satelit selama
 periode observasi. Sesuai dengan model satelit LAPAN-A3 yang digunakan, data
 yang disediakan oleh LAPAN juga sudah berupa bacaan sensor dari 6 sisi satelit
-dan plat tengah satelit. Untuk membantu visualisasi data, modul Matplotlib
-digunakan sehingga didapatkan grafik-grafik representasi data telemetri satelit
-LAPAN-A3 yang dikumpulkan pada 19 dan 20 Mei 2018.
+dan plat tengah satelit. Letak \textit{node} 1 sampai dengan 6 pada sisi-sisi
+satelit LAPAN-A3 dapat dilihat pada Gambar \ref{fig:a3node} sedangkan
+\textit{node} 7 berada pada plat tengah di dalam satelit.
 
-Grafik suhu \textit{node-node} satelit vs waktu pada kedua periode observasi
-dapat dilihat pada Gambar \ref{fig:rawtemp1219} sampai dengan
-\ref{fig:rawtemp720}. Setiap titik pada grafik-grafik tersebut mewakili 1 poin
-observasi pengambilan bacaan sensor pada satelit LAPAN-A3 seiring perubahan
-waktu. Terdapat selang waktu antar pembacaan sensor sehingga grafik nilai
-variabel terhadap waktu yang dihasilkan bersifat diskrit.
+\begin{figure}[H]
+\setlength\belowcaptionskip{-0.7\baselineskip}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{fig/a3node.png}
+	\caption{Ilustrasi letak \textit{node-node} satelit LAPAN-A3}
+\label{fig:a3node}
+\end{center}
+\end{figure}
+
+Untuk membantu visualisasi data, modul Matplotlib digunakan sehingga didapatkan
+grafik-grafik representasi data telemetri satelit LAPAN-A3 yang dikumpulkan
+pada 19 dan 20 Mei 2018. Grafik suhu \textit{node-node} satelit vs waktu pada
+kedua periode observasi dapat dilihat pada Gambar \ref{fig:rawtemp1219} sampai
+dengan \ref{fig:rawtemp720}. Setiap titik pada grafik-grafik tersebut mewakili
+1 poin observasi pengambilan bacaan sensor pada satelit LAPAN-A3 seiring
+perubahan waktu. Terdapat selang waktu antar pembacaan sensor sehingga grafik
+nilai variabel terhadap waktu yang dihasilkan bersifat diskrit.
 
 \begin{figure}[H]
 \setlength\belowcaptionskip{-0.7\baselineskip}
